@@ -5,9 +5,16 @@
   "author": {
     "name": "Claude Code Toolkit"
   },
-  "keywords": ["documentation", "templates", "agents", "examples", "best-practices", "claude-code"],
+  "keywords": [
+    "documentation",
+    "templates",
+    "agents",
+    "examples",
+    "best-practices",
+    "claude-code"
+  ],
   "category": "documentation",
   "license": "MIT",
-  "repository": "https://github.com/gombka/claude-code-toolkit",
-  "homepage": "https://github.com/gombka/claude-code-toolkit/tree/master/plugins/documentation-templates"
+  "repository": "https://github.com/L-Sypniewski/claude-code-toolkit",
+  "homepage": "https://github.com/L-Sypniewski/claude-code-toolkit/tree/master/plugins/documentation-templates"
 }

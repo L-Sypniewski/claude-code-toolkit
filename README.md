@@ -9,6 +9,7 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 ## 📦 Available Plugins
 
 ### 🔧 Context Engineering
+
 **Advanced workflow automation with PRP generation and GitHub issue analysis**
 
 - 4 specialized agents for workflow orchestration
@@ -19,6 +20,7 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 [View Details →](plugins/context-engineering/README.md)
 
 ### 💻 Development Workflow
+
 **Complete development lifecycle support from architecture to PR creation**
 
 - Senior engineering and implementation support
@@ -32,6 +34,7 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 [View Details →](plugins/development-workflow/README.md)
 
 ### 🌿 Git & Project Management
+
 **Git worktree utilities and project planning tools**
 
 - Parallel development with git worktrees
@@ -41,6 +44,7 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 [View Details →](plugins/git-project-management/README.md)
 
 ### 📚 Documentation Templates
+
 **Templates and examples for project documentation**
 
 - AGENTS.md creation templates
@@ -56,7 +60,7 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 
 ```bash
 # Add this marketplace to Claude Code
-/plugin marketplace add https://github.com/gombka/claude-code-toolkit.git
+/plugin marketplace add https://github.com/L-Sypniewski/claude-code-toolkit.git
 
 # Or for local development
 /plugin marketplace add /path/to/claude-code-toolkit
@@ -80,7 +84,7 @@ For teams, add to your project's `.claude/settings.json`:
 ```json
 {
   "extraKnownMarketplaces": [
-    "https://github.com/gombka/claude-code-toolkit.git"
+    "https://github.com/L-Sypniewski/claude-code-toolkit.git"
   ]
 }
 ```
@@ -105,16 +109,19 @@ claude-code-toolkit/
 ### For Individual Developers
 
 1. **Install the marketplace:**
+
    ```bash
-   /plugin marketplace add https://github.com/gombka/claude-code-toolkit.git
+   /plugin marketplace add https://github.com/L-Sypniewski/claude-code-toolkit.git
    ```
 
 2. **Browse available plugins:**
+
    ```bash
    /plugin list
    ```
 
 3. **Install plugins you need:**
+
    ```bash
    /plugin install development-workflow
    ```
@@ -133,6 +140,7 @@ claude-code-toolkit/
 ## 💡 Usage Examples
 
 ### Context Engineering Workflow
+
 ```bash
 # Analyze a GitHub issue
 /initial-github-issue https://github.com/owner/repo/issues/123
@@ -145,6 +153,7 @@ claude-code-toolkit/
 ```
 
 ### Development Workflow
+
 ```bash
 # Get architecture guidance
 # (technical-architecture-advisor agent activates automatically)
@@ -160,6 +169,7 @@ claude-code-toolkit/
 ```
 
 ### Git Worktree Management
+
 ```bash
 # Start parallel feature development
 /create_worktree feature/new-ui
@@ -171,6 +181,7 @@ claude-code-toolkit/
 ## 🛠️ Plugin Development
 
 Each plugin follows Claude Code standards:
+
 - `.claude-plugin/plugin.json` with metadata
 - Standard directory structure (`agents/`, `commands/`)
 - Individual README with usage instructions
@@ -181,12 +192,14 @@ See the [Claude Code Plugin Reference](https://docs.claude.com/en/docs/claude-co
 ## 📖 Documentation
 
 ### Plugin Documentation
+
 - [Context Engineering Plugin](plugins/context-engineering/README.md)
 - [Development Workflow Plugin](plugins/development-workflow/README.md)
 - [Git & Project Management Plugin](plugins/git-project-management/README.md)
 - [Documentation Templates Plugin](plugins/documentation-templates/README.md)
 
 ### External Resources
+
 - [Claude Code Documentation](https://docs.claude.com/en/docs/claude-code)
 - [Plugin Marketplace Guide](https://docs.claude.com/en/docs/claude-code/plugin-marketplaces)
 - [Plugin Development Reference](https://docs.claude.com/en/docs/claude-code/plugins-reference)
@@ -201,6 +214,7 @@ We welcome contributions! You can:
 - **Report issues** or suggest features
 
 Please ensure:
+
 - Plugins follow Claude Code standards
 - Include comprehensive README files
 - Use semantic versioning
@@ -219,8 +233,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- Create an [issue](https://github.com/gombka/claude-code-toolkit/issues) for bugs or feature requests
-- Check existing [discussions](https://github.com/gombka/claude-code-toolkit/discussions) for community help
+- Create an [issue](https://github.com/L-Sypniewski/claude-code-toolkit/issues) for bugs or feature requests
+- Check existing [discussions](https://github.com/L-Sypniewski/claude-code-toolkit/discussions) for community help
 - Review plugin-specific README files for detailed usage guides
 
 ---

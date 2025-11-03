@@ -2,7 +2,7 @@
   "name": "claude-code-toolkit",
   "owner": {
     "name": "Claude Code Toolkit",
-    "url": "https://github.com/gombka/claude-code-toolkit"
+    "url": "https://github.com/L-Sypniewski/claude-code-toolkit"
   },
   "metadata": {
     "version": "1.0.0",
@@ -16,7 +16,13 @@
       "description": "Advanced context engineering workflow with PRP generation, execution orchestration, and GitHub issue analysis",
       "version": "1.0.0",
       "category": "workflow-automation",
-      "keywords": ["prp", "github", "workflow", "orchestration", "context-engineering"]
+      "keywords": [
+        "prp",
+        "github",
+        "workflow",
+        "orchestration",
+        "context-engineering"
+      ]
     },
     {
       "name": "development-workflow",
@@ -24,7 +30,14 @@
       "description": "Comprehensive development toolkit with senior engineering, code review, architecture advisory, and PR management capabilities",
       "version": "1.0.0",
       "category": "development",
-      "keywords": ["development", "code-review", "architecture", "pull-request", "bug-fixing", "refactoring"]
+      "keywords": [
+        "development",
+        "code-review",
+        "architecture",
+        "pull-request",
+        "bug-fixing",
+        "refactoring"
+      ]
     },
     {
       "name": "git-project-management",
@@ -32,7 +45,12 @@
       "description": "Git worktree management and project planning utilities for efficient version control workflows",
       "version": "1.0.0",
       "category": "version-control",
-      "keywords": ["git", "worktree", "project-management", "planning"]
+      "keywords": [
+        "git",
+        "worktree",
+        "project-management",
+        "planning"
+      ]
     },
     {
       "name": "documentation-templates",
@@ -40,7 +58,13 @@
       "description": "Templates and examples for creating comprehensive project documentation including AGENTS.md and Claude Code delegation rules",
       "version": "1.0.0",
       "category": "documentation",
-      "keywords": ["documentation", "templates", "agents", "examples", "best-practices"]
+      "keywords": [
+        "documentation",
+        "templates",
+        "agents",
+        "examples",
+        "best-practices"
+      ]
     }
   ]
 }

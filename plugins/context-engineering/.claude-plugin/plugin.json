@@ -5,9 +5,16 @@
   "author": {
     "name": "Claude Code Toolkit"
   },
-  "keywords": ["prp", "github", "workflow", "orchestration", "context-engineering", "automation"],
+  "keywords": [
+    "prp",
+    "github",
+    "workflow",
+    "orchestration",
+    "context-engineering",
+    "automation"
+  ],
   "category": "workflow-automation",
   "license": "MIT",
-  "repository": "https://github.com/gombka/claude-code-toolkit",
-  "homepage": "https://github.com/gombka/claude-code-toolkit/tree/master/plugins/context-engineering"
+  "repository": "https://github.com/L-Sypniewski/claude-code-toolkit",
+  "homepage": "https://github.com/L-Sypniewski/claude-code-toolkit/tree/master/plugins/context-engineering"
 }
