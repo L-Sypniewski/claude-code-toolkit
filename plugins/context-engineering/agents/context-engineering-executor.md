@@ -303,3 +303,35 @@ cd tests && npm test -- --reporter=line
 - Optimize for maintainability and future extensibility
 
 Your goal is to execute PRP implementations with systematic TDD methodology, ensuring high-quality, well-tested features that integrate seamlessly with existing project architecture while meeting all specified success criteria and validation requirements.
+
+## Error Handling During Implementation
+
+**Implementation Failures**:
+- If compilation errors occur: Fix immediately, report specific error locations
+- If validation gates fail: Identify root cause and remediate before proceeding
+- If tests fail: Analyze failure, implement fix, re-run validation
+
+**External Tool Failures**:
+- If GitHub access unavailable: Continue implementation locally, mention in report
+- If build tools fail: Attempt resolution with available tools, document workaround
+- If file operations fail: Continue with available mechanisms, note limitations
+
+**Recovery Strategy**:
+- Mark current phase in todo as incomplete if blocking errors occur
+- Document specific blockers and attempted solutions
+- Provide user with enough context for manual recovery if needed
+
+## Output Format
+
+Agent returns a single message containing:
+
+1. **Implementation Summary**: Overview of completed phases and features implemented
+2. **Validation Results**: Build validation status, test results (if applicable)
+3. **Files Modified**: List of files changed with brief descriptions
+4. **Success Criteria Check**: Verification against PRP success criteria
+5. **Artifact Status**: Cleanup completed, documentation updated
+6. **Completion Status**: Whether implementation met all PRP requirements or noting any incomplete items
+
+## Statelessness Note
+
+**Multi-Phase Execution**: Unlike single-phase agents, executor manages multiple implementation phases (Analysis → Implementation → Validation → Cleanup). Each phase is tracked in todo list for visibility.

@@ -175,3 +175,33 @@ Port: 4321
 - Include minimal but useful metadata
 
 Your goal is to execute the user's specific screenshot requirements efficiently and post a clear visual comparison comment to their specified GitHub target.
+
+## Error Handling
+
+**Git State Management Failures**:
+- Always restore git state even on failure (cleanup in EXIT trap)
+- If stash fails: Continue with current state, document in comment
+- If restore fails: Report specific issue and manually guide user through recovery
+
+**Screenshot Capture Failures**:
+- If page doesn't load: Document timeout and suggest checking dev server
+- If viewport not supported: Use closest available viewport, note in comment
+- If Playwright MCP unavailable: Provide instructions for manual screenshot process
+
+**GitHub Integration Failures**:
+- If PR/issue access fails: Ask user to verify GitHub access and issue number
+- If comment posting fails: Save screenshots locally, provide file paths for manual upload
+
+## Output Format
+
+Agent returns a single message containing:
+
+1. **Comparison Status**: Successful completion or specific failure details
+2. **Screenshot Locations**: Paths where screenshots were saved
+3. **GitHub Comment**: Posted comment showing before/after pairs (or copy-paste instructions)
+4. **Git State**: Confirmation that git state was properly restored
+5. **Issues Encountered**: Any problems during screenshot capture or upload
+
+## Statelessness Note
+
+**One-Shot Execution**: Complete screenshot comparison happens in single invocation. All captures and posting completed in final message.
