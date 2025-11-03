@@ -230,6 +230,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Claude Code Documentation](https://docs.claude.com/en/docs/claude-code)
 - [Claude Code GitHub](https://github.com/anthropics/claude-code)
 - [Official Claude Code Examples](https://github.com/anthropics/claude-code-examples)
+- [Copilot Agent Equivalents](https://github.com/TwentyFiveDev-L-Sypniewski/.github-private) - GitHub Copilot agent equivalents for these Claude Code plugins
 
 ## 📞 Support
 
