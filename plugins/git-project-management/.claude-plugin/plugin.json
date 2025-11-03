@@ -1,0 +1,13 @@
+{
+  "name": "git-project-management",
+  "version": "1.0.0",
+  "description": "Git worktree management and project planning utilities for efficient version control workflows and parallel development",
+  "author": {
+    "name": "Claude Code Toolkit"
+  },
+  "keywords": ["git", "worktree", "project-management", "planning", "version-control", "workflow"],
+  "category": "version-control",
+  "license": "MIT",
+  "repository": "https://github.com/gombka/claude-code-toolkit",
+  "homepage": "https://github.com/gombka/claude-code-toolkit/tree/master/plugins/git-project-management"
+}

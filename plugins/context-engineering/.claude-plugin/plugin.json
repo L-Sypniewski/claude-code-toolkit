@@ -1,0 +1,13 @@
+{
+  "name": "context-engineering",
+  "version": "1.0.0",
+  "description": "Advanced context engineering workflow with PRP generation, execution orchestration, and GitHub issue analysis for efficient software development processes",
+  "author": {
+    "name": "Claude Code Toolkit"
+  },
+  "keywords": ["prp", "github", "workflow", "orchestration", "context-engineering", "automation"],
+  "category": "workflow-automation",
+  "license": "MIT",
+  "repository": "https://github.com/gombka/claude-code-toolkit",
+  "homepage": "https://github.com/gombka/claude-code-toolkit/tree/master/plugins/context-engineering"
+}

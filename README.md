@@ -1,99 +1,210 @@
 # Claude Code Toolkit
 
-A comprehensive collection of custom prompts, agents, and commands for [Claude Code CLI](https://claude.ai/code) to enhance development workflows and productivity.
+A comprehensive plugin marketplace for [Claude Code CLI](https://claude.ai/code) with modular plugins for enhanced development workflows, context engineering, git management, and documentation.
 
-## 📁 Repository Structure
+## 🎯 What is This?
+
+This repository serves as a **Claude Code Plugin Marketplace** containing curated, production-ready plugins that extend Claude Code's capabilities. Each plugin is self-contained and can be installed independently based on your needs.
+
+## 📦 Available Plugins
+
+### 🔧 Context Engineering
+**Advanced workflow automation with PRP generation and GitHub issue analysis**
+
+- 4 specialized agents for workflow orchestration
+- GitHub issue analysis and processing
+- PRP (Prompt-Response-Plan) generation and execution
+- Multi-step workflow coordination
+
+[View Details →](plugins/context-engineering/README.md)
+
+### 💻 Development Workflow
+**Complete development lifecycle support from architecture to PR creation**
+
+- Senior engineering and implementation support
+- Expert code review capabilities
+- Architecture advisory and design guidance
+- Visual regression testing
+- Professional PR documentation
+- Bug investigation and fixing workflows
+- Refactoring planning and execution
+
+[View Details →](plugins/development-workflow/README.md)
+
+### 🌿 Git & Project Management
+**Git worktree utilities and project planning tools**
+
+- Parallel development with git worktrees
+- Streamlined worktree merging and cleanup
+- Structured project plan generation
+
+[View Details →](plugins/git-project-management/README.md)
+
+### 📚 Documentation Templates
+**Templates and examples for project documentation**
+
+- AGENTS.md creation templates
+- Claude Code delegation rules examples
+- Real-world documentation patterns
+- Best practices guides
+
+[View Details →](plugins/documentation-templates/README.md)
+
+## 🚀 Installation
+
+### Install the Entire Marketplace
+
+```bash
+# Add this marketplace to Claude Code
+/plugin marketplace add https://github.com/gombka/claude-code-toolkit.git
+
+# Or for local development
+/plugin marketplace add /path/to/claude-code-toolkit
+```
+
+### Install Individual Plugins
+
+Once the marketplace is added, install specific plugins:
+
+```bash
+/plugin install context-engineering
+/plugin install development-workflow
+/plugin install git-project-management
+/plugin install documentation-templates
+```
+
+### Team Installation (Automatic)
+
+For teams, add to your project's `.claude/settings.json`:
+
+```json
+{
+  "extraKnownMarketplaces": [
+    "https://github.com/gombka/claude-code-toolkit.git"
+  ]
+}
+```
+
+## 📋 Repository Structure
 
 ```
 claude-code-toolkit/
-├── prompts/           # Custom prompts for various development tasks
-├── agents/            # Specialized agents for specific workflows
-├── commands/          # Custom slash commands and utilities
-├── examples/          # Usage examples and tutorials
-└── docs/             # Documentation and guides
+├── .claude-plugin/
+│   └── marketplace.json          # Marketplace configuration
+├── plugins/
+│   ├── context-engineering/      # Context engineering workflows
+│   ├── development-workflow/     # Development lifecycle tools
+│   ├── git-project-management/   # Git and planning utilities
+│   └── documentation-templates/  # Documentation templates
+├── README.md                      # This file
+└── .claude/                       # Local settings
 ```
 
-## 🚀 Quick Start
+## 🎓 Getting Started
 
-1. **Clone this repository:**
+### For Individual Developers
+
+1. **Install the marketplace:**
    ```bash
-   git clone https://github.com/L-Sypniewski/claude-code-toolkit.git
-   cd claude-code-toolkit
+   /plugin marketplace add https://github.com/gombka/claude-code-toolkit.git
    ```
 
-2. **Browse the collections:**
-   - Check out `prompts/` for ready-to-use prompts
-   - Explore `agents/` for specialized workflow agents
-   - Look at `commands/` for custom slash commands
+2. **Browse available plugins:**
+   ```bash
+   /plugin list
+   ```
 
-3. **Use with Claude Code:**
-   - Copy prompts directly into your Claude Code conversations
-   - Follow the setup instructions in each agent's directory
-   - Import custom commands as needed
+3. **Install plugins you need:**
+   ```bash
+   /plugin install development-workflow
+   ```
 
-## 📋 Contents Overview
+4. **Start using agents and commands:**
+   - Agents activate automatically based on your tasks
+   - Commands are available via slash commands (e.g., `/create-pr`)
 
-### 🎯 Prompts
-Custom prompts designed to enhance specific development tasks:
-- Code review and analysis
-- Documentation generation
-- Testing strategies
-- Architecture planning
-- Debugging assistance
+### For Teams
 
-### 🤖 Agents
-Specialized agents for complex workflows:
-- Code refactoring agent
-- Test generation agent
-- Documentation writer agent
-- Security audit agent
-- Performance optimization agent
+1. **Configure team marketplace** in `.claude/settings.json`
+2. **Document recommended plugins** for your project
+3. **Share configuration** via version control
+4. **Onboard new members** - plugins install automatically
 
-### ⚡ Commands
-Custom slash commands for common operations:
-- Project setup commands
-- Code analysis utilities
-- Deployment helpers
-- File organization tools
+## 💡 Usage Examples
 
-## 🛠️ Usage Examples
-
-### Using a Prompt
-```
-Copy any prompt from the prompts/ directory and paste it into Claude Code:
-
-"Act as a senior code reviewer. Analyze the following code for..."
-```
-
-### Setting up an Agent
+### Context Engineering Workflow
 ```bash
-# Follow the specific setup instructions in each agent's README
-cd agents/code-reviewer/
-# Setup instructions will be provided in the agent's directory
+# Analyze a GitHub issue
+/initial-github-issue https://github.com/owner/repo/issues/123
+
+# Generate a structured PRP
+/generate-prp
+
+# Execute the PRP with tracking
+/execute-prp
 ```
 
-### Running a Custom Command
-```
-# Custom commands can be added to Claude Code's command palette
-/analyze-security
-/generate-docs
-/optimize-performance
+### Development Workflow
+```bash
+# Get architecture guidance
+# (technical-architecture-advisor agent activates automatically)
+
+# Implement with senior engineer agent
+# (senior-engineer agent provides implementation support)
+
+# Review code before commit
+# (code-reviewer agent performs comprehensive review)
+
+# Create professional PR
+/create-pr
 ```
 
-## 📚 Documentation
+### Git Worktree Management
+```bash
+# Start parallel feature development
+/create_worktree feature/new-ui
 
-- [Getting Started Guide](docs/getting-started.md)
-- [Creating Custom Prompts](docs/custom-prompts.md)
-- [Building Agents](docs/building-agents.md)
-- [Command Development](docs/command-development.md)
+# After completion, merge and cleanup
+/merge_worktree feature/new-ui
+```
+
+## 🛠️ Plugin Development
+
+Each plugin follows Claude Code standards:
+- `.claude-plugin/plugin.json` with metadata
+- Standard directory structure (`agents/`, `commands/`)
+- Individual README with usage instructions
+- Semantic versioning
+
+See the [Claude Code Plugin Reference](https://docs.claude.com/en/docs/claude-code/plugins-reference) for plugin development guidelines.
+
+## 📖 Documentation
+
+### Plugin Documentation
+- [Context Engineering Plugin](plugins/context-engineering/README.md)
+- [Development Workflow Plugin](plugins/development-workflow/README.md)
+- [Git & Project Management Plugin](plugins/git-project-management/README.md)
+- [Documentation Templates Plugin](plugins/documentation-templates/README.md)
+
+### External Resources
+- [Claude Code Documentation](https://docs.claude.com/en/docs/claude-code)
+- [Plugin Marketplace Guide](https://docs.claude.com/en/docs/claude-code/plugin-marketplaces)
+- [Plugin Development Reference](https://docs.claude.com/en/docs/claude-code/plugins-reference)
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on:
-- Adding new prompts
-- Creating agents
-- Developing commands
-- Improving documentation
+We welcome contributions! You can:
+
+- **Add new plugins** to the marketplace
+- **Improve existing plugins** with new agents/commands
+- **Enhance documentation** and examples
+- **Report issues** or suggest features
+
+Please ensure:
+- Plugins follow Claude Code standards
+- Include comprehensive README files
+- Use semantic versioning
+- Test thoroughly before submitting
 
 ## 📄 License
 
@@ -101,16 +212,17 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🔗 Related Resources
 
+- [Claude Code CLI](https://claude.ai/code)
 - [Claude Code Documentation](https://docs.claude.com/en/docs/claude-code)
 - [Claude Code GitHub](https://github.com/anthropics/claude-code)
 - [Official Claude Code Examples](https://github.com/anthropics/claude-code-examples)
 
 ## 📞 Support
 
-- Create an [issue](https://github.com/L-Sypniewski/claude-code-toolkit/issues) for bugs or feature requests
-- Check existing [discussions](https://github.com/L-Sypniewski/claude-code-toolkit/discussions) for community help
-- Review the [documentation](docs/) for detailed guides
+- Create an [issue](https://github.com/gombka/claude-code-toolkit/issues) for bugs or feature requests
+- Check existing [discussions](https://github.com/gombka/claude-code-toolkit/discussions) for community help
+- Review plugin-specific README files for detailed usage guides
 
 ---
 
-⭐ If you find this toolkit helpful, please consider giving it a star!
+⭐ If you find this marketplace helpful, please consider giving it a star!

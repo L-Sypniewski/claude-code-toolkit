@@ -1,0 +1,13 @@
+{
+  "name": "development-workflow",
+  "version": "1.0.0",
+  "description": "Comprehensive development toolkit with senior engineering, code review, architecture advisory, screenshot comparison, and PR management capabilities for end-to-end software development",
+  "author": {
+    "name": "Claude Code Toolkit"
+  },
+  "keywords": ["development", "code-review", "architecture", "pull-request", "bug-fixing", "refactoring", "senior-engineer", "visual-testing"],
+  "category": "development",
+  "license": "MIT",
+  "repository": "https://github.com/gombka/claude-code-toolkit",
+  "homepage": "https://github.com/gombka/claude-code-toolkit/tree/master/plugins/development-workflow"
+}
