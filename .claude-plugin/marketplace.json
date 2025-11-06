@@ -28,7 +28,7 @@
       "name": "development-workflow",
       "source": "./plugins/development-workflow",
       "description": "Comprehensive development toolkit with senior engineering, code review, architecture advisory, and PR management capabilities",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "development",
       "keywords": [
         "development",
