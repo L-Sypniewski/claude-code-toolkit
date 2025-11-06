@@ -13,6 +13,18 @@ MANDATORY WORKFLOW:
 4. Mark progress status for each step AS YOU GO (pending/in-progress/completed)
 5. **IMPORTANT: Plan must be kept current in real-time in case work is interrupted**
 
+PLAN STRUCTURE REQUIREMENTS FOR AI AGENTS:
+
+- **Focus on Complexity, Not Time**: AI agents execute steps based on complexity and dependencies rather than time estimates - use complexity indicators instead of hours/days
+- **Dependencies**: Clearly mark which steps depend on completion of previous steps
+- **Complexity Indicators**: Label each step with complexity (Simple/Moderate/Complex) based on:
+  - Number of files affected
+  - Risk of breaking changes
+  - Amount of analysis required
+  - Interdependencies with other components
+- **Completion Criteria**: Define clear, verifiable criteria for when each step is complete
+- **Rollback Points**: Identify safe checkpoints where work can be paused and resumed
+
 Use sequential thinking, context7 and microsoft-docs to solve the problem using latest documentation and best practices.
 Files to be analyzed and problems identified (but not limited to):
 $ARGUMENTS
