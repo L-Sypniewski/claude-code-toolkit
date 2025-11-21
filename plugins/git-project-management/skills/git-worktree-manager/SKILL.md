@@ -1,6 +1,6 @@
 ---
 name: git-worktree-manager
-description: Manage Git worktrees for parallel development workflows. Use when creating, merging, or managing Git worktrees for working on multiple branches simultaneously. Provides streamlined worktree creation with automatic dependency installation, worktree merging with cleanup, and safe parallel development workflows. Use for /create_worktree and /merge_worktree commands or when users need to work on multiple features concurrently.
+description: Manage Git worktrees for parallel development workflows. Use when users request worktree creation, merging, or management for working on multiple branches simultaneously. Provides streamlined worktree creation with automatic dependency installation, worktree merging with cleanup, and safe parallel development workflows. Invoked when users want to work on multiple features concurrently or need to create/merge worktrees.
 ---
 
 # Git Worktree Manager

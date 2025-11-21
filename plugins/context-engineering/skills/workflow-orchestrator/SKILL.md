@@ -39,7 +39,7 @@ This skill coordinates the complete context engineering workflow, managing state
 Execute end-to-end GitHub issue to implementation:
 
 ```
-User Command: /execute-context-engineering <GitHub-issue-URL>
+User Request: "Run the complete context engineering workflow for issue #123"
 
 Orchestration Flow:
 1. Invoke github-issue-analyzer → structured comment creation
