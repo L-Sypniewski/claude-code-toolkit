@@ -1,6 +1,8 @@
+**Note**: This is a legacy example showing the older agents-based approach. Modern Claude Code uses the skills approach where skills are bundled with plugins.
+
 You can find all instructions for working with this repository at @AGENTS.md file.
 
-## Claude Code Delegation Rules
+## Claude Code Delegation Rules (Legacy Agent Approach)
 
 **CRITICAL: Claude Code must follow this mandatory delegation hierarchy for ALL user requests:**
 
