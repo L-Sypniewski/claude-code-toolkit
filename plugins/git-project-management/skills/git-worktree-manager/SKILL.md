@@ -42,11 +42,14 @@ Git worktrees allow multiple working directories for a single repository, enabli
 
 ## Worktree Creation
 
-### Command Pattern
+### Natural Language Triggers
 
-Create worktree: `/create_worktree <branch-name> [optional-path]`
+Users typically request worktree creation with phrases like:
+- "Create a worktree for feature/new-ui"
+- "Set up a worktree for working on the authentication feature"
+- "I need to work on a hotfix in parallel, create a worktree"
 
-**Arguments**:
+**Parameters to gather**:
 - `branch-name` (required): Name for new branch
 - `path` (optional): Custom worktree path (default: `../project-{branch-name}`)
 
@@ -163,11 +166,14 @@ Use /merge_worktree <target-branch> when complete
 
 ## Worktree Merging
 
-### Command Pattern
+### Natural Language Triggers
 
-Merge worktree: `/merge_worktree <target-branch>`
+Users typically request worktree merging with phrases like:
+- "Merge my worktree back to main"
+- "I'm done with this feature, merge and clean up the worktree"
+- "Merge this worktree into develop"
 
-**Arguments**:
+**Parameters to gather**:
 - `target-branch` (required): Branch to merge into (e.g., 'master', 'main', 'develop')
 
 ### Merging Process

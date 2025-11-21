@@ -9,9 +9,10 @@ This skill coordinates the complete context engineering workflow, managing state
 
 ## When to Use
 
-- Processing `/execute-context-engineering <GitHub-issue-URL>` commands
-- Coordinating complete issue-to-implementation pipelines
-- Managing multi-skill workflows
+- When users request complete context engineering workflow execution
+- Coordinating end-to-end issue-to-implementation pipelines
+- When asked to "run the full context engineering process"
+- Managing multi-skill workflows with state tracking
 - Handling workflow state and progress tracking
 - Orchestrating error recovery and branching logic
 

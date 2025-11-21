@@ -9,11 +9,12 @@ This skill generates AI-focused Product Requirements Prompts (PRPs) that transfo
 
 ## When to Use
 
-- Processing `/generate-prp <GitHub-issue-URL>` commands
 - Creating implementation blueprints from structured issue analysis
 - Transforming requirements into AI-ready implementation guides
+- When users ask to "create a PRP" or "generate an implementation plan"
 - Establishing validation loops and success criteria
-- Generating self-contained implementation context
+- Generating self-contained implementation context from GitHub issues
+- After structured issue analysis is complete
 
 ## PRP Generation Process
 

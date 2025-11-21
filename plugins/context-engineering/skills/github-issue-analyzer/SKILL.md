@@ -17,11 +17,12 @@ This skill provides comprehensive GitHub issue analysis and structured commentin
 
 ## When to Use This Skill
 
-- Processing `/initial-github-issue <GitHub-issue-URL>` commands
-- Analyzing GitHub issues before creating PRPs (Prompt-Response-Plans)
+- Analyzing GitHub issues comprehensively before implementation
+- When users ask to "analyze this GitHub issue" or "break down this issue"
 - Creating structured problem decomposition for complex features
 - Extracting and organizing requirements from issue descriptions
 - Establishing foundation for context engineering workflows
+- Before creating PRPs (Prompt-Response-Plans) from GitHub issues
 
 ## Analysis Framework
 

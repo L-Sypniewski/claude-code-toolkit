@@ -9,11 +9,12 @@ This skill executes AI-focused Product Requirements Prompts through pragmatic de
 
 ## When to Use
 
-- Processing `/execute-prp <PRP-file>` commands
 - Implementing features from structured PRPs
+- When users ask to "implement this PRP" or "execute the implementation plan"
 - Executing phased development with validation gates
 - Managing implementation-to-completion workflows
 - Balancing thoroughness with development velocity
+- Following a PRP blueprint with incremental validation
 
 ## Execution Workflow
 

@@ -181,61 +181,56 @@ claude-code-toolkit/
 
 ### Context Engineering Workflow
 
-```bash
-# Skills are invoked automatically by Claude based on your requests:
+Simply describe what you want in natural language - Claude will automatically use the appropriate skills:
 
-# "Analyze this GitHub issue: https://github.com/owner/repo/issues/123"
-# → github-issue-analyzer skill activates
+```
+"Analyze this GitHub issue: https://github.com/owner/repo/issues/123"
+# Claude analyzes the issue and creates a structured comment
 
-# "Generate a PRP from that issue"
-# → prp-generator skill activates
+"Generate a PRP from that issue"
+# Claude creates a comprehensive implementation blueprint
 
-# "Execute the PRP"
-# → prp-executor skill activates
+"Execute the PRP"  
+# Claude implements the feature following the blueprint
 
-# Or use the workflow orchestrator for end-to-end:
-# "Run the complete context engineering workflow for issue #123"
-# → workflow-orchestrator coordinates all skills
+"Run the complete context engineering workflow for issue #123"
+# Claude orchestrates the entire process from analysis to implementation
 ```
 
 ### Development Workflow
 
-```bash
-# Skills activate based on what you're doing:
+```
+"I need architectural advice on using Redis vs PostgreSQL for caching"
+# Claude provides architectural guidance and trade-offs
 
-# "I need architectural advice on using Redis vs PostgreSQL for caching"
-# → architecture-advisor skill provides guidance
+"Implement OAuth authentication with Google and GitHub"
+# Claude implements the feature following best practices
 
-# "Implement OAuth authentication with Google and GitHub"
-# → senior-engineer skill handles implementation
+"Review my changes before I create a PR"
+# Claude performs comprehensive code review
 
-# "Review my changes before I create a PR"
-# → code-reviewer skill performs comprehensive review
+"Create a pull request for my changes"
+# Claude generates a professional PR with documentation
 
-# "Create a pull request for my changes"
-# → pr-creator skill generates professional PR
-
-# "Create before/after screenshots for the homepage"
-# → screenshot-comparator skill captures and compares
+"Create before/after screenshots for the homepage"
+# Claude captures and compares visual changes
 ```
 
 ### Git Worktree Management
 
-```bash
-# Skills activate when you need worktree operations:
+```
+"Create a worktree for feature/new-ui"
+# Claude creates and sets up a new worktree with dependencies
 
-# "Create a worktree for feature/new-ui"
-# → git-worktree-manager creates and sets up worktree
-
-# "Merge my worktree back to main"
-# → git-worktree-manager handles merge and cleanup
+"Merge my worktree back to main"
+# Claude merges the worktree and cleans up
 ```
 
 ### Documentation Creation
 
-```bash
-# "Create an AGENTS.md file for this repository"
-# → agents-md-creator skill generates comprehensive documentation
+```
+"Create an AGENTS.md file for this repository"
+# Claude generates comprehensive agent documentation
 ```
 
 ## 🛠️ Plugin Development
