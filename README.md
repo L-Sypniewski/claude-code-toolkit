@@ -1,10 +1,20 @@
 # Claude Code Toolkit
 
-A comprehensive plugin marketplace for [Claude Code CLI](https://claude.ai/code) with modular plugins for enhanced development workflows, context engineering, git management, and documentation.
+A comprehensive plugin marketplace for [Claude Code CLI](https://claude.ai/code) with modular plugins following the **skills approach** for enhanced development workflows, context engineering, git management, and documentation.
 
 ## 🎯 What is This?
 
-This repository serves as a **Claude Code Plugin Marketplace** containing curated, production-ready plugins that extend Claude Code's capabilities. Each plugin is self-contained and can be installed independently based on your needs.
+This repository serves as a **Claude Code Plugin Marketplace** containing curated, production-ready plugins that extend Claude Code's capabilities. Each plugin follows the **skills approach** from [Anthropic's skills repository](https://github.com/anthropics/skills), bundling skills that are automatically available when the plugin is installed. Skills are model-invoked based on their descriptions, making them seamlessly integrate into your Claude Code workflows.
+
+### Skills Approach
+
+Our plugins follow the modern skills approach where:
+- **Skills are model-invoked**: Claude automatically uses the right skill based on its description
+- **SKILL.md format**: Each skill has a YAML frontmatter + Markdown body structure
+- **Self-contained**: Skills include all necessary context and instructions
+- **Progressive disclosure**: Skills can include optional `scripts/`, `references/`, and `assets/` directories
+
+Learn more about skills: [Anthropic Skills Documentation](https://support.claude.com/en/articles/12512176-what-are-skills)
 
 ## 📦 Available Plugins
 
@@ -12,10 +22,13 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 
 **Advanced workflow automation with PRP generation and GitHub issue analysis**
 
-- 4 specialized agents for workflow orchestration
-- GitHub issue analysis and processing
-- PRP (Prompt-Response-Plan) generation and execution
-- Multi-step workflow coordination
+**Skills included:**
+- `github-issue-analyzer` - Analyze GitHub issues and create structured analysis comments
+- `prp-generator` - Generate Product Requirements Prompts from GitHub issue analysis
+- `prp-executor` - Execute PRPs using pragmatic development methodology
+- `workflow-orchestrator` - Coordinate context engineering pipeline workflows
+
+GitHub issue analysis, PRP generation/execution, and multi-step workflow coordination.
 
 [View Details →](plugins/context-engineering/README.md)
 
@@ -23,13 +36,14 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 
 **Complete development lifecycle support from architecture to PR creation**
 
-- Senior engineering and implementation support
-- Expert code review capabilities
-- Architecture advisory and design guidance
-- Visual regression testing
-- Professional PR documentation
-- Bug investigation and fixing workflows
-- Refactoring planning and execution
+**Skills included:**
+- `senior-engineer` - Senior software engineer for implementation tasks
+- `code-reviewer` - Expert code review specialist
+- `architecture-advisor` - Technical architecture advisor
+- `pr-creator` - Create comprehensive pull requests
+- `screenshot-comparator` - Visual regression testing with before/after comparisons
+
+Senior engineering, code review, architecture advisory, visual testing, and PR management.
 
 [View Details →](plugins/development-workflow/README.md)
 
@@ -37,9 +51,10 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 
 **Git worktree utilities and project planning tools**
 
-- Parallel development with git worktrees
-- Streamlined worktree merging and cleanup
-- Structured project plan generation
+**Skills included:**
+- `git-worktree-manager` - Manage Git worktrees for parallel development
+
+Parallel development with git worktrees, streamlined merging and cleanup.
 
 [View Details →](plugins/git-project-management/README.md)
 
@@ -47,10 +62,10 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 
 **Templates and examples for project documentation**
 
-- AGENTS.md creation templates
-- Claude Code delegation rules examples
-- Real-world documentation patterns
-- Best practices guides
+**Skills included:**
+- `agents-md-creator` - Create comprehensive AGENTS.md files following agents.md standard
+
+AGENTS.md creation with templates, examples, and best practices.
 
 [View Details →](plugins/documentation-templates/README.md)
 
@@ -97,9 +112,34 @@ claude-code-toolkit/
 │   └── marketplace.json          # Marketplace configuration
 ├── plugins/
 │   ├── context-engineering/      # Context engineering workflows
+│   │   ├── .claude-plugin/
+│   │   │   └── plugin.json       # Plugin metadata
+│   │   └── skills/               # Bundled skills
+│   │       ├── github-issue-analyzer/
+│   │       ├── prp-generator/
+│   │       ├── prp-executor/
+│   │       └── workflow-orchestrator/
 │   ├── development-workflow/     # Development lifecycle tools
+│   │   ├── .claude-plugin/
+│   │   │   └── plugin.json       # Plugin metadata
+│   │   └── skills/               # Bundled skills
+│   │       ├── senior-engineer/
+│   │       ├── code-reviewer/
+│   │       ├── architecture-advisor/
+│   │       ├── pr-creator/
+│   │       └── screenshot-comparator/
 │   ├── git-project-management/   # Git and planning utilities
+│   │   ├── .claude-plugin/
+│   │   │   └── plugin.json       # Plugin metadata
+│   │   └── skills/               # Bundled skills
+│   │       └── git-worktree-manager/
 │   └── documentation-templates/  # Documentation templates
+│       ├── .claude-plugin/
+│       │   └── plugin.json       # Plugin metadata
+│       └── skills/               # Bundled skills
+│           └── agents-md-creator/
+│               ├── SKILL.md      # Skill definition
+│               └── references/   # Example templates
 ├── README.md                      # This file
 └── .claude/                       # Local settings
 ```
@@ -126,9 +166,9 @@ claude-code-toolkit/
    /plugin install development-workflow
    ```
 
-4. **Start using agents and commands:**
-   - Agents activate automatically based on your tasks
-   - Commands are available via slash commands (e.g., `/create-pr`)
+4. **Start using skills:**
+   - Skills activate automatically based on Claude's assessment of your needs
+   - Skills are model-invoked - Claude decides when to use them based on their descriptions
 
 ### For Teams
 
@@ -142,52 +182,89 @@ claude-code-toolkit/
 ### Context Engineering Workflow
 
 ```bash
-# Analyze a GitHub issue
-/initial-github-issue https://github.com/owner/repo/issues/123
+# Skills are invoked automatically by Claude based on your requests:
 
-# Generate a structured PRP
-/generate-prp
+# "Analyze this GitHub issue: https://github.com/owner/repo/issues/123"
+# → github-issue-analyzer skill activates
 
-# Execute the PRP with tracking
-/execute-prp
+# "Generate a PRP from that issue"
+# → prp-generator skill activates
+
+# "Execute the PRP"
+# → prp-executor skill activates
+
+# Or use the workflow orchestrator for end-to-end:
+# "Run the complete context engineering workflow for issue #123"
+# → workflow-orchestrator coordinates all skills
 ```
 
 ### Development Workflow
 
 ```bash
-# Get architecture guidance
-# (technical-architecture-advisor agent activates automatically)
+# Skills activate based on what you're doing:
 
-# Implement with senior engineer agent
-# (senior-engineer agent provides implementation support)
+# "I need architectural advice on using Redis vs PostgreSQL for caching"
+# → architecture-advisor skill provides guidance
 
-# Review code before commit
-# (code-reviewer agent performs comprehensive review)
+# "Implement OAuth authentication with Google and GitHub"
+# → senior-engineer skill handles implementation
 
-# Create professional PR
-/create-pr
+# "Review my changes before I create a PR"
+# → code-reviewer skill performs comprehensive review
+
+# "Create a pull request for my changes"
+# → pr-creator skill generates professional PR
+
+# "Create before/after screenshots for the homepage"
+# → screenshot-comparator skill captures and compares
 ```
 
 ### Git Worktree Management
 
 ```bash
-# Start parallel feature development
-/create_worktree feature/new-ui
+# Skills activate when you need worktree operations:
 
-# After completion, merge and cleanup
-/merge_worktree feature/new-ui
+# "Create a worktree for feature/new-ui"
+# → git-worktree-manager creates and sets up worktree
+
+# "Merge my worktree back to main"
+# → git-worktree-manager handles merge and cleanup
+```
+
+### Documentation Creation
+
+```bash
+# "Create an AGENTS.md file for this repository"
+# → agents-md-creator skill generates comprehensive documentation
 ```
 
 ## 🛠️ Plugin Development
 
-Each plugin follows Claude Code standards:
+Each plugin follows the **skills approach**:
 
-- `.claude-plugin/plugin.json` with metadata
-- Standard directory structure (`agents/`, `commands/`)
+- `.claude-plugin/plugin.json` with metadata and skills array
+- `skills/` directory containing skill folders
+- Each skill has a `SKILL.md` file with YAML frontmatter + Markdown body
+- Optional `scripts/`, `references/`, and `assets/` directories per skill
 - Individual README with usage instructions
 - Semantic versioning
 
-See the [Claude Code Plugin Reference](https://docs.claude.com/en/docs/claude-code/plugins-reference) for plugin development guidelines.
+### Creating a Skill
+
+Each skill must have a `SKILL.md` file with:
+
+```markdown
+---
+name: skill-name
+description: Clear description of what the skill does and when Claude should use it
+---
+
+# Skill Name
+
+[Skill instructions and guidance]
+```
+
+See the [Agent Skills Spec](https://github.com/anthropics/skills/blob/main/agent_skills_spec.md) and [Claude Code Skills Documentation](https://code.claude.com/docs/en/skills) for detailed guidelines.
 
 ## 📖 Documentation
 
