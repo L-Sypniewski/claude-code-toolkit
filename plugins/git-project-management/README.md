@@ -8,7 +8,6 @@ Git worktree management and project planning utilities for efficient version con
 
 - **/create_worktree** - Create new git worktrees for parallel development branches
 - **/merge_worktree** - Merge and clean up git worktrees after feature completion
-- **/plan-markdown-writer** - Generate structured project plans in markdown format
 
 ## Installation
 
@@ -33,26 +32,16 @@ This plugin is part of the Claude Code Toolkit marketplace. Install via:
 2. Automatically cleans up the worktree directory
 3. Maintains clean git history
 
-### Project Planning
-
-Use **/plan-markdown-writer** to:
-- Create structured project documentation
-- Generate implementation roadmaps
-- Document feature specifications
-- Track project milestones
-
 ## Benefits
 
 - **Parallel Development**: Work on multiple features simultaneously without branch switching
 - **Clean Workflows**: Isolated worktrees prevent contamination between features
 - **Efficient Merging**: Streamlined merge and cleanup process
-- **Documentation**: Structured planning and documentation generation
 
 ## Best Practices
 
 - Create worktrees for each significant feature or bug fix
 - Use descriptive branch names for clarity
-- Document plans before implementation
 - Clean up worktrees promptly after merging
 
 ## Git Worktree Advantages

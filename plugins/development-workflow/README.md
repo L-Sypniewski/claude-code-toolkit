@@ -20,6 +20,7 @@ Comprehensive development toolkit with senior engineering expertise, code review
 - **/bug-investigation-plan** - Systematic bug investigation and root cause analysis
 - **/refactoring-plan** - Plan and execute refactoring efforts
 - **/technical-translator-prompt** - Translate technical concepts across contexts
+- **/plan-markdown-writer** - Generate structured project plans in markdown format
 
 ## Installation
 
@@ -34,11 +35,12 @@ This plugin is part of the Claude Code Toolkit marketplace. Install via:
 
 ### Development Lifecycle
 
-1. **Architecture Planning**: Use **technical-architecture-advisor** for design decisions
-2. **Implementation**: Use **senior-engineer** for feature development
-3. **Code Review**: Use **code-reviewer** for quality assurance
-4. **Visual Verification**: Use **screenshot-comparator** for UI testing
-5. **PR Creation**: Use **/create-pr** or **pull-request-creator** for documentation
+1. **Planning**: Use **/plan-markdown-writer** to create structured project plans
+2. **Architecture Planning**: Use **technical-architecture-advisor** for design decisions
+3. **Implementation**: Use **senior-engineer** for feature development
+4. **Code Review**: Use **code-reviewer** for quality assurance
+5. **Visual Verification**: Use **screenshot-comparator** for UI testing
+6. **PR Creation**: Use **/create-pr** or **pull-request-creator** for documentation
 
 ### Bug Fixing Workflow
 
