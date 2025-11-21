@@ -13,6 +13,7 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 **Advanced workflow automation with PRP generation and GitHub issue analysis**
 
 - 4 specialized agents for workflow orchestration
+- 3 Claude Code skills for procedural knowledge
 - GitHub issue analysis and processing
 - PRP (Prompt-Response-Plan) generation and execution
 - Multi-step workflow coordination
@@ -23,6 +24,8 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 
 **Complete development lifecycle support from architecture to PR creation**
 
+- 5 specialized agents for development excellence
+- 4 Claude Code skills for coding standards and patterns
 - Senior engineering and implementation support
 - Expert code review capabilities
 - Architecture advisory and design guidance
@@ -37,9 +40,11 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 
 **Git worktree utilities and project planning tools**
 
+- 2 Claude Code skills for git workflows and project planning
 - Parallel development with git worktrees
 - Streamlined worktree merging and cleanup
 - Structured project plan generation
+- Git workflow patterns and best practices
 
 [View Details →](plugins/git-project-management/README.md)
 
@@ -47,6 +52,7 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 
 **Templates and examples for project documentation**
 
+- 2 Claude Code skills for agent documentation and delegation
 - AGENTS.md creation templates
 - Claude Code delegation rules examples
 - Real-world documentation patterns
@@ -178,16 +184,56 @@ claude-code-toolkit/
 /merge_worktree feature/new-ui
 ```
 
+## 🎓 Understanding Skills vs Agents vs Commands
+
+This marketplace includes three types of components that work together:
+
+### 🤖 Agents
+**Specialized AI entities** with dedicated context for complex tasks
+- Have their own context windows and tool access
+- Actively perform work (implement features, review code, etc.)
+- Explicitly invoked or automatically activated based on context
+- Example: `senior-engineer`, `code-reviewer`
+
+### ⚡ Commands
+**User-invoked actions** via slash commands
+- Direct user control with `/command-name`
+- Execute specific workflows or tasks
+- Example: `/create-pr`, `/generate-prp`
+
+### 📚 Skills
+**Modular knowledge packages** that Claude auto-loads
+- Provide procedural knowledge and templates
+- Automatically loaded when context matches
+- No explicit invocation needed
+- Complement agents by providing domain expertise
+- Example: `code-review-checklist`, `git-workflow-patterns`
+
+**Key Difference**: Agents *do work*, commands *trigger workflows*, skills *provide knowledge*.
+
 ## 🛠️ Plugin Development
 
 Each plugin follows Claude Code standards:
 
 - `.claude-plugin/plugin.json` with metadata
-- Standard directory structure (`agents/`, `commands/`)
+- Standard directory structure (`agents/`, `commands/`, `skills/`)
 - Individual README with usage instructions
 - Semantic versioning
 
-See the [Claude Code Plugin Reference](https://docs.claude.com/en/docs/claude-code/plugins-reference) for plugin development guidelines.
+Plugin structure:
+```
+plugin-name/
+├── .claude-plugin/
+│   └── plugin.json
+├── agents/           # AI workers with context
+├── commands/         # User-invoked actions
+├── skills/          # Auto-loaded knowledge
+│   └── skill-name/
+│       └── SKILL.md  # Required skill file
+└── README.md
+```
+
+See the [Claude Code Plugin Reference](https://docs.claude.com/en/docs/claude-code/plugins-reference) for plugin development guidelines and the [Anthropic Skills Repository](https://github.com/anthropics/skills) for skill creation guidance.
 
 ## 📖 Documentation
 
@@ -203,6 +249,8 @@ See the [Claude Code Plugin Reference](https://docs.claude.com/en/docs/claude-co
 - [Claude Code Documentation](https://docs.claude.com/en/docs/claude-code)
 - [Plugin Marketplace Guide](https://docs.claude.com/en/docs/claude-code/plugin-marketplaces)
 - [Plugin Development Reference](https://docs.claude.com/en/docs/claude-code/plugins-reference)
+- [Anthropic Skills Repository](https://github.com/anthropics/skills)
+- [Claude Agent Skills Overview](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
 
 ## 🤝 Contributing
 

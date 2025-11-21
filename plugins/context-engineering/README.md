@@ -17,6 +17,12 @@ Advanced context engineering workflow with PRP (Prompt-Response-Plan) generation
 - **/execute-prp** - Execute an existing PRP with tracking and validation
 - **/initial-github-issue** - Process and analyze GitHub issues for workflow initiation
 
+### Skills
+
+- **prp-structure** - Standard structure and format for PRP documents with templates and best practices
+- **github-issue-processing** - Patterns for extracting actionable information from GitHub issues
+- **workflow-orchestration** - Multi-step workflow coordination patterns for complex development tasks
+
 ## Installation
 
 This plugin is part of the Claude Code Toolkit marketplace. Install via:
@@ -41,6 +47,8 @@ The context engineering workflow typically follows these steps:
 - Use the orchestrator for complex, multi-agent workflows
 - Track PRP execution progress systematically
 - Leverage GitHub issue insights for context-aware development
+- Skills are automatically loaded by Claude when relevant context is detected
+- Agents can leverage skills for procedural knowledge and templates
 
 ## License
 
