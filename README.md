@@ -191,6 +191,12 @@ See the [Claude Code Plugin Reference](https://docs.claude.com/en/docs/claude-co
 
 ## 📖 Documentation
 
+### 🎯 Planning & Strategy
+
+- **[Skills & Plugins Analysis](docs/SKILLS_PLUGINS_ANALYSIS.md)** - Comprehensive analysis and roadmap for expanding the toolkit
+- **[Plugin Comparison Table](docs/PLUGIN_COMPARISON_TABLE.md)** - Feature coverage matrix and ROI analysis
+- **[Quick Implementation Guide](docs/QUICK_IMPLEMENTATION_GUIDE.md)** - Practical guide for adding new plugins
+
 ### Plugin Documentation
 
 - [Context Engineering Plugin](plugins/context-engineering/README.md)
@@ -204,11 +210,33 @@ See the [Claude Code Plugin Reference](https://docs.claude.com/en/docs/claude-co
 - [Plugin Marketplace Guide](https://docs.claude.com/en/docs/claude-code/plugin-marketplaces)
 - [Plugin Development Reference](https://docs.claude.com/en/docs/claude-code/plugins-reference)
 
+## 🗺️ Roadmap
+
+Based on comprehensive research of 250+ reference plugins, we've identified key areas for expansion:
+
+### 🔴 Phase 1: Critical Foundation (Next)
+- **Security & Compliance Plugin** - Static analysis, vulnerability scanning, OWASP compliance
+- **Automated Testing Plugin** - Test generation, coverage analysis, E2E testing
+- **CI/CD Integration** - Pipeline generation for GitHub Actions, GitLab CI, Jenkins
+
+### 🟡 Phase 2: Productivity Boost
+- **Code Quality & Linting Plugin** - Automated linting, formatting, best practices
+- **Database & API Development** - API design, schema optimization, documentation
+- **Enhanced Git Management** - Branch management, conflict resolution, release automation
+
+### 🟢 Phase 3: Advanced Features
+- **Full-Stack Development Suite** - Frontend, backend, and mobile specialists
+- **Infrastructure as Code** - Terraform, Kubernetes, cloud optimization
+- **Documentation Automation** - Auto-generate docs, API documentation
+- **Performance Monitoring** - Performance profiling, monitoring setup
+
+See [Skills & Plugins Analysis](docs/SKILLS_PLUGINS_ANALYSIS.md) for detailed recommendations and priorities.
+
 ## 🤝 Contributing
 
 We welcome contributions! You can:
 
-- **Add new plugins** to the marketplace
+- **Add new plugins** to the marketplace (see our [roadmap](#-roadmap))
 - **Improve existing plugins** with new agents/commands
 - **Enhance documentation** and examples
 - **Report issues** or suggest features
@@ -219,6 +247,8 @@ Please ensure:
 - Include comprehensive README files
 - Use semantic versioning
 - Test thoroughly before submitting
+
+**Want to help?** Check the [Quick Implementation Guide](docs/QUICK_IMPLEMENTATION_GUIDE.md) for templates and examples.
 
 ## 📄 License
 
