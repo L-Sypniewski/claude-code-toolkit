@@ -20,135 +20,93 @@ AGENTS.md is the "README for AI agents" - a machine-readable guide that provides
 
 ## AGENTS.md Structure
 
+Based on real-world examples, a well-structured AGENTS.md follows this pattern:
+
 ```markdown
-# Project Name
+# ProjectName - Development Guide
 
-Brief description of the project and its purpose.
+**Stack**: [Tech stack components]
+**Principles**: [Core development principles, e.g., SOLID, KISS, YAGNI]
 
-## Setup
+## Project Overview
 
-Exact commands to set up the development environment:
+[Brief description of architecture and approach]
+
+## Repository Structure
+
+- `path/to/main/`: [Description]
+- `path/to/tests/`: [Description]
+- `path/to/config/`: [Description]
+
+## Key Commands
 
 ```bash
-npm install
-cp .env.example .env
-npm run db:migrate
+# Core commands
+[build command]
+[test command]
+[format command]
+
+# Additional tools
+[migration/deployment commands]
+[additional commands]
 ```
 
-## Build & Test
+## Coding Conventions (Optional)
 
-Commands AI agents should use:
+[Project-specific coding standards]
 
-```bash
-# Build
-npm run build
+## Testing Guidelines (Optional)
 
-# Test
-npm test
-npm run test:integration
+[Testing expectations]
 
-# Lint
-npm run lint
+## What NOT to Touch (Optional)
+
+[Protected files/folders]
 ```
 
-## Project Structure
+## Key Sections Explained
 
-```
-src/
-  ├── api/        # REST API endpoints
-  ├── models/     # Database models
-  ├── services/   # Business logic
-  └── utils/      # Helper functions
-```
+### 1. Title and Metadata (Required)
+**Format**: `# ProjectName - Development Guide`
 
-## Coding Conventions
+Include **Stack** and **Principles** at the top for quick reference.
 
-### Code Style
-- Use TypeScript strict mode
-- Prefer functional programming patterns
-- Use async/await (no promise chains)
-- Maximum function length: 50 lines
+### 2. Project Overview (Required)
+Brief architectural summary - what type of project, key technologies, approach.
 
-### Naming
-- Components: PascalCase
-- Functions: camelCase
-- Constants: UPPER_SNAKE_CASE
-- Files: kebab-case.ts
+### 3. Repository Structure (Required)
+Map of directories with brief descriptions. Helps agents understand where code lives.
 
-### Error Handling
-- Always use try-catch for async operations
-- Throw custom error classes
-- Log errors with context
+### 4. Key Commands (Required)
+Copy-paste commands for:
+- Building the project
+- Running tests
+- Formatting code
+- Database migrations or other critical operations
 
-## Testing Guidelines
-
-- Write tests for all public APIs
-- Use descriptive test names
-- Mock external dependencies
-- Aim for 80% coverage minimum
-
-## Commits & PRs
-
-- Use conventional commits: `feat:`, `fix:`, `docs:`
-- Keep PRs under 400 lines
-- Include tests with code changes
-- Update docs when changing APIs
-
-## What NOT to Touch
-
-- Do not modify `/config/secrets.json`
-- Do not change database migrations once merged
-- Leave `/legacy` folder unchanged
-
-## Additional Context
-
-- We use JWT for authentication
-- Database: PostgreSQL with TypeORM
-- API follows REST conventions
-- Frontend: React with TypeScript
-```
-
-## Key Sections
-
-### 1. Setup Commands
-Provide exact, copy-paste commands for environment setup. Be explicit.
-
-### 2. Build & Test Commands
-List all commands AI agents need to validate their changes.
-
-### 3. Project Structure
-Explain directory organization so agents know where to put new code.
-
-### 4. Coding Conventions
-Specify code style, naming conventions, patterns to follow.
-
-### 5. Testing Guidelines
-Define testing expectations and requirements.
-
-### 6. Boundaries
-Explicitly state what files/folders agents should never modify.
+### 5. Optional Sections
+Add as needed:
+- **Coding Conventions**: Project-specific rules
+- **Testing Guidelines**: Coverage expectations, testing approach
+- **What NOT to Touch**: Protected files/folders agents should avoid
 
 ## Best Practices
 
-### Be Explicit
-- Don't assume agents know conventions
-- Provide examples for complex patterns
-- Use exact commands, not descriptions
+### Start with Essentials
+Include at minimum: Stack, Principles, Project Overview, Repository Structure, and Key Commands.
 
-### Keep Updated
-- Update when conventions change
-- Sync with actual project state
-- Remove outdated information
+### Be Explicit and Specific
+❌ "Set up the environment"  
+✅ "npm install && cp .env.example .env"
 
-### Be Specific
-- "Use TypeScript strict mode" not "Use TypeScript properly"
-- "Maximum 50 lines per function" not "Keep functions short"
-- "npm test && npm run lint" not "Make sure tests pass"
+❌ "Write good tests"  
+✅ "Write unit tests for all services, aim for >80% coverage"
 
-### Provide Context
-- Explain architectural decisions
-- Note performance considerations
-- Highlight security requirements
+### Use Exact Commands
+Provide copy-paste ready commands. AI agents will execute them literally.
+
+### Keep It Updated
+Review and update AGENTS.md when project structure or conventions change.
 
 ## Integration with Claude Code
 
@@ -157,52 +115,45 @@ AGENTS.md works alongside Claude Code agents:
 - Use AGENTS.md for project-specific conventions
 - Use agent specifications (.md files) for agent-specific behavior
 
-## Example Templates
+## Complete Example
 
-### Minimal AGENTS.md
 ```markdown
-# MyApp
+# StockToolset - Development Guide
 
-Node.js API project.
+**Stack**: .NET 10, ASP.NET Core Minimal APIs, .NET Aspire 13, PostgreSQL, PGMQ.
+**Principles**: SOLID, KISS, YAGNI. Consistency over innovation.
 
-## Setup
+## Project Overview
+
+Cloud-native .NET 10 modular monolith using Vertical Slice Architecture, 
+Aspire 13, PostgreSQL, and PGMQ.
+
+## Repository Structure
+
+- `StockStorage/src/`: Main app (Features/, Database/, Infrastructure/)
+- `StockStorage/tests/`: Unified test project (Unit, Integration, System)
+- `StockStorage.AppHost/`: .NET Aspire orchestration
+- `StockStorage.ServiceDefaults/`: Shared Aspire defaults
+
+## Key Commands
+
 ```bash
-npm install
+# Core
+dotnet build
+dotnet test # Requires Docker
+dotnet format
+
+# EF Core
+dotnet ef migrations add <MigrationName>
+dotnet ef database update
 ```
 
-## Test
-```bash
-npm test
+## Coding Conventions
+
+- Follow SOLID, KISS, YAGNI principles
+- Consistency over innovation
+- Use Vertical Slice Architecture per feature
 ```
-
-## Style
-- Use ESLint config
-- Prefer async/await
-- Write JSDoc for public functions
-```
-
-### Comprehensive AGENTS.md
-Include all sections above plus:
-- Database schema notes
-- API authentication details
-- Deployment instructions
-- Performance targets
-- Security considerations
-
-## Common Pitfalls
-
-### Too Vague
-❌ "Write good tests"
-✅ "Write unit tests for all services, integration tests for APIs, coverage >80%"
-
-### Missing Commands
-❌ "Set up the environment"
-✅ "npm install && cp .env.example .env && npm run db:migrate"
-
-### Outdated Information
-- Review AGENTS.md quarterly
-- Update when major changes occur
-- Remove deprecated patterns
 
 ## Further Reading
 
