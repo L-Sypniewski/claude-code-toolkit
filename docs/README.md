@@ -2,12 +2,22 @@
 
 Comprehensive documentation for the Claude Code Toolkit.
 
+## 🎯 Start Here
+
+### [📋 Executive Summary](EXECUTIVE_SUMMARY.md)
+**Quick 5-minute read** with key recommendations and decisions
+
+**Perfect for**: Project leads, decision makers, anyone wanting the high-level overview
+
+---
+
 ## Documentation Files
 
 ### Planning & Analysis
-- **[SKILLS_PLUGINS_ANALYSIS.md](SKILLS_PLUGINS_ANALYSIS.md)**: Comprehensive analysis of Claude Code plugins ecosystem and recommendations for enhancement
-- **[PLUGIN_COMPARISON_TABLE.md](PLUGIN_COMPARISON_TABLE.md)**: Feature comparison matrix and ROI analysis
-- **[QUICK_IMPLEMENTATION_GUIDE.md](QUICK_IMPLEMENTATION_GUIDE.md)**: Quick reference for implementing recommended plugins
+- **[EXECUTIVE_SUMMARY.md](EXECUTIVE_SUMMARY.md)**: TL;DR - Key findings, priorities, and recommendations (5 min read)
+- **[SKILLS_PLUGINS_ANALYSIS.md](SKILLS_PLUGINS_ANALYSIS.md)**: Comprehensive analysis of Claude Code plugins ecosystem (37 pages, deep dive)
+- **[PLUGIN_COMPARISON_TABLE.md](PLUGIN_COMPARISON_TABLE.md)**: Feature comparison matrix and ROI analysis (detailed metrics)
+- **[QUICK_IMPLEMENTATION_GUIDE.md](QUICK_IMPLEMENTATION_GUIDE.md)**: Practical implementation guide with templates (for developers)
 
 ### Getting Started (Planned)
 - `getting-started.md`: Complete beginner's guide
@@ -15,47 +25,54 @@ Comprehensive documentation for the Claude Code Toolkit.
 - `building-agents.md`: Guide to building specialized agents
 - `command-development.md`: Creating custom slash commands
 
-## Key Documents
+## Document Guide
 
-### 📊 [Skills & Plugins Analysis](SKILLS_PLUGINS_ANALYSIS.md)
-**Purpose**: Strategic analysis based on research of 250+ reference plugins
+### 📋 [Executive Summary](EXECUTIVE_SUMMARY.md) — Start Here!
+**5-minute read** | **For**: Everyone
 
-**Contents**:
-- Analysis of reference repositories (jeremylongshore, skillsmp.com, claudecodeplugins.io)
-- Current toolkit assessment
-- 10 recommended new plugins with priorities
+**What's inside**:
+- Current state vs. target (4 → 14 plugins)
+- Top 3 critical gaps (Security, Testing, CI/CD)
+- Time & cost savings (86% reduction)
+- 3-phase roadmap
+- Quick decision points
+
+---
+
+### 📊 [Skills & Plugins Analysis](SKILLS_PLUGINS_ANALYSIS.md) — Deep Dive
+**30-minute read** | **For**: Maintainers, strategic planning
+
+**What's inside**:
+- Analysis of 5 reference repositories
+- Current toolkit assessment (4 plugins)
+- 10 recommended new plugins with specs
 - Automated workflow ideas
-- Implementation roadmap
-
-**Audience**: Project maintainers, contributors, strategic planning
-
----
-
-### 📈 [Plugin Comparison Table](PLUGIN_COMPARISON_TABLE.md)
-**Purpose**: Feature coverage matrix and quantitative analysis
-
-**Contents**:
-- Current vs. proposed feature coverage
-- Detailed plugin comparisons
-- Workflow before/after analysis
-- ROI calculations and time savings
-- Migration path by phase
-
-**Audience**: Decision makers, contributors evaluating priorities
+- Technical considerations (2025 schema)
+- Complete implementation roadmap
 
 ---
 
-### ⚡ [Quick Implementation Guide](QUICK_IMPLEMENTATION_GUIDE.md)
-**Purpose**: Practical guide for implementing recommendations
+### 📈 [Plugin Comparison Table](PLUGIN_COMPARISON_TABLE.md) — Metrics & Data
+**15-minute read** | **For**: Decision makers, priority evaluation
 
-**Contents**:
-- Top 10 plugins to add (priority order)
-- Plugin structure templates
+**What's inside**:
+- 40+ feature coverage comparisons
+- Detailed before/after workflows
+- ROI calculations (270 min → 45 min per feature)
+- Monthly savings analysis
+- Competitive positioning
+
+---
+
+### ⚡ [Quick Implementation Guide](QUICK_IMPLEMENTATION_GUIDE.md) — How-To
+**10-minute read** | **For**: Developers, implementers
+
+**What's inside**:
+- Top 10 plugins (priority order)
+- Plugin/agent/command templates
 - Copy commands for reference repos
 - Workflow automation examples
-- Next steps and quick wins
-
-**Audience**: Developers implementing new plugins
+- Step-by-step checklists
 
 ---
 
