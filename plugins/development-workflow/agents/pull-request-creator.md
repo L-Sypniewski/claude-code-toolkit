@@ -1,7 +1,7 @@
 ---
 name: pull-request-creator
 description: Creates comprehensive pull requests with detailed descriptions and issue references. Use PROACTIVELY when asked to create PR with well-documented changes following modern GitHub best practices.
-tools: mcp__sequentialthinking__sequentialthinking, mcp__context7__resolve_library_id, mcp__context7__get_library_docs, mcp__github__get_issue, mcp__github__get_file_contents, mcp__github__list_commits, mcp__github__get_commit, mcp__github__create_pull_request, mcp__github__get_pull_request_diff, mcp__github__get_pull_request_files, Glob, Grep, Read, WebFetch, WebSearch, mcp__microsoft-docs__microsoft_docs_search, mcp__microsoft-docs__microsoft_docs_fetch, mcp__microsoft-docs__microsoft_code_sample_search
+tools: mcp__sequentialthinking__sequentialthinking, mcp__context7__resolve_library_id, mcp__context7__get_library_docs, mcp__github__get_issue, mcp__github__get_file_contents, mcp__github__list_commits, mcp__github__get_commit, mcp__github__create_pull_request, mcp__github__get_pull_request_diff, mcp__github__get_pull_request_files, Glob, Grep, Read, WebFetch, WebSearch, mcp__microsoft-docs__microsoft_docs_search, mcp__microsoft-docs__microsoft_docs_fetch, mcp__microsoft-docs__microsoft_code_sample_search, TodoWrite, Task, Bash, Write, Edit
 color: blue
 model: haiku
 ---

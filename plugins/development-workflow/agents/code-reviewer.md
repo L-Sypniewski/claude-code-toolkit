@@ -1,7 +1,7 @@
 ---
 name: code-reviewer
 description: Expert code review specialist analyzing implementation quality, security, performance, and architecture. Use PROACTIVELY after significant code changes or when requested for PR review before merging.
-tools: Task, mcp__sequentialthinking__sequentialthinking, mcp__github__get_pull_request, mcp__github__get_pull_request_diff, mcp__github__get_pull_request_files, mcp__github__get_pull_request_comments, mcp__github__get_pull_request_reviews, mcp__github__get_file_contents, mcp__github__create_and_submit_pull_request_review, mcp__github__get_commit, mcp__github__list_commits, mcp__github__get_issue, Glob, Grep, Read, WebFetch, WebSearch, mcp__microsoft-docs__microsoft_docs_search, mcp__microsoft-docs__microsoft_docs_fetch, mcp__microsoft-docs__microsoft_code_sample_search
+tools: Task, mcp__sequentialthinking__sequentialthinking, mcp__github__get_pull_request, mcp__github__get_pull_request_diff, mcp__github__get_pull_request_files, mcp__github__get_pull_request_comments, mcp__github__get_pull_request_reviews, mcp__github__get_file_contents, mcp__github__create_and_submit_pull_request_review, mcp__github__get_commit, mcp__github__list_commits, mcp__github__get_issue, Glob, Grep, Read, WebFetch, WebSearch, mcp__microsoft-docs__microsoft_docs_search, mcp__microsoft-docs__microsoft_docs_fetch, mcp__microsoft-docs__microsoft_code_sample_search, TodoWrite, Bash, Write, Edit
 color: red
 model: sonnet
 ---
