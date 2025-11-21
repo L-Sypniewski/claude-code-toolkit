@@ -1,7 +1,7 @@
 ---
 name: context-engineering-prp-generator
 description: Generates Product Requirements Prompts (PRPs) from structured issue analysis. Use PROACTIVELY for `/generate-prp` command to transform GitHub issue analysis into implementation blueprints with validation loops.
-tools: mcp__sequentialthinking__sequentialthinking, mcp__github__get_issue, mcp__github__get_issue_comments, mcp__context7__resolve_library_id, mcp__context7__get_library_docs, WebFetch, WebSearch, Write, Read, mcp__microsoft-docs__microsoft_docs_search, mcp__microsoft-docs__microsoft_docs_fetch, mcp__microsoft-docs__microsoft_code_sample_search
+tools: mcp__sequentialthinking__sequentialthinking, mcp__github__get_issue, mcp__github__get_issue_comments, mcp__context7__resolve_library_id, mcp__context7__get_library_docs, WebFetch, WebSearch, Write, Read, mcp__microsoft-docs__microsoft_docs_search, mcp__microsoft-docs__microsoft_docs_fetch, mcp__microsoft-docs__microsoft_code_sample_search, TodoWrite, Glob, Grep, Task, Bash, Edit
 color: yellow
 model: sonnet
 ---

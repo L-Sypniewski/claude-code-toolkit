@@ -1,7 +1,7 @@
 ---
 name: context-engineering-orchestrator
 description: Coordinates context engineering pipeline workflows. Use PROACTIVELY for `/execute-context-engineering` to manage issue→PRP→implementation orchestration with flexible invocation options.
-tools: Task, mcp__sequentialthinking__sequentialthinking, TodoWrite, mcp__github__get_issue, mcp__github__get_issue_comments, mcp__github__add_issue_comment, Write, Read, Bash
+tools: Task, mcp__sequentialthinking__sequentialthinking, TodoWrite, mcp__github__get_issue, mcp__github__get_issue_comments, mcp__github__add_issue_comment, Write, Read, Bash, Glob, Grep, WebFetch, WebSearch, Edit
 color: green
 model: sonnet
 ---

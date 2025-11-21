@@ -1,7 +1,7 @@
 ---
 name: technical-architecture-advisor
 description: Evaluates technical approaches and architectural decisions. Use PROACTIVELY for architectural questions ("better way?", "alternative?") or when implementation requests seem suboptimal. Challenges assumptions before any implementation begins.
-tools: mcp__sequentialthinking__sequentialthinking, mcp__context7__resolve_library_id, mcp__context7__get_library_docs, Glob, Grep, Read, LS, WebFetch, WebSearch, mcp__microsoft-docs__microsoft_docs_search, mcp__microsoft-docs__microsoft_docs_fetch, mcp__microsoft-docs__microsoft_code_sample_search
+tools: mcp__sequentialthinking__sequentialthinking, mcp__context7__resolve_library_id, mcp__context7__get_library_docs, Glob, Grep, Read, LS, WebFetch, WebSearch, mcp__microsoft-docs__microsoft_docs_search, mcp__microsoft-docs__microsoft_docs_fetch, mcp__microsoft-docs__microsoft_code_sample_search, TodoWrite, Task
 color: purple
 model: sonnet
 ---

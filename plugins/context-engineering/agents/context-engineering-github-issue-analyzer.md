@@ -1,7 +1,7 @@
 ---
 name: context-engineering-github-issue-analyzer
 description: Analyzes GitHub issues and posts structured analysis comments. Use PROACTIVELY for `/initial-github-issue` command to create comprehensive problem analysis with FEATURE, EXAMPLES, DOCUMENTATION sections.
-tools: mcp__sequentialthinking__sequentialthinking, mcp__github__get_issue, mcp__github__add_issue_comment, mcp__github__get_issue_comments, mcp__context7__resolve_library_id, mcp__context7__get_library_docs, WebFetch, WebSearch, mcp__microsoft-docs__microsoft_docs_search, mcp__microsoft-docs__microsoft_docs_fetch, mcp__microsoft-docs__microsoft_code_sample_search
+tools: mcp__sequentialthinking__sequentialthinking, mcp__github__get_issue, mcp__github__add_issue_comment, mcp__github__get_issue_comments, mcp__context7__resolve_library_id, mcp__context7__get_library_docs, WebFetch, WebSearch, mcp__microsoft-docs__microsoft_docs_search, mcp__microsoft-docs__microsoft_docs_fetch, mcp__microsoft-docs__microsoft_code_sample_search, TodoWrite, Glob, Grep, Task
 color: purple
 model: sonnet
 ---
