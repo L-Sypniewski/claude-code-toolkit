@@ -1,6 +1,6 @@
 # Development Workflow Plugin
 
-Comprehensive development toolkit with senior engineering expertise, code review, architecture advisory, visual testing, and PR management capabilities for end-to-end software development workflows.
+Comprehensive development toolkit with senior engineering expertise, code review, architecture advisory, visual testing, PR management capabilities, and reusable skills for code quality, security best practices, and testing patterns.
 
 ## Features
 
@@ -21,6 +21,14 @@ Comprehensive development toolkit with senior engineering expertise, code review
 - **/refactoring-plan** - Plan and execute refactoring efforts
 - **/technical-translator-prompt** - Translate technical concepts across contexts
 - **/plan-markdown-writer** - Generate structured project plans in markdown format
+
+### Skills
+
+**Skills are automatically activated by agents when relevant:**
+
+- **code-quality-standards** - Comprehensive code quality standards and best practices for writing maintainable, readable, and performant code across multiple programming languages
+- **security-best-practices** - Security best practices and vulnerability prevention guidelines covering OWASP Top 10, secure coding patterns, and security architecture
+- **testing-patterns** - Testing patterns and strategies for writing effective unit, integration, and end-to-end tests across different testing frameworks
 
 ## Installation
 

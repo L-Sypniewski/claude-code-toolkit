@@ -1,6 +1,6 @@
 # Context Engineering Plugin
 
-Advanced context engineering workflow with PRP (Prompt-Response-Plan) generation, execution orchestration, and GitHub issue analysis for efficient software development processes.
+Advanced context engineering workflow with PRP (Prompt-Response-Plan) generation, execution orchestration, GitHub issue analysis, and reusable skills for systematic problem-solving and issue analysis.
 
 ## Features
 
@@ -16,6 +16,13 @@ Advanced context engineering workflow with PRP (Prompt-Response-Plan) generation
 - **/generate-prp** - Generate a Prompt-Response-Plan for structured problem-solving
 - **/execute-prp** - Execute an existing PRP with tracking and validation
 - **/initial-github-issue** - Process and analyze GitHub issues for workflow initiation
+
+### Skills
+
+**Skills are automatically activated by agents when relevant:**
+
+- **prp-templates** - Comprehensive PRP templates and patterns for systematic problem-solving, including feature implementation, bug fixes, refactoring, and migration PRPs
+- **issue-analysis-frameworks** - Systematic frameworks for analyzing GitHub issues, bug reports, and feature requests to extract actionable insights and create effective implementation plans
 
 ## Installation
 

@@ -1,7 +1,7 @@
 {
   "name": "context-engineering",
-  "version": "1.0.0",
-  "description": "Advanced context engineering workflow with PRP generation, execution orchestration, and GitHub issue analysis for efficient software development processes",
+  "version": "1.1.0",
+  "description": "Advanced context engineering workflow with PRP generation, execution orchestration, GitHub issue analysis, and skills for PRP templates and issue analysis frameworks",
   "author": {
     "name": "Claude Code Toolkit"
   },
@@ -11,7 +11,10 @@
     "workflow",
     "orchestration",
     "context-engineering",
-    "automation"
+    "automation",
+    "skills",
+    "issue-analysis",
+    "prp-templates"
   ],
   "license": "MIT",
   "repository": "https://github.com/L-Sypniewski/claude-code-toolkit",

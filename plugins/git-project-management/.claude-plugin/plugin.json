@@ -1,7 +1,7 @@
 {
   "name": "git-project-management",
-  "version": "1.0.0",
-  "description": "Git worktree management and project planning utilities for efficient version control workflows and parallel development",
+  "version": "1.1.0",
+  "description": "Git worktree management and project planning utilities with skills for git workflow best practices and commit conventions",
   "author": {
     "name": "Claude Code Toolkit"
   },
@@ -11,7 +11,10 @@
     "project-management",
     "planning",
     "version-control",
-    "workflow"
+    "workflow",
+    "skills",
+    "git-workflow",
+    "commit-conventions"
   ],
   "license": "MIT",
   "repository": "https://github.com/L-Sypniewski/claude-code-toolkit",

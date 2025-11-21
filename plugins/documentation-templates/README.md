@@ -1,6 +1,6 @@
 # Documentation Templates Plugin
 
-Templates and examples for creating comprehensive project documentation including AGENTS.md and Claude Code delegation rules with best practices.
+Templates and examples for creating comprehensive project documentation with reusable skills for documentation patterns and README guidelines.
 
 ## Features
 
@@ -23,6 +23,13 @@ Templates and examples for creating comprehensive project documentation includin
   - Automatic agent invocation protocols
   - Common delegation scenarios
   - Best practices for agent coordination
+
+### Skills
+
+**Skills are automatically activated by agents when relevant:**
+
+- **documentation-patterns** - Comprehensive documentation patterns and structures for creating clear, maintainable technical documentation including API docs, architecture documents, code documentation, and changelogs
+- **readme-guidelines** - Complete README.md guidelines and best practices for creating effective project documentation that serves as the first point of contact for users and contributors
 
 ## Installation
 

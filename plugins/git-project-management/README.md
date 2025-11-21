@@ -1,6 +1,6 @@
 # Git & Project Management Plugin
 
-Git worktree management and project planning utilities for efficient version control workflows and parallel development.
+Git worktree management and project planning utilities with reusable skills for git workflow best practices and commit message conventions.
 
 ## Features
 
@@ -8,6 +8,13 @@ Git worktree management and project planning utilities for efficient version con
 
 - **/create_worktree** - Create new git worktrees for parallel development branches
 - **/merge_worktree** - Merge and clean up git worktrees after feature completion
+
+### Skills
+
+**Skills are automatically activated by agents when relevant:**
+
+- **git-workflow-best-practices** - Comprehensive Git workflow best practices covering branching strategies (Git Flow, GitHub Flow, Trunk-Based Development), merging strategies, conflict resolution, and worktree management
+- **commit-conventions** - Commit message conventions following Conventional Commits specification, including proper commit types, scopes, descriptions, and best practices for clear version control history
 
 ## Installation
 

@@ -4,7 +4,7 @@ A comprehensive plugin marketplace for [Claude Code CLI](https://claude.ai/code)
 
 ## 🎯 What is This?
 
-This repository serves as a **Claude Code Plugin Marketplace** containing curated, production-ready plugins that extend Claude Code's capabilities. Each plugin is self-contained and can be installed independently based on your needs.
+This repository serves as a **Claude Code Plugin Marketplace** containing curated, production-ready plugins that extend Claude Code's capabilities. Each plugin includes **agents** (specialized AI workers), **commands** (slash commands), and **skills** (reusable domain knowledge) that work together to enhance your development workflow. Plugins are self-contained and can be installed independently based on your needs.
 
 ## 📦 Available Plugins
 
@@ -16,6 +16,7 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 - GitHub issue analysis and processing
 - PRP (Prompt-Response-Plan) generation and execution
 - Multi-step workflow coordination
+- **Skills**: PRP templates, issue analysis frameworks
 
 [View Details →](plugins/context-engineering/README.md)
 
@@ -30,6 +31,7 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 - Professional PR documentation
 - Bug investigation and fixing workflows
 - Refactoring planning and execution
+- **Skills**: Code quality standards, security best practices, testing patterns
 
 [View Details →](plugins/development-workflow/README.md)
 
@@ -40,6 +42,7 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 - Parallel development with git worktrees
 - Streamlined worktree merging and cleanup
 - Structured project plan generation
+- **Skills**: Git workflow best practices, commit conventions
 
 [View Details →](plugins/git-project-management/README.md)
 
@@ -51,6 +54,7 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 - Claude Code delegation rules examples
 - Real-world documentation patterns
 - Best practices guides
+- **Skills**: Documentation patterns, README guidelines
 
 [View Details →](plugins/documentation-templates/README.md)
 
@@ -97,12 +101,49 @@ claude-code-toolkit/
 │   └── marketplace.json          # Marketplace configuration
 ├── plugins/
 │   ├── context-engineering/      # Context engineering workflows
+│   │   ├── agents/               # Specialized workflow agents
+│   │   ├── commands/             # Slash commands
+│   │   └── skills/               # Reusable domain knowledge
 │   ├── development-workflow/     # Development lifecycle tools
+│   │   ├── agents/               # Development agents
+│   │   ├── commands/             # Development commands
+│   │   └── skills/               # Code quality, security, testing skills
 │   ├── git-project-management/   # Git and planning utilities
+│   │   ├── commands/             # Git workflow commands
+│   │   └── skills/               # Git best practices skills
 │   └── documentation-templates/  # Documentation templates
+│       ├── prompts/              # Documentation prompts
+│       ├── examples/             # Real-world examples
+│       └── skills/               # Documentation pattern skills
 ├── README.md                      # This file
 └── .claude/                       # Local settings
 ```
+
+## 🧩 Understanding Components
+
+### Agents
+Specialized AI workers with their own context windows that can:
+- Handle complex, multi-step tasks
+- Collaborate with other agents
+- Make architectural decisions
+- Perform deep analysis and review
+
+### Commands
+Slash commands that provide:
+- Quick access to specific workflows
+- Structured task execution
+- One-time operations
+- Interactive prompts
+
+### Skills
+Reusable domain knowledge that:
+- **Automatically activate** when agents need them
+- Provide guidelines and best practices
+- Ensure consistency across tasks
+- Complement agents with expert knowledge
+- Can be used by multiple agents
+
+**Example:** The `code-quality-standards` skill is automatically referenced by the `senior-engineer` agent during code implementation and by the `code-reviewer` agent during code reviews, ensuring consistent quality standards.
 
 ## 🎓 Getting Started
 
@@ -126,9 +167,10 @@ claude-code-toolkit/
    /plugin install development-workflow
    ```
 
-4. **Start using agents and commands:**
+4. **Start using agents, commands, and skills:**
    - Agents activate automatically based on your tasks
    - Commands are available via slash commands (e.g., `/create-pr`)
+   - Skills automatically activate when agents need domain knowledge
 
 ### For Teams
 
