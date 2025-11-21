@@ -1,286 +1,211 @@
 ---
 name: agent-documentation
-description: Standards and templates for documenting Claude Code agents including AGENTS.md files, agent specifications, and delegation patterns. Use when creating or documenting agents.
+description: Standards for creating AGENTS.md files that guide AI coding agents working with your codebase. Use when creating instructions for AI agents to follow project conventions, setup, and workflows.
 ---
 
-# Agent Documentation
+# AGENTS.md Documentation
 
-This skill provides standards for documenting Claude Code agents effectively.
+This skill provides standards for creating AGENTS.md files - dedicated instructions for AI coding agents working with your codebase.
+
+## What is AGENTS.md?
+
+AGENTS.md is the "README for AI agents" - a machine-readable guide that provides explicit instructions for AI coding tools (like Claude, Copilot, Cursor) working with your project. Unlike README.md (for humans), AGENTS.md gives AI agents unambiguous, step-by-step guidance.
+
+## Purpose
+
+- **Centralized Instructions**: Single source of truth for all AI agents
+- **Explicit Guidance**: Clear setup commands, coding standards, testing workflows
+- **Project Context**: Architecture decisions, conventions, constraints
+- **Consistency**: Ensures AI-generated code matches project standards
 
 ## AGENTS.md Structure
 
-Every project with agents should have an AGENTS.md file:
-
 ```markdown
-# Project Agents
+# Project Name
 
-This document describes the specialized agents available in this project.
+Brief description of the project and its purpose.
 
-## Overview
+## Setup
 
-Brief description of the agent system and how agents collaborate.
+Exact commands to set up the development environment:
 
-## Available Agents
-
-### [Agent Name]
-
-**Purpose**: [What this agent does]
-
-**Activation**: [When/how the agent is activated]
-
-**Capabilities**:
-- Capability 1
-- Capability 2
-- Capability 3
-
-**Tools**: [List of tools available to this agent]
-
-**Model**: [e.g., sonnet, opus]
-
-**Delegation Pattern**: 
-- Delegates to [other agent] for [specific tasks]
-- Works with [other agent] on [scenarios]
-
-**Example Usage**:
-```
-[Example of how to use this agent]
+```bash
+npm install
+cp .env.example .env
+npm run db:migrate
 ```
 
----
+## Build & Test
 
-[Repeat for each agent]
+Commands AI agents should use:
 
-## Agent Collaboration
+```bash
+# Build
+npm run build
 
-### Workflow Patterns
+# Test
+npm test
+npm run test:integration
 
-Describe how agents work together:
-
-```
-Issue Analysis → github-issue-analyzer
-       ↓
-  PRP Generation → prp-generator
-       ↓
-  Implementation → senior-engineer
-       ↓
-  Code Review → code-reviewer
+# Lint
+npm run lint
 ```
 
-### Handoff Protocols
+## Project Structure
 
-- **github-issue-analyzer → prp-generator**: Passes structured requirements
-- **prp-generator → executor**: Provides execution plan
-- **senior-engineer → code-reviewer**: Submits implemented code
+```
+src/
+  ├── api/        # REST API endpoints
+  ├── models/     # Database models
+  ├── services/   # Business logic
+  └── utils/      # Helper functions
+```
+
+## Coding Conventions
+
+### Code Style
+- Use TypeScript strict mode
+- Prefer functional programming patterns
+- Use async/await (no promise chains)
+- Maximum function length: 50 lines
+
+### Naming
+- Components: PascalCase
+- Functions: camelCase
+- Constants: UPPER_SNAKE_CASE
+- Files: kebab-case.ts
+
+### Error Handling
+- Always use try-catch for async operations
+- Throw custom error classes
+- Log errors with context
+
+## Testing Guidelines
+
+- Write tests for all public APIs
+- Use descriptive test names
+- Mock external dependencies
+- Aim for 80% coverage minimum
+
+## Commits & PRs
+
+- Use conventional commits: `feat:`, `fix:`, `docs:`
+- Keep PRs under 400 lines
+- Include tests with code changes
+- Update docs when changing APIs
+
+## What NOT to Touch
+
+- Do not modify `/config/secrets.json`
+- Do not change database migrations once merged
+- Leave `/legacy` folder unchanged
+
+## Additional Context
+
+- We use JWT for authentication
+- Database: PostgreSQL with TypeORM
+- API follows REST conventions
+- Frontend: React with TypeScript
+```
+
+## Key Sections
+
+### 1. Setup Commands
+Provide exact, copy-paste commands for environment setup. Be explicit.
+
+### 2. Build & Test Commands
+List all commands AI agents need to validate their changes.
+
+### 3. Project Structure
+Explain directory organization so agents know where to put new code.
+
+### 4. Coding Conventions
+Specify code style, naming conventions, patterns to follow.
+
+### 5. Testing Guidelines
+Define testing expectations and requirements.
+
+### 6. Boundaries
+Explicitly state what files/folders agents should never modify.
 
 ## Best Practices
 
-1. **Clear Boundaries**: Each agent has distinct responsibilities
-2. **Explicit Handoffs**: Clear transition points between agents
-3. **Context Preservation**: Agents receive necessary context
-4. **Error Handling**: Agents handle their own error scenarios
-```
+### Be Explicit
+- Don't assume agents know conventions
+- Provide examples for complex patterns
+- Use exact commands, not descriptions
 
-## Agent Specification Format
+### Keep Updated
+- Update when conventions change
+- Sync with actual project state
+- Remove outdated information
 
-Individual agent documentation (agent.md):
+### Be Specific
+- "Use TypeScript strict mode" not "Use TypeScript properly"
+- "Maximum 50 lines per function" not "Keep functions short"
+- "npm test && npm run lint" not "Make sure tests pass"
 
+### Provide Context
+- Explain architectural decisions
+- Note performance considerations
+- Highlight security requirements
+
+## Integration with Claude Code
+
+AGENTS.md works alongside Claude Code agents:
+- Claude Code agents can reference AGENTS.md for project context
+- Use AGENTS.md for project-specific conventions
+- Use agent specifications (.md files) for agent-specific behavior
+
+## Example Templates
+
+### Minimal AGENTS.md
 ```markdown
----
-name: agent-name
-description: Clear description of what the agent does and when to use it
-tools: [List of tool identifiers]
-color: [blue|green|red|yellow|purple|...]
-model: [sonnet|opus|haiku]
----
+# MyApp
 
-# Agent Name
+Node.js API project.
 
-[Detailed description of agent's role and capabilities]
-
-## Core Responsibilities
-
-1. **Responsibility 1**: [Description]
-2. **Responsibility 2**: [Description]
-3. **Responsibility 3**: [Description]
-
-## When to Use
-
-Use this agent when:
-- Scenario 1
-- Scenario 2
-- Scenario 3
-
-Do NOT use for:
-- Counter-scenario 1
-- Counter-scenario 2
-
-## Methodology
-
-Describe the agent's approach:
-
-### Analysis Phase
-[How agent analyzes problems]
-
-### Planning Phase
-[How agent creates plans]
-
-### Execution Phase
-[How agent executes solutions]
-
-## Delegation Protocol
-
-### When to Delegate
-
-This agent delegates to other agents when:
-- Condition 1: Delegate to [agent-name]
-- Condition 2: Delegate to [agent-name]
-
-### Delegation Process
-
-1. **Identify Need**: [When to delegate]
-2. **Prepare Context**: [What context to provide]
-3. **Hand Off**: [How to transition]
-4. **Integrate Results**: [How to use delegated work]
-
-## Input Requirements
-
-What this agent needs to function effectively:
-- Input 1: [Description]
-- Input 2: [Description]
-
-## Output Deliverables
-
-What this agent produces:
-- Output 1: [Description and format]
-- Output 2: [Description and format]
-
-## Error Handling
-
-How this agent handles common error scenarios:
-
-### Scenario 1: [Error Type]
-**Detection**: [How to detect]
-**Response**: [What agent does]
-**Recovery**: [How to recover]
-
-### Scenario 2: [Error Type]
-[Similar structure]
-
-## Examples
-
-### Example 1: [Scenario]
-```
-[Input]
-→ [Agent processing]
-→ [Output]
+## Setup
+```bash
+npm install
 ```
 
-### Example 2: [Scenario]
-```
-[Input]
-→ [Agent processing]
-→ [Output]
+## Test
+```bash
+npm test
 ```
 
-## Configuration
-
-### Tools Required
-- Tool 1: [Purpose]
-- Tool 2: [Purpose]
-
-### Environment Variables
-- `VAR_NAME`: [Description]
-
-### Dependencies
-- Dependency 1: [Why needed]
-
-## Integration Points
-
-How this agent integrates with:
-- Other agents: [Description]
-- Commands: [Description]
-- External systems: [Description]
-
-## Limitations
-
-What this agent cannot do:
-- Limitation 1: [Why and workaround]
-- Limitation 2: [Why and workaround]
-
-## Performance Considerations
-
-- **Response Time**: [Typical timing]
-- **Token Usage**: [Approximate usage]
-- **Concurrency**: [Can run parallel with other agents?]
+## Style
+- Use ESLint config
+- Prefer async/await
+- Write JSDoc for public functions
 ```
 
-## Agent YAML Frontmatter Fields
+### Comprehensive AGENTS.md
+Include all sections above plus:
+- Database schema notes
+- API authentication details
+- Deployment instructions
+- Performance targets
+- Security considerations
 
-Required fields:
-```yaml
----
-name: agent-identifier  # Lowercase, hyphen-separated
-description: Clear, concise description for Claude's decision-making
----
-```
+## Common Pitfalls
 
-Optional fields:
-```yaml
-tools: tool1, tool2, tool3  # Comma-separated tool identifiers
-color: blue  # Visual identifier in UI
-model: sonnet  # Claude model to use
-```
+### Too Vague
+❌ "Write good tests"
+✅ "Write unit tests for all services, integration tests for APIs, coverage >80%"
 
-## Tool Identifiers
+### Missing Commands
+❌ "Set up the environment"
+✅ "npm install && cp .env.example .env && npm run db:migrate"
 
-Common tools to list in agent specifications:
+### Outdated Information
+- Review AGENTS.md quarterly
+- Update when major changes occur
+- Remove deprecated patterns
 
-**MCP Tools**:
-- `mcp__context7__resolve_library_id`
-- `mcp__github__get_issue`
-- `mcp__github__get_file_contents`
-- `mcp__sequentialthinking__sequentialthinking`
+## Further Reading
 
-**Standard Tools**:
-- `Glob` - File pattern matching
-- `Grep` - Text search
-- `Read` - File reading
-- `Write` - File writing
-- `Edit` - File editing
-- `Bash` - Command execution
-- `WebFetch` - HTTP requests
-- `WebSearch` - Web searching
-
-**Specialized Tools**:
-- `TodoWrite` - Task tracking
-- `Task` - Task management
-
-## Agent Naming Conventions
-
-- Use descriptive, hyphenated names: `senior-engineer`, `code-reviewer`
-- Avoid generic names: use `github-issue-analyzer` not `analyzer`
-- Be specific to role: `technical-architecture-advisor` not `architect`
-- Match file name: `senior-engineer.md` → `name: senior-engineer`
-
-## Documentation Checklist
-
-Agent documentation is complete when:
-
-- [ ] Name is clear and follows conventions
-- [ ] Description explains when to use the agent
-- [ ] Core responsibilities are listed
-- [ ] Delegation patterns are documented
-- [ ] Input/output formats are specified
-- [ ] Error handling is described
-- [ ] Examples are provided
-- [ ] Tool requirements are listed
-- [ ] Integration points are documented
-- [ ] Limitations are noted
-
-## Integration with Plugin Components
-
-This skill works with:
-- Agent creation workflows
-- Plugin documentation
-- Team onboarding materials
-- Agent testing and validation
+- [AGENTS.md Specification](https://agents.md/)
+- [GitHub's AGENTS.md Guide](https://github.blog/ai-and-ml/github-copilot/how-to-write-a-great-agents-md-lessons-from-over-2500-repositories/)
+- [OpenAI AGENTS.md Repo](https://github.com/openai/agents.md)

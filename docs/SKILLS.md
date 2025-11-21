@@ -33,22 +33,12 @@ Skills are modular knowledge packages that Claude automatically loads when relev
 **Use When**: Managing complex workflows with multiple agents  
 **Provides**: Workflow patterns (sequential, parallel, iterative), agent coordination, progress tracking
 
-### 💻 Development Workflow (4 skills)
+### 💻 Development Workflow (2 skills)
 
 #### code-review-checklist
 **Purpose**: Comprehensive code review framework  
 **Use When**: Performing code reviews or preparing code for review  
-**Provides**: Review areas (correctness, performance, security), language-specific checks, comment templates
-
-#### testing-patterns
-**Purpose**: Testing strategies and patterns  
-**Use When**: Writing tests or designing test strategies  
-**Provides**: Test pyramid, AAA pattern, mocking strategies, test organization
-
-#### documentation-standards
-**Purpose**: Technical documentation templates  
-**Use When**: Writing or reviewing documentation  
-**Provides**: README structure, API docs format, inline comment guidelines, ADRs, changelogs
+**Provides**: Review areas (correctness, performance, security), comment templates
 
 #### refactoring-patterns
 **Purpose**: Code refactoring techniques  
@@ -70,9 +60,9 @@ Skills are modular knowledge packages that Claude automatically loads when relev
 ### 📚 Documentation Templates (2 skills)
 
 #### agent-documentation
-**Purpose**: Standards for documenting Claude Code agents  
-**Use When**: Creating or documenting agents  
-**Provides**: AGENTS.md structure, agent specification format, YAML frontmatter fields, documentation checklist
+**Purpose**: Standards for creating AGENTS.md files for AI agents  
+**Use When**: Creating instructions for AI agents working with your codebase  
+**Provides**: AGENTS.md structure, setup commands, coding conventions, testing guidelines
 
 #### claude-delegation-rules
 **Purpose**: Agent delegation patterns and coordination  
@@ -101,8 +91,8 @@ When you ask Claude to "review this code", the `code-review-checklist` skill is 
 Skills provide knowledge that agents can use:
 
 - **Agent**: `senior-engineer` implements a feature
-- **Skill**: `testing-patterns` provides testing strategies the agent can reference
-- **Result**: Implementation includes well-structured tests following best practices
+- **Skill**: `refactoring-patterns` provides refactoring strategies the agent can reference
+- **Result**: Implementation follows clean code principles and refactoring best practices
 
 ### Progressive Disclosure
 

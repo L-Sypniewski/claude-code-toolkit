@@ -25,7 +25,7 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 **Complete development lifecycle support from architecture to PR creation**
 
 - 5 specialized agents for development excellence
-- 4 Claude Code skills for coding standards and patterns
+- 2 Claude Code skills for coding standards and patterns
 - Senior engineering and implementation support
 - Expert code review capabilities
 - Architecture advisory and design guidance

@@ -12,13 +12,11 @@ Quick reference for all Claude Code Skills in the toolkit.
 | `github-issue-processing` | Extract actionable info from issues | Analyzing GitHub issues |
 | `workflow-orchestration` | Multi-step workflow coordination | Managing complex workflows |
 
-### Development Workflow (4 skills)
+### Development Workflow (2 skills)
 
 | Skill | Description | Use When |
 |-------|-------------|----------|
 | `code-review-checklist` | Comprehensive code review | Performing code reviews |
-| `testing-patterns` | Testing strategies and patterns | Writing tests |
-| `documentation-standards` | Technical documentation templates | Writing documentation |
 | `refactoring-patterns` | Code refactoring techniques | Planning/executing refactoring |
 
 ### Git & Project Management (2 skills)
@@ -32,14 +30,13 @@ Quick reference for all Claude Code Skills in the toolkit.
 
 | Skill | Description | Use When |
 |-------|-------------|----------|
-| `agent-documentation` | Agent documentation standards | Creating/documenting agents |
+| `agent-documentation` | AGENTS.md for AI agents | Creating AI agent instructions |
 | `claude-delegation-rules` | Agent delegation patterns | Designing agent systems |
 
 ## By Use Case
 
 ### Code Quality
 - `code-review-checklist` - Systematic review process
-- `testing-patterns` - Comprehensive test strategies
 - `refactoring-patterns` - Safe refactoring techniques
 
 ### Development Workflow
@@ -48,8 +45,7 @@ Quick reference for all Claude Code Skills in the toolkit.
 - `git-workflow-patterns` - Version control best practices
 
 ### Documentation
-- `documentation-standards` - Technical writing guidelines
-- `agent-documentation` - Agent specification format
+- `agent-documentation` - AGENTS.md for AI coding agents
 - `claude-delegation-rules` - Agent coordination patterns
 
 ### Project Management
@@ -59,9 +55,9 @@ Quick reference for all Claude Code Skills in the toolkit.
 
 ## Quick Stats
 
-- **Total Skills**: 11
+- **Total Skills**: 9
 - **Total Plugins with Skills**: 4
-- **Average Skills per Plugin**: 2.75
+- **Average Skills per Plugin**: 2.25
 - **Specification**: Anthropic Agent Skills v1.0
 
 ## How Skills Work

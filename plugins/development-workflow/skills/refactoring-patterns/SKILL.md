@@ -17,262 +17,31 @@ This skill provides proven patterns for safe, effective code refactoring.
 ## Common Code Smells
 
 ### Long Method
-
-**Smell**: Method exceeds 20-30 lines or does too many things
-
-**Refactor**: Extract Method
-
-```javascript
-// Before
-function processOrder(order) {
-  // Validate
-  if (!order.items || order.items.length === 0) {
-    throw new Error('No items');
-  }
-  // Calculate
-  let total = 0;
-  for (let item of order.items) {
-    total += item.price * item.quantity;
-  }
-  // Apply discount
-  if (order.customer.vip) {
-    total *= 0.9;
-  }
-  // Save
-  database.save(order);
-  return total;
-}
-
-// After
-function processOrder(order) {
-  validateOrder(order);
-  const total = calculateTotal(order);
-  saveOrder(order);
-  return total;
-}
-
-function validateOrder(order) {
-  if (!order.items || order.items.length === 0) {
-    throw new Error('No items');
-  }
-}
-
-function calculateTotal(order) {
-  const subtotal = order.items.reduce(
-    (sum, item) => sum + (item.price * item.quantity), 0
-  );
-  return applyDiscount(subtotal, order.customer);
-}
-
-function applyDiscount(amount, customer) {
-  return customer.vip ? amount * 0.9 : amount;
-}
-```
+**Smell**: Method exceeds 20-30 lines or does too many things  
+**Refactor**: Extract Method - Break down into smaller, focused functions
 
 ### Duplicated Code
-
-**Smell**: Same code structure appears in multiple places
-
-**Refactor**: Extract common code
-
-```javascript
-// Before
-function calculateShippingCost(order) {
-  if (order.weight > 10) {
-    return order.weight * 2.5 + 5;
-  }
-  return order.weight * 2.5;
-}
-
-function calculateHandlingFee(order) {
-  if (order.weight > 10) {
-    return order.weight * 0.5 + 2;
-  }
-  return order.weight * 0.5;
-}
-
-// After
-function calculateWeightBasedFee(weight, rate, surcharge = 0) {
-  const baseFee = weight * rate;
-  return weight > 10 ? baseFee + surcharge : baseFee;
-}
-
-function calculateShippingCost(order) {
-  return calculateWeightBasedFee(order.weight, 2.5, 5);
-}
-
-function calculateHandlingFee(order) {
-  return calculateWeightBasedFee(order.weight, 0.5, 2);
-}
-```
+**Smell**: Same code structure appears in multiple places  
+**Refactor**: Extract common code into shared functions/methods
 
 ### Large Class
-
-**Smell**: Class has too many responsibilities
-
-**Refactor**: Extract Class
-
-```javascript
-// Before
-class User {
-  constructor(name, email) {
-    this.name = name;
-    this.email = email;
-  }
-  
-  validateEmail() { /* ... */ }
-  sendEmail(subject, body) { /* ... */ }
-  hashPassword(password) { /* ... */ }
-  checkPassword(password) { /* ... */ }
-}
-
-// After
-class User {
-  constructor(name, email, authenticator, emailService) {
-    this.name = name;
-    this.email = email;
-    this.authenticator = authenticator;
-    this.emailService = emailService;
-  }
-  
-  sendEmail(subject, body) {
-    this.emailService.send(this.email, subject, body);
-  }
-  
-  authenticate(password) {
-    return this.authenticator.verify(this.email, password);
-  }
-}
-
-class EmailService {
-  send(to, subject, body) { /* ... */ }
-  validate(email) { /* ... */ }
-}
-
-class Authenticator {
-  hash(password) { /* ... */ }
-  verify(email, password) { /* ... */ }
-}
-```
+**Smell**: Class has too many responsibilities  
+**Refactor**: Extract Class - Separate concerns into distinct classes
 
 ### Feature Envy
-
-**Smell**: Method uses more data from another class than its own
-
-**Refactor**: Move Method
-
-```javascript
-// Before
-class Order {
-  constructor(customer, items) {
-    this.customer = customer;
-    this.items = items;
-  }
-  
-  calculateDiscount() {
-    if (this.customer.vip) {
-      return this.customer.yearsActive * 0.01;
-    }
-    return 0;
-  }
-}
-
-// After
-class Order {
-  constructor(customer, items) {
-    this.customer = customer;
-    this.items = items;
-  }
-  
-  calculateDiscount() {
-    return this.customer.getDiscountRate();
-  }
-}
-
-class Customer {
-  constructor(vip, yearsActive) {
-    this.vip = vip;
-    this.yearsActive = yearsActive;
-  }
-  
-  getDiscountRate() {
-    return this.vip ? this.yearsActive * 0.01 : 0;
-  }
-}
-```
+**Smell**: Method uses more data from another class than its own  
+**Refactor**: Move Method to the class that owns the data
 
 ## Refactoring Techniques
 
 ### Replace Conditional with Polymorphism
-
-```javascript
-// Before
-function getSpeed(vehicle) {
-  switch(vehicle.type) {
-    case 'car':
-      return vehicle.enginePower * 2;
-    case 'bike':
-      return vehicle.enginePower * 3;
-    case 'truck':
-      return vehicle.enginePower * 1.5;
-  }
-}
-
-// After
-class Vehicle {
-  getSpeed() { throw new Error('Must implement'); }
-}
-
-class Car extends Vehicle {
-  getSpeed() { return this.enginePower * 2; }
-}
-
-class Bike extends Vehicle {
-  getSpeed() { return this.enginePower * 3; }
-}
-
-class Truck extends Vehicle {
-  getSpeed() { return this.enginePower * 1.5; }
-}
-```
+Use inheritance and polymorphism instead of switch statements or complex conditionals
 
 ### Introduce Parameter Object
-
-```javascript
-// Before
-function createOrder(customerName, customerEmail, customerAddress,
-                    itemName, itemPrice, itemQuantity) {
-  // ...
-}
-
-// After
-function createOrder(customer, item) {
-  // customer: { name, email, address }
-  // item: { name, price, quantity }
-}
-```
+Group related parameters into a single object for cleaner function signatures
 
 ### Replace Magic Numbers with Named Constants
-
-```javascript
-// Before
-function calculatePrice(quantity) {
-  if (quantity > 100) {
-    return quantity * 9.99 * 0.9;
-  }
-  return quantity * 9.99;
-}
-
-// After
-const UNIT_PRICE = 9.99;
-const BULK_THRESHOLD = 100;
-const BULK_DISCOUNT = 0.9;
-
-function calculatePrice(quantity) {
-  const basePrice = quantity * UNIT_PRICE;
-  return quantity > BULK_THRESHOLD ? basePrice * BULK_DISCOUNT : basePrice;
-}
-```
+Extract hardcoded values into well-named constants for clarity and maintainability
 
 ## Refactoring Strategy
 

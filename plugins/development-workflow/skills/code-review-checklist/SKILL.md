@@ -60,29 +60,6 @@ This skill provides a systematic approach to code review, ensuring comprehensive
 - [ ] **Inline Comments**: Complex logic explained
 - [ ] **Changelog**: Changes noted in changelog
 
-## Language-Specific Checks
-
-### JavaScript/TypeScript
-
-- [ ] No use of `var`, prefer `const`/`let`
-- [ ] Proper async/await usage, no promise chains
-- [ ] TypeScript types defined (no `any` without justification)
-- [ ] Dependencies up to date, no security vulnerabilities
-
-### Python
-
-- [ ] PEP 8 compliance (or project style guide)
-- [ ] Type hints used for function signatures
-- [ ] Proper use of context managers (`with` statements)
-- [ ] Virtual environment dependencies specified
-
-### Java
-
-- [ ] Proper exception handling (no empty catch blocks)
-- [ ] Resources closed properly (try-with-resources)
-- [ ] Thread safety considered for concurrent code
-- [ ] Null safety (Optional, annotations)
-
 ## Review Comments Template
 
 Use this format for actionable feedback:
