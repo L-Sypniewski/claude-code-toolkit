@@ -161,7 +161,7 @@ To start working:
 4. Commit and push when ready
 
 To merge back:
-Use /merge_worktree <target-branch> when complete
+Ask Claude to "merge my worktree back to main" when complete
 ```
 
 ## Worktree Merging
@@ -357,15 +357,15 @@ git commit -m "Resolve merge conflicts from $current_branch"
 ### Feature Development
 
 ```bash
-# 1. Create worktree for feature
-/create_worktree feature/new-auth ../auth-work
+# 1. Request: "Create a worktree for feature/new-auth at ../auth-work"
+# Claude creates and sets up the worktree
 
 # 2. Develop in worktree
 cd ../auth-work
 # ... make changes, commit, test ...
 
-# 3. Merge when complete
-/merge_worktree main
+# 3. Request: "Merge my worktree back to main"
+# Claude handles merge and cleanup
 ```
 
 ### Hotfix While Developing
@@ -374,8 +374,8 @@ cd ../auth-work
 # Already working on feature in worktree
 cd ~/project-feature
 
-# Need urgent hotfix - create hotfix worktree
-/create_worktree hotfix/critical-bug ../hotfix-work
+# Request: "Create a worktree for hotfix/critical-bug"
+# Claude creates hotfix worktree
 
 # Work on hotfix
 cd ../hotfix-work
