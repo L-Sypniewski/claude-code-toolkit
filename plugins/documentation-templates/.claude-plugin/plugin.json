@@ -1,7 +1,7 @@
 {
   "name": "documentation-templates",
-  "version": "1.0.0",
-  "description": "Templates and examples for creating comprehensive project documentation including AGENTS.md and Claude Code delegation rules with best practices",
+  "version": "2.0.0",
+  "description": "Documentation creation following the skills approach. Provides AGENTS.md creator skill with templates and examples for comprehensive project documentation following agents.md standards and best practices.",
   "author": {
     "name": "Claude Code Toolkit"
   },
@@ -11,7 +11,8 @@
     "agents",
     "examples",
     "best-practices",
-    "claude-code"
+    "claude-code",
+    "skills"
   ],
   "license": "MIT",
   "repository": "https://github.com/L-Sypniewski/claude-code-toolkit",

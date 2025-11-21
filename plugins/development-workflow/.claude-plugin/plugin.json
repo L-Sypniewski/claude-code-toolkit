@@ -1,7 +1,7 @@
 {
   "name": "development-workflow",
-  "version": "1.0.0",
-  "description": "Comprehensive development toolkit with senior engineering, code review, architecture advisory, screenshot comparison, and PR management capabilities for end-to-end software development",
+  "version": "2.0.0",
+  "description": "Comprehensive development toolkit following the skills approach. Includes senior engineering, code review, architecture advisory, screenshot comparison, and PR management capabilities for end-to-end software development.",
   "author": {
     "name": "Claude Code Toolkit"
   },
@@ -13,7 +13,8 @@
     "bug-fixing",
     "refactoring",
     "senior-engineer",
-    "visual-testing"
+    "visual-testing",
+    "skills"
   ],
   "license": "MIT",
   "repository": "https://github.com/L-Sypniewski/claude-code-toolkit",
