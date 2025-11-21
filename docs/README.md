@@ -15,6 +15,7 @@ Comprehensive documentation for the Claude Code Toolkit.
 
 ### Planning & Analysis
 - **[EXECUTIVE_SUMMARY.md](EXECUTIVE_SUMMARY.md)**: TL;DR - Key findings, priorities, and recommendations (5 min read)
+- **[ROADMAP.md](ROADMAP.md)**: Visual 3-phase implementation timeline with milestones and success criteria
 - **[SKILLS_PLUGINS_ANALYSIS.md](SKILLS_PLUGINS_ANALYSIS.md)**: Comprehensive analysis of Claude Code plugins ecosystem (37 pages, deep dive)
 - **[PLUGIN_COMPARISON_TABLE.md](PLUGIN_COMPARISON_TABLE.md)**: Feature comparison matrix and ROI analysis (detailed metrics)
 - **[QUICK_IMPLEMENTATION_GUIDE.md](QUICK_IMPLEMENTATION_GUIDE.md)**: Practical implementation guide with templates (for developers)
@@ -36,6 +37,19 @@ Comprehensive documentation for the Claude Code Toolkit.
 - Time & cost savings (86% reduction)
 - 3-phase roadmap
 - Quick decision points
+
+---
+
+### 🗺️ [Roadmap](ROADMAP.md) — Timeline & Milestones
+**10-minute read** | **For**: Project managers, team leads
+
+**What's inside**:
+- Visual 3-phase timeline (Weeks 1-24)
+- Detailed plugin breakdown by phase
+- Success criteria and metrics
+- Cumulative impact tracking
+- Adoption strategy
+- Parallel development options
 
 ---
 
