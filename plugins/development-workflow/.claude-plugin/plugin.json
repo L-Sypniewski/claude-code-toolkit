@@ -1,6 +1,6 @@
 {
   "name": "development-workflow",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Comprehensive development toolkit with senior engineering, code review, architecture advisory, screenshot comparison, and PR management capabilities for end-to-end software development",
   "author": {
     "name": "Claude Code Toolkit"
