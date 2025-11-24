@@ -1,180 +1,21 @@
 ---
 name: git-workflow-patterns
-description: Standard git workflows, branching strategies, and best practices for version control. Use when working with git branches, commits, or collaborative development workflows.
+description: Git worktree patterns for parallel development. Use when working on multiple branches simultaneously or when you need to maintain separate working directories for different branches.
 ---
 
-# Git Workflow Patterns
+# Git Worktree Patterns
 
-This skill provides proven patterns for effective version control with Git.
+This skill provides patterns for using Git worktrees to enable parallel development workflows.
 
-## Branching Strategies
+## What are Git Worktrees?
 
-### Git Flow
+Git worktrees allow you to have multiple working directories attached to the same repository. Each worktree can be on a different branch, enabling true parallel development without the need to stash or commit incomplete work.
 
-Classic branching model for release-based workflows:
+## Use Cases
 
-```
-main (production)
-  └─ develop (integration)
-       ├─ feature/user-auth
-       ├─ feature/payment
-       └─ release/1.2.0
-```
+### Parallel Feature Development
 
-**Branches**:
-- `main`: Production-ready code
-- `develop`: Integration branch for features
-- `feature/*`: New features
-- `release/*`: Release preparation
-- `hotfix/*`: Urgent production fixes
-
-**When to use**: Traditional release cycles, multiple versions in production
-
-### GitHub Flow
-
-Simplified workflow for continuous deployment:
-
-```
-main (production)
-  ├─ feature/user-auth
-  ├─ feature/payment
-  └─ bugfix/login-error
-```
-
-**Workflow**:
-1. Create branch from `main`
-2. Make changes and commit
-3. Open pull request
-4. Review and discuss
-5. Deploy for testing
-6. Merge to `main`
-
-**When to use**: Continuous deployment, single production version
-
-### Trunk-Based Development
-
-Minimal branching, frequent integration:
-
-```
-main (trunk)
-  ├─ short-lived-branch-1 (< 1 day)
-  └─ short-lived-branch-2 (< 1 day)
-```
-
-**Rules**:
-- Branches live < 24 hours
-- Commit to main frequently
-- Use feature flags for incomplete features
-- Strong CI/CD pipeline required
-
-**When to use**: High-velocity teams, mature CI/CD
-
-## Commit Best Practices
-
-### Commit Message Format
-
-Follow conventional commits:
-
-```
-<type>(<scope>): <subject>
-
-<body>
-
-<footer>
-```
-
-**Types**:
-- `feat`: New feature
-- `fix`: Bug fix
-- `docs`: Documentation
-- `style`: Formatting, no code change
-- `refactor`: Code restructuring
-- `test`: Adding tests
-- `chore`: Maintenance
-
-**Examples**:
-```
-feat(auth): add OAuth2 login support
-
-Implemented OAuth2 authentication flow with Google and GitHub providers.
-Added callback handlers and token refresh logic.
-
-Closes #123
-```
-
-```
-fix(api): resolve race condition in user creation
-
-The user creation endpoint had a race condition when multiple requests
-arrived simultaneously. Added proper locking mechanism.
-
-Fixes #456
-```
-
-### Atomic Commits
-
-Each commit should:
-- Represent one logical change
-- Pass all tests
-- Be deployable (in trunk-based development)
-- Have a clear, descriptive message
-
-```bash
-# ❌ Bad - multiple unrelated changes
-git commit -m "Fixed bug and added feature"
-
-# ✅ Good - separate logical changes
-git commit -m "fix(auth): resolve login timeout issue"
-git commit -m "feat(profile): add avatar upload"
-```
-
-## Pull Request Workflow
-
-### PR Creation
-
-1. **Keep PRs small**: < 400 lines of changes ideal
-2. **Self-review first**: Review your own changes before requesting review
-3. **Write clear description**: What, why, and how
-4. **Link issues**: Reference related issues/tickets
-5. **Add tests**: Include test coverage
-6. **Update docs**: Keep documentation in sync
-
-### PR Template
-
-```markdown
-## Description
-[What changes does this PR introduce?]
-
-## Motivation
-[Why are these changes needed?]
-
-## Changes
-- Change 1
-- Change 2
-- Change 3
-
-## Testing
-- [ ] Unit tests added/updated
-- [ ] Integration tests pass
-- [ ] Manual testing completed
-
-## Screenshots (if applicable)
-[Add screenshots for UI changes]
-
-## Checklist
-- [ ] Code follows project style guidelines
-- [ ] Self-reviewed the changes
-- [ ] Documentation updated
-- [ ] No breaking changes (or migration guide provided)
-
-Closes #issue_number
-```
-
-## Git Worktree Workflows
-
-### Parallel Development
-
-Work on multiple features simultaneously:
+Work on multiple features or branches simultaneously without context switching:
 
 ```bash
 # Main working directory
@@ -186,134 +27,220 @@ Work on multiple features simultaneously:
 /project-worktrees/hotfix (hotfix/critical branch)
 ```
 
-**Use cases**:
-- Urgent hotfix while working on feature
-- Review PR without stashing changes
-- Run tests on one branch while developing on another
-- Compare implementations side by side
+**Common scenarios**:
+- **Urgent hotfix**: Need to fix production issue while working on a feature
+- **PR review**: Review someone's PR without stashing your current work
+- **Parallel testing**: Run tests on one branch while developing on another
+- **Side-by-side comparison**: Compare different implementations or approaches
+- **Long-running builds**: Continue working while a build/test runs elsewhere
 
-### Worktree Commands
+## Basic Worktree Commands
+
+### Creating Worktrees
 
 ```bash
-# Create new worktree
+# Create worktree from existing branch
 git worktree add ../project-feature-a feature/a
 
-# List worktrees
+# Create worktree and new branch
+git worktree add -b feature/new-feature ../project-new-feature
+
+# Create worktree from specific commit
+git worktree add ../project-hotfix abc123
+
+# Use absolute or relative paths
+git worktree add /path/to/worktrees/feature-x feature/x
+```
+
+### Listing Worktrees
+
+```bash
+# List all worktrees with their branches and paths
 git worktree list
 
-# Remove worktree
+# Example output:
+# /project              abc123 [main]
+# /project-feature-a    def456 [feature/a]
+# /project-feature-b    ghi789 [feature/b]
+```
+
+### Removing Worktrees
+
+```bash
+# Remove worktree (must not have uncommitted changes)
 git worktree remove ../project-feature-a
 
-# Prune stale worktrees
+# Force remove (discards uncommitted changes)
+git worktree remove --force ../project-feature-a
+
+# Clean up stale worktree references
 git worktree prune
 ```
 
-## Conflict Resolution
-
-### Merge vs Rebase
-
-**Merge**:
-```bash
-git checkout feature
-git merge main
-```
-- Preserves history
-- Shows when features were integrated
-- Can create complex history graph
-
-**Rebase**:
-```bash
-git checkout feature
-git rebase main
-```
-- Linear history
-- Cleaner git log
-- Rewrites history (don't rebase public branches)
-
-### Conflict Resolution Steps
-
-1. **Identify conflicts**:
-```bash
-git status  # Shows conflicted files
-```
-
-2. **Understand both sides**:
-```bash
-git diff --conflict=diff3  # Shows base, ours, theirs
-```
-
-3. **Resolve conflicts**:
-- Open conflicted files
-- Look for conflict markers: `<<<<<<<`, `=======`, `>>>>>>>`
-- Choose correct version or merge manually
-- Remove conflict markers
-
-4. **Test resolution**:
-```bash
-# Run tests to verify resolution
-npm test
-
-# Continue merge/rebase
-git add .
-git commit  # or git rebase --continue
-```
-
-## Git Hygiene
-
-### Before Committing
-
-- [ ] Run linter
-- [ ] Run tests
-- [ ] Review changes with `git diff`
-- [ ] Stage only relevant changes
-- [ ] Write clear commit message
-
-### Regular Maintenance
+### Moving Between Worktrees
 
 ```bash
-# Keep branches up to date
-git fetch --prune
+# Simply cd to the worktree directory
+cd ../project-feature-a
 
-# Clean merged branches
-git branch --merged | grep -v "main\|develop" | xargs git branch -d
-
-# Clean untracked files (be careful!)
-git clean -fd --dry-run  # Preview
-git clean -fd             # Execute
+# All git commands work normally in each worktree
+git status
+git commit
+git push
 ```
 
-## Advanced Patterns
+## Worktree Organization Patterns
 
-### Feature Flags
+### Directory Structure
 
-Deploy incomplete features safely:
-
-```javascript
-if (featureFlags.isEnabled('new-ui')) {
-  return <NewUI />;
-}
-return <OldUI />;
+**Option 1: Sibling directories**
+```
+/projects/
+  ├─ myproject/          (main)
+  ├─ myproject-feature-a/
+  ├─ myproject-feature-b/
+  └─ myproject-hotfix/
 ```
 
-Benefits:
-- Deploy to production without exposing feature
-- Gradual rollout
-- Easy rollback
-- A/B testing
+**Option 2: Nested structure**
+```
+/myproject/            (main)
+  └─ .worktrees/
+       ├─ feature-a/
+       ├─ feature-b/
+       └─ hotfix/
+```
 
-### Branch Protection Rules
+**Option 3: Centralized worktrees**
+```
+/worktrees/
+  ├─ myproject-main/
+  ├─ myproject-feature-a/
+  ├─ myproject-feature-b/
+  └─ other-project-main/
+```
 
-Protect important branches:
+### Naming Conventions
 
-- Require pull request reviews
-- Require status checks to pass
-- Require branches to be up to date
-- Restrict force pushes
-- Restrict deletions
+```bash
+# Project-branch pattern
+git worktree add ../myproject-feature-auth feature/auth
 
-## Integration with Plugin
+# Purpose-based pattern
+git worktree add ../myproject-review feature/pr-123
 
-Works with:
-- `/create_worktree` command for parallel development
-- `/merge_worktree` command for worktree cleanup
-- Project planning and task management
+# Descriptive pattern
+git worktree add ../myproject-hotfix-login-bug hotfix/login-bug
+```
+
+## Advanced Worktree Workflows
+
+### Hotfix While Developing
+
+```bash
+# You're working in main worktree on feature/large-feature
+cd /project
+
+# Urgent bug reported!
+# Create hotfix worktree
+git worktree add ../project-hotfix main
+
+# Switch to hotfix worktree
+cd ../project-hotfix
+
+# Fix the bug
+git checkout -b hotfix/critical-bug
+# ... make changes ...
+git commit -m "fix: critical production bug"
+git push
+
+# Return to feature work without losing context
+cd /project
+```
+
+### PR Review Workflow
+
+```bash
+# You're working on your feature
+cd /project
+
+# Need to review a PR (branch: feature/team-pr)
+git fetch origin feature/team-pr
+git worktree add ../project-review feature/team-pr
+
+# Review in separate worktree
+cd ../project-review
+# ... test, review, run code ...
+
+# Clean up after review
+cd /project
+git worktree remove ../project-review
+```
+
+### Parallel Testing
+
+```bash
+# Run long test suite in one worktree
+cd /project-main
+npm test  # Takes 10 minutes
+
+# Continue development in another worktree
+cd /project-feature-x
+# ... keep coding ...
+```
+
+## Best Practices
+
+### Do's
+
+- ✅ Use worktrees for parallel work on different branches
+- ✅ Keep worktree directories organized and named clearly
+- ✅ Remove worktrees when done to avoid clutter
+- ✅ Use `.git/worktrees` to track all worktrees in the main repository
+- ✅ Share the same `.git` directory = shared configuration, hooks, and remotes
+
+### Don'ts
+
+- ❌ Don't check out the same branch in multiple worktrees (Git prevents this)
+- ❌ Don't forget to remove worktrees - they consume disk space
+- ❌ Don't create worktrees inside other worktrees
+- ❌ Don't manually delete worktree directories (use `git worktree remove`)
+
+## Troubleshooting
+
+### Stale Worktree References
+
+```bash
+# If you manually deleted a worktree directory
+git worktree prune
+
+# Force unlock a worktree
+git worktree unlock <path>
+```
+
+### Moving Worktrees
+
+```bash
+# Move worktree to new location
+git worktree move <worktree> <new-path>
+
+# Example:
+git worktree move ../project-feature-a ../new-location/feature-a
+```
+
+### Checking Worktree Status
+
+```bash
+# See which branch each worktree is on
+git worktree list
+
+# Check worktree health
+git worktree list --porcelain
+```
+
+## Integration with Plugin Commands
+
+This skill complements the git-project-management plugin commands:
+- `/create_worktree` - Automated worktree creation for parallel development
+- `/merge_worktree` - Streamlined worktree merging and cleanup
+- Use these commands for guided worktree workflows

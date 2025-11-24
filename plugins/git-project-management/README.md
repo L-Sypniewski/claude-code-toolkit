@@ -11,8 +11,7 @@ Git worktree management and project planning utilities for efficient version con
 
 ### Skills
 
-- **git-workflow-patterns** - Standard git workflows, branching strategies (Git Flow, GitHub Flow, trunk-based), and version control best practices
-- **project-planning-templates** - Comprehensive templates for project planning, task breakdown, sprint planning, and roadmap creation
+- **git-workflow-patterns** - Git worktree patterns for parallel development and managing multiple working directories
 
 ## Installation
 
@@ -48,9 +47,8 @@ This plugin is part of the Claude Code Toolkit marketplace. Install via:
 - Create worktrees for each significant feature or bug fix
 - Use descriptive branch names for clarity
 - Clean up worktrees promptly after merging
-- Use git-workflow-patterns skill for branching strategy guidance
-- Leverage project-planning-templates for structured project organization
-- Skills automatically provide context-aware git and planning knowledge
+- Use git-workflow-patterns skill for worktree best practices and organization
+- Skills automatically provide context-aware git worktree knowledge
 
 ## Git Worktree Advantages
 

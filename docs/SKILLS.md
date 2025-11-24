@@ -28,12 +28,7 @@ Skills are modular knowledge packages that Claude automatically loads when relev
 **Use When**: Analyzing GitHub issues for workflow execution  
 **Provides**: Information extraction patterns, label interpretation, issue linking
 
-#### workflow-orchestration
-**Purpose**: Coordinate multi-step workflows  
-**Use When**: Managing complex workflows with multiple agents  
-**Provides**: Workflow patterns (sequential, parallel, iterative), agent coordination, progress tracking
-
-### 💻 Development Workflow (2 skills)
+### 💻 Development Workflow (3 skills)
 
 #### code-review-checklist
 **Purpose**: Comprehensive code review framework  
@@ -43,19 +38,19 @@ Skills are modular knowledge packages that Claude automatically loads when relev
 #### refactoring-patterns
 **Purpose**: Code refactoring techniques  
 **Use When**: Planning or executing refactoring  
-**Provides**: Code smells, refactoring techniques, safe refactoring checklist
+**Provides**: SOLID/KISS/YAGNI principles, multi-level refactoring (architectural to method-level), safe refactoring checklist
 
-### 🌿 Git & Project Management (2 skills)
+#### workflow-orchestration
+**Purpose**: Coordinate multi-step workflows  
+**Use When**: Managing complex workflows with multiple agents  
+**Provides**: Workflow patterns (sequential, parallel, iterative), agent coordination, progress tracking
+
+### 🌿 Git & Project Management (1 skill)
 
 #### git-workflow-patterns
-**Purpose**: Git workflows and version control best practices  
-**Use When**: Working with git branches, commits, or collaborative workflows  
-**Provides**: Branching strategies (Git Flow, GitHub Flow, trunk-based), commit best practices, PR workflow, conflict resolution
-
-#### project-planning-templates
-**Purpose**: Project planning and task organization  
-**Use When**: Planning projects, creating roadmaps, organizing development  
-**Provides**: Project plan structure, milestone planning, WBS, sprint templates, roadmap templates
+**Purpose**: Git worktree patterns for parallel development  
+**Use When**: Working on multiple branches simultaneously, need separate working directories  
+**Provides**: Worktree creation/management, parallel development patterns, worktree organization strategies
 
 ### 📚 Documentation Templates (2 skills)
 

@@ -21,7 +21,6 @@ Advanced context engineering workflow with PRP (Prompt-Response-Plan) generation
 
 - **prp-structure** - Standard structure and format for PRP documents with templates and best practices
 - **github-issue-processing** - Patterns for extracting actionable information from GitHub issues
-- **workflow-orchestration** - Multi-step workflow coordination patterns for complex development tasks
 
 ## Installation
 

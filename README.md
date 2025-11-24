@@ -13,7 +13,7 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 **Advanced workflow automation with PRP generation and GitHub issue analysis**
 
 - 4 specialized agents for workflow orchestration
-- 3 Claude Code skills for procedural knowledge
+- 2 Claude Code skills for procedural knowledge
 - GitHub issue analysis and processing
 - PRP (Prompt-Response-Plan) generation and execution
 - Multi-step workflow coordination
@@ -25,7 +25,7 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 **Complete development lifecycle support from architecture to PR creation**
 
 - 5 specialized agents for development excellence
-- 2 Claude Code skills for coding standards and patterns
+- 3 Claude Code skills for coding standards, patterns, and workflow orchestration
 - Senior engineering and implementation support
 - Expert code review capabilities
 - Architecture advisory and design guidance
@@ -38,13 +38,12 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 
 ### 🌿 Git & Project Management
 
-**Git worktree utilities and project planning tools**
+**Git worktree utilities for parallel development**
 
-- 2 Claude Code skills for git workflows and project planning
+- 1 Claude Code skill for git worktree patterns
 - Parallel development with git worktrees
 - Streamlined worktree merging and cleanup
-- Structured project plan generation
-- Git workflow patterns and best practices
+- Git worktree organization and best practices
 
 [View Details →](plugins/git-project-management/README.md)
 

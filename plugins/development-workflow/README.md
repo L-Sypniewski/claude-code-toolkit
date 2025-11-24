@@ -26,6 +26,7 @@ Comprehensive development toolkit with senior engineering expertise, code review
 
 - **code-review-checklist** - Comprehensive checklist covering correctness, performance, security, and maintainability
 - **refactoring-patterns** - Proven refactoring techniques for improving code quality and reducing complexity
+- **workflow-orchestration** - Multi-step workflow coordination patterns for complex development tasks
 
 ## Installation
 

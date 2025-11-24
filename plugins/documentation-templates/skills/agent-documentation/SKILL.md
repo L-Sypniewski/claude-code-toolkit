@@ -62,9 +62,9 @@ Define the quality standards that must be met:
 - [ ] No compiler warnings
 
 ### Testing Requirements
-- [ ] Unit test coverage: [e.g., >80%]
-- [ ] Integration tests for key workflows
-- [ ] All edge cases covered
+- [ ] Integration tests for key workflows (favor sociable tests over isolated unit tests)
+- [ ] Avoid excessive mocking - test real collaborations
+- [ ] All edge cases and error paths covered
 
 ### Code Review Standards
 - [ ] Follows project conventions
@@ -183,8 +183,8 @@ dotnet ef database update
 - [ ] All tests pass (`dotnet test`)
 
 ### Testing Requirements
-- [ ] Unit test coverage >80%
-- [ ] Integration tests for all API endpoints
+- [ ] Integration tests for all API endpoints (favor sociable tests)
+- [ ] Avoid excessive mocking - test real collaborations
 - [ ] All edge cases and error paths tested
 
 ### Code Review Standards

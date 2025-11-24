@@ -4,27 +4,26 @@ Quick reference for all Claude Code Skills in the toolkit.
 
 ## By Plugin
 
-### Context Engineering (3 skills)
+### Context Engineering (2 skills)
 
 | Skill | Description | Use When |
 |-------|-------------|----------|
 | `prp-structure` | Standard PRP document format | Creating/formatting PRP documents |
 | `github-issue-processing` | Extract actionable info from issues | Analyzing GitHub issues |
-| `workflow-orchestration` | Multi-step workflow coordination | Managing complex workflows |
 
-### Development Workflow (2 skills)
+### Development Workflow (3 skills)
 
 | Skill | Description | Use When |
 |-------|-------------|----------|
 | `code-review-checklist` | Comprehensive code review | Performing code reviews |
 | `refactoring-patterns` | Code refactoring techniques | Planning/executing refactoring |
+| `workflow-orchestration` | Multi-step workflow coordination | Managing complex workflows |
 
-### Git & Project Management (2 skills)
+### Git & Project Management (1 skill)
 
 | Skill | Description | Use When |
 |-------|-------------|----------|
-| `git-workflow-patterns` | Git workflows and best practices | Working with git/branches |
-| `project-planning-templates` | Project planning structures | Planning projects/roadmaps |
+| `git-workflow-patterns` | Git worktree patterns | Parallel development with worktrees |
 
 ### Documentation Templates (2 skills)
 
@@ -42,22 +41,21 @@ Quick reference for all Claude Code Skills in the toolkit.
 ### Development Workflow
 - `workflow-orchestration` - Complex workflow coordination
 - `prp-structure` - Structured problem-solving
-- `git-workflow-patterns` - Version control best practices
+- `git-workflow-patterns` - Parallel development with worktrees
 
 ### Documentation
 - `agent-documentation` - AGENTS.md for AI coding agents
 - `claude-delegation-rules` - Agent coordination patterns
 
-### Project Management
-- `project-planning-templates` - Project organization
+### Issue & Code Analysis
 - `github-issue-processing` - Issue analysis
-- `git-workflow-patterns` - Branching strategies
+- `code-review-checklist` - Code quality review
 
 ## Quick Stats
 
-- **Total Skills**: 9
+- **Total Skills**: 8
 - **Total Plugins with Skills**: 4
-- **Average Skills per Plugin**: 2.25
+- **Average Skills per Plugin**: 2
 - **Specification**: Anthropic Agent Skills v1.0
 
 ## How Skills Work
