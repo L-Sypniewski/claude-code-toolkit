@@ -51,6 +51,27 @@ Based on real-world examples, a well-structured AGENTS.md follows this pattern:
 [additional commands]
 ```
 
+## Quality Gates (Required)
+
+Define the quality standards that must be met:
+
+### Code Quality
+- [ ] Build succeeds without errors
+- [ ] All tests pass
+- [ ] Code formatting/linting passes
+- [ ] No compiler warnings
+
+### Testing Requirements
+- [ ] Unit test coverage: [e.g., >80%]
+- [ ] Integration tests for key workflows
+- [ ] All edge cases covered
+
+### Code Review Standards
+- [ ] Follows project conventions
+- [ ] No code smells or anti-patterns
+- [ ] Proper error handling
+- [ ] Security considerations addressed
+
 ## Coding Conventions (Optional)
 
 [Project-specific coding standards]
@@ -84,7 +105,13 @@ Copy-paste commands for:
 - Formatting code
 - Database migrations or other critical operations
 
-### 5. Optional Sections
+### 5. Quality Gates (Required)
+Define quality standards that code must meet:
+- **Code Quality**: Build, test, lint requirements
+- **Testing Requirements**: Coverage thresholds, test types needed
+- **Code Review Standards**: Conventions, patterns, security checks
+
+### 6. Optional Sections
 Add as needed:
 - **Coding Conventions**: Project-specific rules
 - **Testing Guidelines**: Coverage expectations, testing approach
@@ -147,6 +174,24 @@ dotnet format
 dotnet ef migrations add <MigrationName>
 dotnet ef database update
 ```
+
+## Quality Gates
+
+### Code Quality
+- [ ] `dotnet build` succeeds with zero warnings
+- [ ] `dotnet format` shows no formatting issues
+- [ ] All tests pass (`dotnet test`)
+
+### Testing Requirements
+- [ ] Unit test coverage >80%
+- [ ] Integration tests for all API endpoints
+- [ ] All edge cases and error paths tested
+
+### Code Review Standards
+- [ ] Follows Vertical Slice Architecture
+- [ ] SOLID, KISS, YAGNI principles applied
+- [ ] No code duplication
+- [ ] Proper error handling and logging
 
 ## Coding Conventions
 

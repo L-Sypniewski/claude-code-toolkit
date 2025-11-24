@@ -9,39 +9,44 @@ This skill provides proven patterns for safe, effective code refactoring.
 
 ## Core Refactoring Principles
 
+### Design Principles
+1. **SOLID**: Single responsibility, Open-closed, Liskov substitution, Interface segregation, Dependency inversion
+2. **KISS** (Keep It Simple, Stupid): Favor simplicity over complexity
+3. **YAGNI** (You Aren't Gonna Need It): Don't add functionality until necessary
+4. **DRY** (Don't Repeat Yourself): Avoid code duplication
+
+### Refactoring Guidelines
 1. **Red-Green-Refactor**: Ensure tests pass before and after refactoring
 2. **Small Steps**: Make incremental changes, commit frequently
 3. **One Thing at a Time**: Refactor OR add features, not both
 4. **Maintain Behavior**: External behavior stays the same
+5. **Avoid Premature Optimization**: Focus on clarity first, optimize when needed based on metrics
 
-## Common Code Smells
+## Refactoring Approaches
 
-### Long Method
-**Smell**: Method exceeds 20-30 lines or does too many things  
-**Refactor**: Extract Method - Break down into smaller, focused functions
+### Architectural Level
+- Restructure system components and module boundaries
+- Refactor service boundaries in microservices/modular monoliths
+- Redesign database schema and data access patterns
+- Improve system scalability and performance architecture
 
-### Duplicated Code
-**Smell**: Same code structure appears in multiple places  
-**Refactor**: Extract common code into shared functions/methods
+### Module/Package Level
+- Reorganize package structure for better cohesion
+- Extract shared libraries or utilities
+- Improve dependency management and reduce coupling
+- Refactor cross-cutting concerns
 
-### Large Class
-**Smell**: Class has too many responsibilities  
-**Refactor**: Extract Class - Separate concerns into distinct classes
+### Class/Component Level
+- Apply SOLID principles to class design
+- Extract interfaces and abstractions
+- Reduce class complexity and responsibilities
+- Improve encapsulation and information hiding
 
-### Feature Envy
-**Smell**: Method uses more data from another class than its own  
-**Refactor**: Move Method to the class that owns the data
-
-## Refactoring Techniques
-
-### Replace Conditional with Polymorphism
-Use inheritance and polymorphism instead of switch statements or complex conditionals
-
-### Introduce Parameter Object
-Group related parameters into a single object for cleaner function signatures
-
-### Replace Magic Numbers with Named Constants
-Extract hardcoded values into well-named constants for clarity and maintainability
+### Method/Function Level
+- Simplify complex logic
+- Extract reusable functions
+- Improve naming and readability
+- Reduce parameter lists
 
 ## Refactoring Strategy
 
