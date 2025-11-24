@@ -60,16 +60,17 @@ Before refactoring:
 
 ### 2. Ensure Test Coverage
 
-- [ ] Add tests if missing
+- [ ] Add tests if missing to cover refactored parts
 - [ ] Verify all tests pass
-- [ ] Consider adding characterization tests
+- [ ] Focus on testing the specific code being refactored (no specific coverage percentage target)
 
 ### 3. Plan Refactoring
 
-- [ ] Identify specific smells to address
-- [ ] Choose appropriate refactoring patterns
-- [ ] Plan sequence of small steps
-- [ ] Consider creating feature flag if risky
+Create a markdown file documenting:
+- [ ] What needs to be refactored and why
+- [ ] Sequence of small, incremental steps
+- [ ] Checklist format with tasks that can be marked as done (- [x]) before moving to next task
+- [ ] Dependencies and potential risks
 
 ### 4. Execute Incrementally
 
@@ -82,7 +83,6 @@ Before refactoring:
 
 - [ ] All tests pass
 - [ ] Code is clearer and simpler
-- [ ] No performance regression
 - [ ] Update documentation
 
 ## Safe Refactoring Checklist
@@ -91,9 +91,9 @@ Before refactoring:
 - [ ] Each refactoring step is small and focused
 - [ ] Tests pass after each step
 - [ ] Behavior remains unchanged
-- [ ] Performance is not degraded
 - [ ] Code is more maintainable
 - [ ] Team has reviewed changes
+- [ ] **Never remove existing tests** - only add new tests for refactoring validation
 
 ## Integration Points
 

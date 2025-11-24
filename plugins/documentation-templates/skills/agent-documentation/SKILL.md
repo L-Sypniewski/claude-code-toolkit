@@ -80,9 +80,6 @@ Define the quality standards that must be met:
 
 [Testing expectations]
 
-## What NOT to Touch (Optional)
-
-[Protected files/folders]
 ```
 
 ## Key Sections Explained
@@ -114,8 +111,7 @@ Define quality standards that code must meet:
 ### 6. Optional Sections
 Add as needed:
 - **Coding Conventions**: Project-specific rules
-- **Testing Guidelines**: Coverage expectations, testing approach
-- **What NOT to Touch**: Protected files/folders agents should avoid
+- **Testing Guidelines**: Reference separate tests/AGENTS.md for detailed testing guidelines
 
 ## Best Practices
 
@@ -127,7 +123,7 @@ Include at minimum: Stack, Principles, Project Overview, Repository Structure, a
 ✅ "npm install && cp .env.example .env"
 
 ❌ "Write good tests"  
-✅ "Write unit tests for all services, aim for >80% coverage"
+✅ "Write integration tests for all API endpoints, test real collaborations"
 
 ### Use Exact Commands
 Provide copy-paste ready commands. AI agents will execute them literally.
@@ -158,7 +154,7 @@ Aspire 13, PostgreSQL, and PGMQ.
 ## Repository Structure
 
 - `StockStorage/src/`: Main app (Features/, Database/, Infrastructure/)
-- `StockStorage/tests/`: Unified test project (Unit, Integration, System)
+- `StockStorage/tests/`: Unified test project (Unit, Integration, System). **See `StockStorage/tests/AGENTS.md`**.
 - `StockStorage.AppHost/`: .NET Aspire orchestration
 - `StockStorage.ServiceDefaults/`: Shared Aspire defaults
 
@@ -175,6 +171,13 @@ dotnet ef migrations add <MigrationName>
 dotnet ef database update
 ```
 
+## Testing
+
+**Refer to `StockStorage/tests/AGENTS.md` for all testing guidelines.**
+
+- Stack: TUnit, AwesomeAssertions, Testcontainers.
+- Categories: Unit, Integration, System.
+
 ## Quality Gates
 
 ### Code Quality
@@ -183,7 +186,7 @@ dotnet ef database update
 - [ ] All tests pass (`dotnet test`)
 
 ### Testing Requirements
-- [ ] Integration tests for all API endpoints (favor sociable tests)
+- [ ] Integration tests for key workflows (favor sociable tests)
 - [ ] Avoid excessive mocking - test real collaborations
 - [ ] All edge cases and error paths tested
 
