@@ -22,6 +22,12 @@ Comprehensive development toolkit with senior engineering expertise, code review
 - **/technical-translator-prompt** - Translate technical concepts across contexts
 - **/plan-markdown-writer** - Generate structured project plans in markdown format
 
+### Skills
+
+- **code-review-checklist** - Comprehensive checklist covering correctness, performance, security, and maintainability
+- **refactoring-patterns** - Proven refactoring techniques for improving code quality and reducing complexity
+- **workflow-orchestration** - Multi-step workflow coordination patterns for complex development tasks
+
 ## Installation
 
 This plugin is part of the Claude Code Toolkit marketplace. Install via:
@@ -70,6 +76,8 @@ The **senior-engineer** and **technical-architecture-advisor** agents are design
 - Leverage visual testing for UI changes
 - Document decisions in PR descriptions
 - Follow systematic workflows for bugs and refactoring
+- Skills provide procedural knowledge that agents automatically access when relevant
+- Leverage code-review-checklist for thorough quality assessment
 
 ## License
 

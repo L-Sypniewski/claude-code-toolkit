@@ -8,6 +8,11 @@ Templates and examples for creating comprehensive project documentation includin
 
 - **AGENTS_MD_CREATION_PROMPT.md** - Comprehensive template for generating AGENTS.md files that document project development guidelines, quality standards, and autonomous agent workflows
 
+### Skills
+
+- **agent-documentation** - Standards and templates for documenting Claude Code agents including AGENTS.md structure, agent specifications, and delegation patterns
+- **claude-delegation-rules** - Rules and patterns for effective agent delegation including handoff protocols, coordination patterns, and best practices
+
 ### Examples
 
 - **AGENTS.md** - Real-world example of a complete AGENTS.md file from the ConvoClarity project, demonstrating:
@@ -72,6 +77,7 @@ This plugin is part of the Claude Code Toolkit marketplace. Install via:
 - Specify testing requirements explicitly
 - Include examples for complex patterns
 - Keep it updated as the project evolves
+- Use agent-documentation skill for comprehensive agent specs
 
 ### For CLAUDE.md
 
@@ -81,6 +87,14 @@ This plugin is part of the Claude Code Toolkit marketplace. Install via:
 - Specify required tool permissions
 - Balance automation with flexibility
 - Review and refine based on usage
+- Leverage claude-delegation-rules skill for coordination patterns
+
+### For Skills
+
+- Skills are automatically loaded by Claude when relevant context matches
+- Each skill provides procedural knowledge and templates
+- Skills complement agents by providing reusable patterns and standards
+- Keep skills focused on specific domains for optimal auto-loading
 
 ## Template Customization
 

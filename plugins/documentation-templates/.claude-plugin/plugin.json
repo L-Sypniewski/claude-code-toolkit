@@ -1,6 +1,6 @@
 {
   "name": "documentation-templates",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Templates and examples for creating comprehensive project documentation including AGENTS.md and Claude Code delegation rules with best practices",
   "author": {
     "name": "Claude Code Toolkit"
