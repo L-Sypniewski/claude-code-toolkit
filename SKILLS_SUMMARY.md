@@ -23,7 +23,7 @@ Quick reference for all Claude Code Skills in the toolkit.
 
 | Skill | Description | Use When |
 |-------|-------------|----------|
-| `git-workflow-patterns` | Git worktree patterns | Parallel development with worktrees |
+| `git-worktree-patterns` | Git worktree patterns | Parallel development with worktrees |
 
 ### Documentation Templates (2 skills)
 
@@ -41,7 +41,7 @@ Quick reference for all Claude Code Skills in the toolkit.
 ### Development Workflow
 - `workflow-orchestration` - Complex workflow coordination
 - `prp-structure` - Structured problem-solving
-- `git-workflow-patterns` - Parallel development with worktrees
+- `git-worktree-patterns` - Parallel development with worktrees
 
 ### Documentation
 - `agent-documentation` - AGENTS.md for AI coding agents

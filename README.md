@@ -206,7 +206,7 @@ This marketplace includes three types of components that work together:
 - Automatically loaded when context matches
 - No explicit invocation needed
 - Complement agents by providing domain expertise
-- Example: `code-review-checklist`, `git-workflow-patterns`
+- Example: `code-review-checklist`, `git-worktree-patterns`
 
 **Key Difference**: Agents *do work*, commands *trigger workflows*, skills *provide knowledge*.
 

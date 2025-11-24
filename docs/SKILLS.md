@@ -47,7 +47,7 @@ Skills are modular knowledge packages that Claude automatically loads when relev
 
 ### 🌿 Git & Project Management (1 skill)
 
-#### git-workflow-patterns
+#### git-worktree-patterns
 **Purpose**: Git worktree patterns for parallel development  
 **Use When**: Working on multiple branches simultaneously, need separate working directories  
 **Provides**: Worktree creation/management, parallel development patterns, worktree organization strategies

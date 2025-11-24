@@ -1,11 +1,11 @@
 ---
-name: git-workflow-patterns
+name: git-worktree-patterns
 description: Git worktree patterns for parallel development. Use when working on multiple branches simultaneously or when you need to maintain separate working directories for different branches.
 ---
 
 # Git Worktree Patterns
 
-This skill provides patterns for using Git worktrees to enable parallel development workflows.
+This skill provides patterns for using Git worktrees to enable parallel development across multiple branches.
 
 ## What are Git Worktrees?
 
@@ -243,4 +243,4 @@ git worktree list --porcelain
 This skill complements the git-project-management plugin commands:
 - `/create_worktree` - Automated worktree creation for parallel development
 - `/merge_worktree` - Streamlined worktree merging and cleanup
-- Use these commands for guided worktree workflows
+- Use these commands for guided worktree operations

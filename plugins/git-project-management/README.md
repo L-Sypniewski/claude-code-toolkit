@@ -11,7 +11,7 @@ Git worktree management and project planning utilities for efficient version con
 
 ### Skills
 
-- **git-workflow-patterns** - Git worktree patterns for parallel development and managing multiple working directories
+- **git-worktree-patterns** - Git worktree patterns for parallel development and managing multiple working directories
 
 ## Installation
 
@@ -47,7 +47,7 @@ This plugin is part of the Claude Code Toolkit marketplace. Install via:
 - Create worktrees for each significant feature or bug fix
 - Use descriptive branch names for clarity
 - Clean up worktrees promptly after merging
-- Use git-workflow-patterns skill for worktree best practices and organization
+- Use git-worktree-patterns skill for worktree best practices and organization
 - Skills automatically provide context-aware git worktree knowledge
 
 ## Git Worktree Advantages
