@@ -226,7 +226,7 @@ Append findings to the shared audit file in this format:
 
 After completing all viewport audits for the assigned page, provide:
 
-1. **Completion Status**: Successfully audited viewports
+1. **Completion Status**: Report status for each viewport (Complete/Partial/Failed)
 2. **Screenshot Locations**: Paths to all captured screenshots
 3. **Key Findings Summary**: Top 3-5 issues across all viewports
 4. **Recommended Priority**: Which issues to address first

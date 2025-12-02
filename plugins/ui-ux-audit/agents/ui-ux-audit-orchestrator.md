@@ -29,7 +29,9 @@ Use Playwright to safely discover all accessible pages:
 - **Never** perform destructive actions (delete, remove, clear)
 - **Skip** logout links and destructive action buttons
 - **Ignore** external links (different domain)
-- **Respect** robots.txt and rate limiting
+- **Rate limit**: Add reasonable delays between page requests
+
+**Note**: For local development servers, robots.txt restrictions are typically not present. If encountered, document restricted pages in the audit report.
 
 **Discovery Process**:
 

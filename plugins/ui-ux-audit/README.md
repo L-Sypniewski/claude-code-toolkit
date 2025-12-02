@@ -174,9 +174,9 @@ This plugin works well with:
 
 ## Requirements
 
-- Claude Code with Playwright MCP server enabled
-- Local web application running on accessible port
-- Write access for output markdown file
+- Claude Code with Playwright MCP server enabled (see [Playwright MCP documentation](https://github.com/anthropics/playwright-mcp))
+- Local web application running on accessible port (HTTP or HTTPS)
+- Write access for output markdown file and screenshots
 
 ## License
 
