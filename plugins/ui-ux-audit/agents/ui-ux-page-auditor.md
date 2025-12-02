@@ -114,24 +114,16 @@ Evaluate the page against these criteria (per viewport):
 
 ## Error State Simulation
 
-When instructed, simulate error states using Playwright route interception:
+When instructed, simulate error states using Playwright route interception. This allows testing error UI without performing destructive actions.
 
-```javascript
-// Force API errors (do NOT perform actual destructive actions)
-await page.route('**/api/**', route => {
-  route.fulfill({ status: 500, body: 'Internal Server Error' });
-});
+**Simulation Patterns**:
 
-// Simulate empty data responses
-await page.route('**/api/data', route => {
-  route.fulfill({ status: 200, body: JSON.stringify({ items: [] }) });
-});
-
-// Simulate slow loading
-await page.route('**/*', route => {
-  setTimeout(() => route.continue(), 3000);
-});
-```
+| Scenario | Approach |
+|----------|----------|
+| API Failures | Intercept API routes and return 500 status |
+| Empty Data | Return empty arrays/objects to test zero-data states |
+| Slow Loading | Add artificial delays to observe loading states |
+| Network Errors | Block specific endpoints to simulate offline |
 
 **Critical**: Never submit forms, trigger delete operations, or perform any state-changing actions. Use route interception only.
 

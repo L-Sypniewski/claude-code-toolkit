@@ -202,7 +202,7 @@ claude-code-toolkit/
 
 ```bash
 # Audit a local web application
-/ui-ux-audit https://localhost:3000/
+/ui-ux-audit http://localhost:3000/
 
 # The audit will:
 # - Crawl the site to discover pages

@@ -4,7 +4,7 @@ Conduct a comprehensive, screenshot-based UI/UX audit of a local web application
 
 ## Target: $ARGUMENTS
 
-If no URL is provided, default to `https://localhost:7201/`
+If no URL is provided, default to `http://localhost:3000/`
 
 ## Audit Workflow
 

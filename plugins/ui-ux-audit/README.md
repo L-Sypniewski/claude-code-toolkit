@@ -34,14 +34,14 @@ This plugin provides comprehensive visual and interaction design auditing capabi
 
 | Command | Description |
 |---------|-------------|
-| `/ui-ux-audit [url]` | Initiate comprehensive UI/UX audit (defaults to `https://localhost:7201/`) |
+| `/ui-ux-audit [url]` | Initiate comprehensive UI/UX audit (defaults to `http://localhost:3000/`) |
 
 ## Usage
 
 ### Basic Audit
 
 ```bash
-/ui-ux-audit https://localhost:3000/
+/ui-ux-audit http://localhost:3000/
 ```
 
 ### Audit with Specific Pages
@@ -59,7 +59,7 @@ Focus on mobile and desktop viewports.
 ### Error State Testing
 
 ```
-Audit https://localhost:3000/ and simulate error states:
+Audit http://localhost:3000/ and simulate error states:
 - API failures (500 errors)
 - Empty data responses
 - Slow loading scenarios
