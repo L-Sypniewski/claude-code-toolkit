@@ -124,7 +124,7 @@ The audit produces a structured markdown file with:
 ```markdown
 # UI/UX Audit Report
 
-**Target**: https://localhost:3000/
+**Target**: http://localhost:3000/
 **Date**: 2025-01-15
 **Pages Audited**: 8
 
