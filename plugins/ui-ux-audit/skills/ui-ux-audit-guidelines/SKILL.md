@@ -303,18 +303,15 @@ Structure audit findings per page, per viewport:
 Use Playwright route interception to simulate error states without destructive actions:
 
 ### Patterns to Simulate
-- **API Failures**: Force 500 responses on fetch requests
-- **Network Errors**: Block specific endpoints to simulate offline
-- **Slow Loading**: Add artificial delays to observe loading states
-- **Empty Data**: Return empty arrays/objects to test zero-data states
 
-### Example Approach
-```
-// Conceptual - intercept and modify responses
-route.fulfill({ status: 500, body: 'Server Error' })
-route.fulfill({ status: 200, body: { data: [] } })
-route.abort()
-```
+| Scenario | Simulation Approach |
+|----------|---------------------|
+| API Failures | Intercept API routes and return 500 status code |
+| Network Errors | Block specific endpoints to simulate offline state |
+| Slow Loading | Add artificial delays to observe loading states |
+| Empty Data | Return empty arrays/objects to test zero-data states |
+
+**Note**: The skill file provides technical guidance for agents implementing these patterns via Playwright route interception APIs.
 
 ## Integration Points
 

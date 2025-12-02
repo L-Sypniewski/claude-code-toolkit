@@ -39,14 +39,14 @@ Use Playwright to safely discover all accessible pages:
 4. Build a deduplicated list of all accessible pages
 5. Categorize pages by type (list, detail, form, dashboard, etc.)
 
-**Link Extraction Pattern**:
-```javascript
-// Conceptual - extract all internal links
-document.querySelectorAll('a[href]')
-  .map(a => a.href)
-  .filter(href => href.startsWith(baseUrl) || href.startsWith('/'))
-  .filter(href => !href.includes('logout') && !href.includes('delete'))
-```
+**Link Filtering Rules**:
+
+| Filter | Criteria |
+|--------|----------|
+| Include | Internal links (same domain or relative paths) |
+| Exclude | Logout links and destructive action buttons |
+| Exclude | External links (different domain) |
+| Exclude | Links with `delete`, `remove`, `logout` in path |
 
 ### Phase 2: Audit Initialization
 
