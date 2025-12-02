@@ -59,6 +59,19 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 
 [View Details →](plugins/documentation-templates/README.md)
 
+### 🎨 UI/UX Audit
+
+**Screenshot-based UI/UX audit workflow with parallel page analysis**
+
+- 2 specialized agents for orchestration and page-level auditing
+- 1 Claude Code skill for audit methodology and design vocabulary
+- Multi-viewport responsive testing (mobile, tablet, desktop)
+- Non-destructive error state simulation via Playwright
+- Professional design terminology (no code references)
+- Parallel page auditing for efficiency
+
+[View Details →](plugins/ui-ux-audit/README.md)
+
 ## 🚀 Installation
 
 ### Install the Entire Marketplace
@@ -80,6 +93,7 @@ Once the marketplace is added, install specific plugins:
 /plugin install development-workflow
 /plugin install git-project-management
 /plugin install documentation-templates
+/plugin install ui-ux-audit
 ```
 
 ### Team Installation (Automatic)
@@ -104,7 +118,8 @@ claude-code-toolkit/
 │   ├── context-engineering/      # Context engineering workflows
 │   ├── development-workflow/     # Development lifecycle tools
 │   ├── git-project-management/   # Git and planning utilities
-│   └── documentation-templates/  # Documentation templates
+│   ├── documentation-templates/  # Documentation templates
+│   └── ui-ux-audit/              # UI/UX visual audit tools
 ├── README.md                      # This file
 └── .claude/                       # Local settings
 ```
@@ -183,6 +198,19 @@ claude-code-toolkit/
 /merge_worktree feature/new-ui
 ```
 
+### UI/UX Audit
+
+```bash
+# Audit a local web application
+/ui-ux-audit https://localhost:3000/
+
+# The audit will:
+# - Crawl the site to discover pages
+# - Capture screenshots at 5 viewports
+# - Analyze visual and interaction design
+# - Generate professional audit report
+```
+
 ## 🎓 Understanding Skills vs Agents vs Commands
 
 This marketplace includes three types of components that work together:
@@ -242,6 +270,7 @@ See the [Claude Code Plugin Reference](https://docs.claude.com/en/docs/claude-co
 - [Development Workflow Plugin](plugins/development-workflow/README.md)
 - [Git & Project Management Plugin](plugins/git-project-management/README.md)
 - [Documentation Templates Plugin](plugins/documentation-templates/README.md)
+- [UI/UX Audit Plugin](plugins/ui-ux-audit/README.md)
 
 ### External Resources
 

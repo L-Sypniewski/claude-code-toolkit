@@ -65,6 +65,23 @@
         "examples",
         "best-practices"
       ]
+    },
+    {
+      "name": "ui-ux-audit",
+      "source": "./plugins/ui-ux-audit",
+      "description": "Screenshot-based UI/UX audit workflow with parallel page analysis, multi-viewport testing, and non-destructive error state simulation using Playwright",
+      "version": "1.0.0",
+      "category": "design-qa",
+      "keywords": [
+        "ui-ux",
+        "audit",
+        "accessibility",
+        "responsive",
+        "playwright",
+        "screenshots",
+        "visual-testing",
+        "design-review"
+      ]
     }
   ]
 }

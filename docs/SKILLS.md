@@ -64,6 +64,13 @@ Skills are modular knowledge packages that Claude automatically loads when relev
 **Use When**: Designing agent systems or delegation workflows  
 **Provides**: Delegation principles, coordination patterns, context handoff, anti-patterns
 
+### 🎨 UI/UX Audit (1 skill)
+
+#### ui-ux-audit-guidelines
+**Purpose**: Professional UI/UX audit methodology and design vocabulary  
+**Use When**: Conducting visual and interaction design audits of web applications  
+**Provides**: Evaluation criteria, viewport configurations, professional design terminology, improvement recommendation formats
+
 ## How Skills Work
 
 ### Automatic Loading
