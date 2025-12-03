@@ -1,7 +1,7 @@
 ---
 name: ui-ux-page-auditor
-description: Audits individual web pages for UI/UX issues across multiple viewports. Use when conducting screenshot-based visual audits. Captures screenshots, evaluates design quality, and documents issues using professional design terminology.
-tools: mcp__playwright__browser_navigate, mcp__playwright__browser_snapshot, mcp__playwright__browser_take_screenshot, mcp__playwright__browser_resize, mcp__playwright__browser_evaluate, mcp__playwright__browser_wait_for, mcp__playwright__browser_click, mcp__sequentialthinking__sequentialthinking, Read, Write, Edit, Bash, TodoWrite, Task
+description: Audits individual web pages for UI/UX issues across multiple viewports using Playwright screenshots. Spawned by orchestrator for parallel analysis. Do NOT use for: multi-page orchestration, code reviews, or automated testing.
+tools: mcp__playwright__browser_navigate, mcp__playwright__browser_snapshot, mcp__playwright__browser_take_screenshot, mcp__playwright__browser_resize, mcp__playwright__browser_evaluate, mcp__playwright__browser_wait_for, mcp__playwright__browser_click, mcp__sequentialthinking__sequentialthinking, Read, Write, Edit, TodoWrite
 color: purple
 model: sonnet
 ---
@@ -32,7 +32,7 @@ The skill provides the comprehensive audit methodology. This agent focuses on ex
 
 ### Step 1: Navigate and Capture
 
-For each viewport (Mobile 428×926, Tablet 768×1024/1024×768, Desktop 1160×720/1920×1080):
+For each viewport (reference the skill for standard viewport configurations):
 
 1. **Resize browser** to exact viewport dimensions using `browser_resize`
 2. **Navigate** to the assigned page URL using `browser_navigate`

@@ -1,6 +1,6 @@
 ---
 name: ui-ux-audit-guidelines
-description: Professional UI/UX audit methodology, evaluation criteria, and design vocabulary for comprehensive visual and interaction analysis. Use when conducting UI/UX audits to ensure consistent, thorough evaluation across pages and viewports.
+description: Professional UI/UX audit methodology and design vocabulary. Use when: conducting UI/UX audits, evaluating visual hierarchy, analyzing responsive design, assessing interaction patterns. Do NOT use for: code reviews, accessibility audits (WCAG), performance analysis, or security assessments.
 ---
 
 # UI/UX Audit Guidelines
