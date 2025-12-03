@@ -1,0 +1,21 @@
+{
+  "name": "plugin-creator",
+  "version": "1.0.0",
+  "description": "Interactive plugin creation, validation, and refactoring workflow with best-practice templates, architecture guidance, security validation, and automated quality checks for building production-ready Claude Code plugins",
+  "author": {
+    "name": "Claude Code Toolkit"
+  },
+  "keywords": [
+    "plugin-development",
+    "scaffolding",
+    "best-practices",
+    "automation",
+    "architecture",
+    "security",
+    "validation",
+    "meta-plugin"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/L-Sypniewski/claude-code-toolkit",
+  "homepage": "https://github.com/L-Sypniewski/claude-code-toolkit/tree/master/plugins/plugin-creator"
+}

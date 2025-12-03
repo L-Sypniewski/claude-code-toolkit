@@ -7,7 +7,8 @@
       "WebFetch(domain:www.youngleaders.tech)",
       "WebFetch(domain:alexop.dev)",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(mkdir:*)"
     ],
     "deny": [],
     "ask": []
