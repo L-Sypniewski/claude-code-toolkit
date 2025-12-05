@@ -1,284 +1,434 @@
 ---
 name: plugin-creation-guidelines
-description: Comprehensive plugin creation best practices, architecture patterns, and security guidelines. Use when: creating plugins, validating plugin structure, refactoring plugin architecture, generating plugin components. Do NOT use for: application development, debugging user code, or non-plugin tasks.
+description: Comprehensive plugin architecture patterns, best practices, templates, and validation guidelines distilled from research sources. Use when: creating new plugins, designing plugin architecture, validating plugin structure, or optimizing token usage. Do NOT use for: general coding tasks, non-plugin development, or debugging existing code.
 ---
 
 # Plugin Creation Guidelines
 
-Comprehensive best practices for building production-ready Claude Code plugins.
+Comprehensive reference for building well-architected Claude Code plugins following industry best practices, token optimization principles, and architectural patterns from official Anthropic sources and validated implementations.
+
+*This skill distills best practices from blog posts, Anthropic examples, and official documentation. See [Research Sources](#research-sources) section and [references.md](references.md) for complete attribution.*
 
 ## Architecture Patterns
 
+Choose the appropriate architecture pattern based on your plugin's requirements. Each pattern has specific use cases and trade-offs.
+
 ### 1. Single Agent Pattern
-**When to Use**: Simple, focused plugins with one clear responsibility
+
+**Description**: One agent handles all responsibilities for the plugin.
+
+**When to Use**:
+- Simple, focused functionality (e.g., code formatter, linter)
+- No parallel execution needed
+- Single workflow with sequential steps
+- Token budget fits comfortably in 300-400 lines
 
 **Structure**:
-- 1 Agent (does all work)
-- 0-1 Skills (optional reference knowledge)
-- 1 Command (entry point)
+```
+plugin-name/
+├── .claude-plugin/plugin.json
+├── agents/
+│   └── plugin-name.md           # Single agent (300-400 lines)
+├── commands/
+│   └── command-name.md           # Entry point
+└── README.md
+```
 
-**Token Budget**: 200-400 lines for agent
+**Example**: Simple code analyzer that runs sequentially through files.
+
+**Decision Factors**:
+- Can all logic fit in one agent (< 400 lines)?
+- Is workflow naturally sequential?
+- Does task require minimal coordination?
 
 ### 2. Orchestrator-Worker Pattern
-**When to Use**: Plugins requiring parallel execution or coordination of multiple tasks
+
+**Description**: One orchestrator agent coordinates multiple specialized worker agents executing in parallel.
+
+**When to Use**:
+- Parallel execution provides significant speedup
+- Multiple independent subtasks (e.g., auditing multiple pages)
+- Need for specialized workers with different tool access
+- Orchestrator needs coordination logic but workers are focused
 
 **Structure**:
-- 1 Orchestrator Agent (coordinates)
-- N Worker Agents (execute in parallel)
-- 1+ Skills (shared knowledge)
-- 1 Command (entry point)
+```
+plugin-name/
+├── .claude-plugin/plugin.json
+├── agents/
+│   ├── plugin-orchestrator.md    # Coordinator (250-350 lines)
+│   └── plugin-worker.md          # Worker(s) (100-200 lines)
+├── commands/
+│   └── command-name.md           # Entry point
+├── skills/
+│   └── shared-guidelines/
+│       └── SKILL.md               # Shared knowledge (300-500 lines)
+└── README.md
+```
 
-**Token Budget**:
-- Orchestrator: 250-350 lines
-- Workers: 100-200 lines each
+**Example**: UI/UX Audit plugin - orchestrator crawls site and spawns parallel page auditors.
+
+**Key Characteristics**:
+- Orchestrator uses `Task` tool to spawn workers
+- Workers are stateless, focused on single subtask
+- Skill provides shared evaluation criteria/methodology
+- Orchestrator compiles final results
+
+**Decision Factors**:
+- Are subtasks independent and parallelizable?
+- Do workers need different tool sets?
+- Is coordination logic substantial (>100 lines)?
+
+**Reference Implementation**: `plugins/ui-ux-audit/`
+- Orchestrator: 281 lines (crawling, coordination, summary)
+- Worker: 108 lines (single page audit)
+- Skill: 322 lines (audit methodology, terminology)
 
 ### 3. Pipeline Pattern
-**When to Use**: Sequential processing with specialized stages
+
+**Description**: Sequential chain of agents where each agent's output becomes the next agent's input.
+
+**When to Use**:
+- Multi-stage processing workflow
+- Each stage requires different expertise/tools
+- Output from one stage feeds next stage
+- Clear stage boundaries with distinct responsibilities
 
 **Structure**:
-- N Agents (sequential pipeline)
-- 1+ Skills (domain knowledge)
-- 1-2 Commands (entry + shortcuts)
+```
+plugin-name/
+├── .claude-plugin/plugin.json
+├── agents/
+│   ├── stage-1-agent.md          # First stage
+│   ├── stage-2-agent.md          # Second stage
+│   └── stage-3-agent.md          # Final stage
+├── commands/
+│   └── command-name.md           # Entry point
+└── README.md
+```
 
-**Token Budget**: 200-350 lines per agent
+**Example**: Data processing pipeline - extract, transform, load stages.
+
+**Key Characteristics**:
+- First agent delegates to second via Task tool
+- Second agent delegates to third, etc.
+- Each agent validates input from previous stage
+- Final agent produces consolidated output
+
+**Decision Factors**:
+- Is workflow naturally sequential?
+- Does each stage require distinct tooling?
+- Are stage outputs well-defined?
 
 ### 4. Skill-Augmented Pattern
-**When to Use**: Agents need extensive domain knowledge or templates
+
+**Description**: Single or multiple agents augmented with comprehensive skill reference(s) for shared knowledge.
+
+**When to Use**:
+- Significant domain knowledge or methodology needed
+- Multiple agents need same reference material
+- Templates, checklists, or evaluation criteria to share
+- Keeping agents concise by externalizing static knowledge
 
 **Structure**:
-- 1-2 Agents (execution)
-- 1-2 Skills (comprehensive reference)
-- 1 Command (entry point)
+```
+plugin-name/
+├── .claude-plugin/plugin.json
+├── agents/
+│   └── agent-name.md             # References skill(s)
+├── commands/
+│   └── command-name.md
+├── skills/
+│   └── domain-guidelines/
+│       ├── SKILL.md               # 300-500 lines
+│       ├── templates/             # Optional
+│       └── scripts/               # Optional
+└── README.md
+```
 
-**Token Budget**:
-- Agents: 150-300 lines (lean, references skill)
-- Skills: 300-500 lines (comprehensive)
+**Example**: Plugin-creator with comprehensive creation guidelines skill.
 
-## Best Practices Summary
+**Key Characteristics**:
+- Skills are 300-500 lines (larger than agents is OK)
+- Agents explicitly reference: "Use the `skill-name` skill for..."
+- Skills contain methodology, not workflow logic
+- Can combine with any other pattern
+
+**Decision Factors**:
+- Is there >100 lines of reference material?
+- Do multiple agents need same knowledge?
+- Is knowledge relatively static (not workflow logic)?
+
+### Pattern Selection Decision Tree
+
+```
+Start
+  │
+  ├─ Is workflow parallelizable?
+  │   ├─ Yes → Orchestrator-Worker Pattern
+  │   └─ No ↓
+  │
+  ├─ Is workflow multi-stage with stage boundaries?
+  │   ├─ Yes → Pipeline Pattern
+  │   └─ No ↓
+  │
+  ├─ Is there >100 lines of reference material?
+  │   ├─ Yes → Skill-Augmented Pattern (+ Single Agent)
+  │   └─ No ↓
+  │
+  └─ Use Single Agent Pattern
+```
+
+**Note**: Patterns can be combined (e.g., Orchestrator-Worker + Skill-Augmented).
+
+## Best Practices from Research Sources
 
 ### Token Optimization
 
-**Target Line Counts**:
-- Agents: 300-400 lines (optimal performance)
-- Skills: 300-500 lines (comprehensive reference)
-- Commands: 50-150 lines (concise entry points)
+**Target Agent Size**: 300-400 lines maximum
 
-**DRY Principles**:
-- Skills = single source of truth for domain knowledge
-- Agents reference skills, don't duplicate content
-- Templates in skills, not inline in agents
+**Rationale**:
+- Agents are loaded into context with every execution
+- Larger agents = more tokens consumed per invocation
+- 300-400 lines balances comprehensiveness with efficiency
+- Reference: ui-ux-audit-orchestrator (281 lines), page auditor (108 lines)
 
-**Evidence**: Blog post showed 803-line agent scored 62/100, refactored 281-line version scored 82-85/100
+**DRY Principle Application**:
+
+**Bad** - Duplicating knowledge across agents:
+```markdown
+# agent-1.md (500 lines)
+[150 lines of evaluation criteria]
+[350 lines of workflow logic]
+
+# agent-2.md (500 lines)
+[150 lines of evaluation criteria - DUPLICATED]
+[350 lines of workflow logic]
+```
+
+**Good** - Extract to skill:
+```markdown
+# agents/agent-1.md (200 lines)
+Use the `evaluation-guidelines` skill for criteria.
+[200 lines of workflow logic]
+
+# agents/agent-2.md (200 lines)
+Use the `evaluation-guidelines` skill for criteria.
+[200 lines of workflow logic]
+
+# skills/evaluation-guidelines/SKILL.md (400 lines)
+[400 lines of evaluation criteria - single source of truth]
+```
+
+**Token Savings**: 1000 lines → 800 lines
+
+**Reference Instead of Duplicate**:
+- Extract methodology to skills
+- Reference templates instead of inlining
+- Use supporting scripts for boilerplate generation
+- Link to external documentation for detailed specs
+
+**Skills Are Exempted from Line Limits**:
+- Skills can be 300-500 lines (comprehensive reference)
+- Skills are loaded only when agents reference them
+- Multiple agents can reference same skill (shared knowledge)
 
 ### Description Engineering
 
-**WHEN + WHEN NOT Pattern**:
+**WHEN + WHEN NOT Pattern**: Explicitly define boundaries to prevent incorrect routing.
 
-✅ **Good**:
-```yaml
-description: Orchestrates UI/UX audits by coordinating parallel page auditors. Use PROACTIVELY for `/ui-ux-audit` command. Do NOT use for: single-page audits, code analysis, or accessibility testing.
+**Structure**:
+```
+[What it does]. Use PROACTIVELY for [triggers]. Do NOT use for: [anti-patterns].
 ```
 
-❌ **Bad**:
+**Agent Examples**:
+
+**Good**:
 ```yaml
-description: Handles UI/UX auditing tasks.
+description: Orchestrates comprehensive UI/UX audits by crawling web applications and coordinating parallel page auditors. Use PROACTIVELY for `/ui-ux-audit` command. Do NOT use for: single-page audits, code analysis, or accessibility testing.
+```
+
+**Bad** - Missing boundaries:
+```yaml
+description: Handles UI/UX audits for web applications.
+```
+
+**Skill Examples**:
+
+**Good**:
+```yaml
+description: Professional UI/UX audit methodology and design vocabulary. Use when: conducting UI/UX audits, evaluating visual hierarchy, analyzing responsive design, assessing interaction patterns. Do NOT use for: code reviews, accessibility audits (WCAG), performance analysis, or security assessments.
+```
+
+**Bad** - No use case clarity:
+```yaml
+description: UI/UX audit guidelines and terminology.
 ```
 
 **Key Elements**:
-1. **What it does** (clear action)
-2. **Use PROACTIVELY for** (explicit triggers)
-3. **Do NOT use for** (clear boundaries)
+1. **Primary Function**: What the component does
+2. **Proactive Triggers**: When to use it automatically (for agents with command entry points)
+3. **Explicit Anti-patterns**: What NOT to use it for (prevents routing errors)
 
 ### Naming Conventions
 
-**Standards**:
-- **Format**: `kebab-case` for all components
-- **Agents**: Descriptive role names
-- **Skills**: Domain or methodology names
-- **Commands**: Action verb + object
+**Plugin Names**:
+- **Format**: `kebab-case`
+- **Pattern**: `domain-focus` or `action-target`
+- **Examples**: `ui-ux-audit`, `plugin-creator`, `development-workflow`
+- **Avoid**: CamelCase, snake_case, spaces
 
-**Prefixing**:
-- Multi-agent plugins: Use plugin name prefix (`ui-ux-audit-orchestrator`, `ui-ux-page-auditor`)
-- Single-agent plugins: Descriptive name (`senior-engineer`, `code-reviewer`)
+**Agent Names**:
+- **Format**: `kebab-case`
+- **Pattern**: `[plugin-prefix-]role-descriptor`
+- **Single-agent plugins**: `plugin-name` (matches plugin)
+- **Multi-agent plugins**: `plugin-prefix-role` (e.g., `ui-ux-audit-orchestrator`)
+- **Examples**: `plugin-creator`, `ui-ux-audit-orchestrator`, `ui-ux-page-auditor`
 
-**File Names**:
-- Agents: `agent-name.md`
-- Skills: `SKILL.md` inside `skill-name/` directory
-- Commands: `command-name.md`
+**Skill Names**:
+- **Format**: `kebab-case`
+- **Pattern**: `domain-guidelines` or `topic-reference`
+- **Examples**: `plugin-creation-guidelines`, `ui-ux-audit-guidelines`
+- **Directory name matches skill name**
 
-### Tool Access Patterns
+**Command Names**:
+- **Format**: `kebab-case` or `snake_case` (both acceptable)
+- **Pattern**: `verb-object` or `action-target`
+- **Examples**: `/create-plugin`, `/ui-ux-audit`, `/validate-plugin`
+- **File name**: `command-name.md` (without the `/` prefix)
 
-**Common Tool Categories**:
-
-1. **File Operations**: Read, Write, Edit, Glob, Grep
-2. **Execution**: Bash, TodoWrite
-3. **Coordination**: Task (spawning agents)
-4. **Thinking**: mcp__sequentialthinking__sequentialthinking
-5. **Research**: WebFetch, WebSearch
-6. **MCP Integrations**: mcp__playwright__*, mcp__github__*, etc.
-
-**Best Practices**:
-- Only grant tools the agent actually uses
-- Orchestrators need Task for spawning
-- Workers don't need Task (they ARE spawned)
-- Use AskUserQuestion for interactive workflows
+**Consistency Rules**:
+- File name matches component name exactly
+- Multi-agent plugins use consistent prefix
+- All names lowercase only
+- Hyphens for word separation (or underscores for commands)
 
 ### Integration Patterns
 
-**Command → Agent**:
+**Commands → Agents**: Explicit delegation in command markdown.
+
+**Pattern**:
 ```markdown
-Use the `agent-name` agent to execute this workflow.
+# Command File: /create-plugin
+
+## Delegation
+
+Use the `plugin-creator` agent to execute this workflow.
 ```
 
-**Agent → Skill**:
+**Agents → Skills**: Explicit reference in agent prompt.
+
+**Pattern**:
 ```markdown
+# Agent File: plugin-creator.md
+
 ## Skill Reference
 
-Reference the `skill-name` skill for:
-- [Specific knowledge area]
-- [Templates or checklists]
+Use the `plugin-creation-guidelines` skill for:
+- Architecture patterns and decision trees
+- Best practices from research sources
+- Template structures and boilerplate patterns
 ```
 
-**Agent → Agent** (Spawning):
+**Agents → Agents**: Task tool delegation for spawning.
+
+**Orchestrator Example**:
 ```markdown
-Use the `Task` tool to spawn `worker-agent-name` agents for parallel execution.
+### Delegation Protocol
+
+Use the `Task` tool to spawn parallel auditors:
+- Provide each auditor with assigned page URL
+- Specify shared output file path
 ```
 
-**Skill → Components** (Documentation):
+**Worker Example**:
 ```markdown
+# Agent: ui-ux-page-auditor.md
+
+## Statelessness Note
+
+One-shot execution: Complete audit and append to shared file in single invocation.
+```
+
+**Skills → Scripts**: Skills can reference supporting scripts.
+
+**Pattern**:
+```markdown
+# Skill: plugin-creation-guidelines
+
+## Supporting Scripts
+
+Available scripts in `scripts/` directory:
+- `create-plugin-structure.sh <plugin-name>` - Creates directory skeleton
+- `validate-naming.py <plugin-path>` - Validates naming conventions
+```
+
+**Integration Documentation**:
+- Every component documents its integration points
+- README includes component relationship diagram (text-based)
+- Agents specify which other components they work with
+
+### Tool Access Patterns
+
+**Principle**: Only grant necessary tools to each agent.
+
+**Common Tool Categories**:
+
+| Category | Tools | Use When |
+|----------|-------|----------|
+| File Operations | Read, Write, Edit | Agent needs file access |
+| Code Search | Grep, Glob | Agent searches codebase |
+| Progress Tracking | TodoWrite | Complex multi-step workflows |
+| Agent Coordination | Task | Spawning other agents |
+| Sequential Thinking | mcp__sequentialthinking__sequentialthinking | Complex decision-making |
+| User Interaction | AskUserQuestion | Interactive workflows |
+| Shell Operations | Bash | Running scripts or commands |
+
+**Anti-patterns**:
+- Giving all agents all tools (token waste)
+- Workers with `Task` tool when they never spawn subagents
+- Agents with `Bash` when they never run scripts
+
+**Note**: Skills and commands have NO tools. See orchestrator vs worker tool lists in `plugins/ui-ux-audit/agents/` for practical examples.
+
+## Component Templates
+
+Templates are available in the `templates/` directory:
+- `plugin.json.template` - Plugin metadata structure
+- `agent-frontmatter.template` - Agent YAML structure
+- `skill-frontmatter.template` - Skill YAML structure
+- `command-template.md` - Command markdown structure
+- `README-template.md` - Plugin documentation structure
+
+Read template files directly for complete structure and placeholders. Use generation scripts in `scripts/` for automated creation with proper formatting.
+
+## Supporting Scripts
+
+Scripts in the `scripts/` directory provide automation:
+- **Generation**: `create-plugin-structure.sh`, `generate-plugin-json.py`, `generate-agent-boilerplate.py`, `generate-skill-boilerplate.sh`, `generate-command-boilerplate.sh`
+- **Validation**: `validate-structure.sh`, `validate-naming.py`, `validate-schemas.py`, `count-tokens.sh`
+
+All scripts support `--help` flag for detailed usage. Scripts output JSON for programmatic parsing.
+
+## Validation
+
+Use automated validation scripts for deterministic checks and `plugin-validator` agent for subjective analysis. See `checklists/` directory for comprehensive validation criteria including `component-validation.md` and `security-validation.md`.
+
+## Reference Implementation
+
+Study `plugins/ui-ux-audit/` for validated implementation of Orchestrator-Worker + Skill-Augmented pattern (orchestrator: 281 lines, worker: 108 lines, skill: 322 lines). Demonstrates all best practices including WHEN/WHEN NOT patterns, tool access optimization, and skill references.
+
 ## Integration Points
 
-Works with:
-- `agent-name` agent for [purpose]
-- `/command-name` command as [entry point]
-```
+This skill is used by:
+- `plugin-creator` agent for architecture planning and content generation
+- `plugin-validator` agent for quality assurance checks
+- `/create-plugin` command workflow (via plugin-creator agent)
+- `/validate-plugin` command workflow (via plugin-validator agent)
 
-## Decision Trees
+## Research Sources
 
-### When to Create a Skill vs Inline Documentation?
+Best practices distilled from authoritative sources including blog posts, Anthropic official examples, and validated implementations.
 
-**Create a Skill When**:
-- ✅ Knowledge is >200 lines
-- ✅ Multiple agents need the same information
-- ✅ Contains templates, checklists, or structured data
-- ✅ Domain-specific expertise
-- ✅ May be updated independently
-
-**Use Inline When**:
-- ✅ Agent-specific workflow steps
-- ✅ <100 lines of guidance
-- ✅ Tightly coupled to agent logic
-- ✅ Not reusable by other agents
-
-### When to Use Orchestrator Pattern?
-
-**Use Orchestrator When**:
-- ✅ Multiple pages/items need parallel processing
-- ✅ Coordination of heterogeneous tasks
-- ✅ Results need aggregation
-- ✅ Workflow has distinct phases
-
-**Use Single Agent When**:
-- ✅ Sequential, single-threaded work
-- ✅ Simple input → output transformation
-- ✅ No coordination needed
-- ✅ Work cannot be parallelized
-
-### When to Split into Multiple Agents?
-
-**Split When**:
-- ✅ Agent exceeds 400 lines
-- ✅ Two distinct responsibilities
-- ✅ Different tool requirements
-- ✅ Independent reuse needed
-- ✅ Different expertise domains
-
-**Keep Single When**:
-- ✅ Tightly coupled workflow
-- ✅ Sequential dependencies
-- ✅ Context needs to persist
-- ✅ Total <400 lines
-
-## Templates & References
-
-For detailed templates and checklists, reference these files in the skill directory:
-
-### Component Templates
-
-Use Read tool to access complete templates with guidelines:
-
-- `templates/agent-template.md` - Complete agent structure with frontmatter and all sections
-- `templates/skill-template.md` - Skill file structure and organization patterns
-- `templates/command-template.md` - Command file with delegation patterns and examples
-- `templates/plugin-json-template.json` - Plugin metadata schema with all required fields
-- `templates/readme-template.md` - Comprehensive README structure with all sections
-
-### Validation Checklists
-
-Use Read tool to access detailed validation criteria:
-
-- `checklists/security-validation.md` - Security patterns for bash/python/agents with examples
-- `checklists/component-validation.md` - Complete validation checklist for all components
-
-**Progressive Disclosure**: Use Read tool to access these files when generating or validating specific plugin components. This keeps the main skill concise while providing comprehensive reference material on demand.
-
-## Quick Reference: Component Requirements
-
-### Agent Requirements
-- YAML frontmatter: name, description, tools, color, model
-- WHEN + WHEN NOT description pattern
-- 100-400 lines (optimal: 300)
-- Explicit skill references if applicable
-- Clear workflow sections
-- Error handling documented
-
-### Skill Requirements
-- YAML frontmatter: name, description
-- WHEN + WHEN NOT description pattern
-- 300-500 lines
-- Clear sections and subsections
-- Examples (good and bad)
-- Integration points documented
-
-### Command Requirements
-- Clear title (# heading)
-- Documents arguments and defaults
-- Workflow steps
-- Explicit delegation to agent(s)
-- Usage examples
-- 50-150 lines
-
-### Plugin Requirements
-- `.claude-plugin/plugin.json` with all required fields
-- `README.md` with standard structure
-- At least one component directory (agents/, commands/, or skills/)
-- Kebab-case naming throughout
-- Semantic versioning (X.Y.Z)
-
-## Additional Resources
-
-### Blog Posts (Best Practices)
-- [Claude Code: Skills, Commands, Subagents & Plugins](https://www.youngleaders.tech/p/claude-skills-commands-subagents-plugins)
-  - WHEN/WHEN NOT pattern for descriptions
-  - Token optimization: 281 lines scored 82-85/100
-  - DRY principles and refactoring guidance
-  - Hybrid execution pattern
-
-- [Understanding Claude Code Full Stack](https://alexop.dev/posts/understanding-claude-code-full-stack/)
-  - Layered context strategy
-  - MCP + Skills synergy
-  - CLAUDE.md hierarchy
-  - Token efficiency patterns
-
-### Anthropic Examples
-- [Anthropic Skills Repository](https://github.com/anthropics/skills/tree/main/skills)
-  - Reference skill structures
-  - Naming conventions
-  - Component organization patterns
-  - Example implementations
-
-### Official Documentation
-- [Claude Code Plugins Documentation](https://code.claude.com/docs/en/plugins)
-- [Claude Code Skills Documentation](https://code.claude.com/docs/en/skills)
-- [Claude Code Sub-agents Documentation](https://code.claude.com/docs/en/sub-agents)
-- [Claude Code Slash Commands Documentation](https://code.claude.com/docs/en/slash-commands)
+**See `references.md` for complete source URLs and detailed attribution.**

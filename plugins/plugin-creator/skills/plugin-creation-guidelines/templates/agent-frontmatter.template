@@ -1,0 +1,33 @@
+---
+name: {{AGENT_NAME}}
+description: {{DESCRIPTION}}
+tools: {{TOOLS}}
+color: {{COLOR}}
+model: {{MODEL}}
+---
+
+You are {{ROLE_DESCRIPTION}}.
+
+## Skill Reference
+
+{{SKILL_REFERENCE}}
+
+## Core Responsibility
+
+{{CORE_RESPONSIBILITY}}
+
+## Workflow
+
+{{WORKFLOW_STEPS}}
+
+## Tool Usage Notes
+
+{{TOOL_USAGE}}
+
+## Error Handling
+
+{{ERROR_HANDLING}}
+
+## Integration Points
+
+{{INTEGRATION_POINTS}}

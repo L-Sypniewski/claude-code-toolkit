@@ -9,7 +9,10 @@
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:github.com)",
       "Bash(mkdir:*)",
-      "Bash(wc:*)"
+      "Bash(wc:*)",
+      "Bash(chmod:*)",
+      "Bash(touch:*)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []
