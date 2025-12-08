@@ -145,8 +145,4 @@ Define fallback strategies:
 7. Deployment → Staged rollout
 ```
 
-## Integration with Plugin Components
 
-- **Orchestrator agent**: Uses these patterns for workflow management
-- **Executor agent**: Follows orchestration directives
-- **Commands**: `/generate-prp`, `/execute-prp` implement workflow steps

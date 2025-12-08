@@ -88,9 +88,4 @@ prp-[description]-[timestamp].md
 
 Example: `prp-refactor-auth-module-2025-11-21.md`
 
-## Integration with Agents
 
-This structure works seamlessly with:
-- `context-engineering-prp-generator` agent (generates PRPs)
-- `context-engineering-executor` agent (executes plans)
-- `context-engineering-orchestrator` agent (coordinates workflows)

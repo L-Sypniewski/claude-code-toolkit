@@ -1,6 +1,6 @@
 ---
 name: screenshot-comparator
-description: Creates before/after screenshot comments for PRs and issues. Takes screenshots using Playwright MCP based on user-specified pages and viewports, comparing current branch against master.
+description: Creates before/after screenshot comments for PRs and issues. Use PROACTIVELY when visual comparison needed. Takes screenshots using Playwright MCP, comparing current branch against master.
 tools: mcp__sequentialthinking__sequentialthinking, mcp__context7__resolve_library_id, mcp__context7__get_library_docs, mcp__github__get_issue, mcp__github__get_file_contents, mcp__github__list_commits, mcp__github__get_commit, mcp__github__create_pull_request, mcp__github__get_pull_request_diff, mcp__github__get_pull_request_files, Glob, Grep, Read, Bash, WebFetch, WebSearch, TodoWrite, Task, Write, Edit
 color: blue
 model: haiku

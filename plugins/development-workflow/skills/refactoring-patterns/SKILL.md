@@ -1,104 +1,34 @@
 ---
 name: refactoring-patterns
-description: Common refactoring patterns and techniques for improving code quality, reducing complexity, and enhancing maintainability. Use when planning or executing code refactoring.
+description: Refactoring patterns for code quality and maintainability. Use when planning or executing refactoring.
 ---
 
 # Refactoring Patterns
 
-This skill provides proven patterns for safe, effective code refactoring.
+## Guidelines
 
-## Core Refactoring Principles
-
-### Design Principles
-1. **SOLID**: Single responsibility, Open-closed, Liskov substitution, Interface segregation, Dependency inversion
-2. **KISS** (Keep It Simple, Stupid): Favor simplicity over complexity
-3. **YAGNI** (You Aren't Gonna Need It): Don't add functionality until necessary
-4. **DRY** (Don't Repeat Yourself): Avoid code duplication
-
-### Refactoring Guidelines
-1. **Red-Green-Refactor**: Ensure tests pass before and after refactoring
-2. **Small Steps**: Make incremental changes, commit frequently
+1. **Red-Green-Refactor**: Tests pass before and after
+2. **Small Steps**: Incremental changes, commit frequently
 3. **One Thing at a Time**: Refactor OR add features, not both
-4. **Maintain Behavior**: External behavior stays the same
-5. **Avoid Premature Optimization**: Focus on clarity first, optimize when needed based on metrics
+4. **Maintain Behavior**: External behavior unchanged
 
-## Refactoring Approaches
+## Refactoring Levels
 
-### Architectural Level
-- Restructure system components and module boundaries
-- Refactor service boundaries in microservices/modular monoliths
-- Redesign database schema and data access patterns
-- Improve system scalability and performance architecture
+- **Architectural**: System components, service boundaries
+- **Module**: Package structure, shared libraries, dependencies
+- **Class**: Design patterns, interfaces, encapsulation
+- **Function**: Logic simplification, naming, parameters
 
-### Module/Package Level
-- Reorganize package structure for better cohesion
-- Extract shared libraries or utilities
-- Improve dependency management and reduce coupling
-- Refactor cross-cutting concerns
+## Strategy
 
-### Class/Component Level
-- Apply SOLID principles to class design
-- Extract interfaces and abstractions
-- Reduce class complexity and responsibilities
-- Improve encapsulation and information hiding
+1. **Understand**: Read code, identify tests, document behavior, note dependencies
+2. **Test Coverage**: Add missing tests, verify all pass
+3. **Plan**: Create markdown checklist with incremental steps, risks
+4. **Execute**: One change at a time, test after each, commit frequently
+5. **Verify**: Tests pass, code clearer, docs updated
 
-### Method/Function Level
-- Simplify complex logic
-- Extract reusable functions
-- Improve naming and readability
-- Reduce parameter lists
+## Checklist
 
-## Refactoring Strategy
-
-### 1. Understand the Code
-
-Before refactoring:
-- [ ] Read and understand the existing code
-- [ ] Identify all test coverage
-- [ ] Document current behavior
-- [ ] Note any dependencies
-
-### 2. Ensure Test Coverage
-
-- [ ] Add tests if missing to cover refactored parts
-- [ ] Verify all tests pass
-- [ ] Focus on testing the specific code being refactored (no specific coverage percentage target)
-
-### 3. Plan Refactoring
-
-Create a markdown file documenting:
-- [ ] What needs to be refactored and why
-- [ ] Sequence of small, incremental steps
-- [ ] Checklist format with tasks that can be marked as done (- [x]) before moving to next task
-- [ ] Dependencies and potential risks
-
-### 4. Execute Incrementally
-
-- [ ] Make one change at a time
-- [ ] Run tests after each change
-- [ ] Commit working code frequently
-- [ ] Roll back if tests fail
-
-### 5. Verify and Clean Up
-
-- [ ] All tests pass
-- [ ] Code is clearer and simpler
-- [ ] Update documentation
-
-## Safe Refactoring Checklist
-
-- [ ] Tests exist and pass before starting
-- [ ] Each refactoring step is small and focused
-- [ ] Tests pass after each step
-- [ ] Behavior remains unchanged
-- [ ] Code is more maintainable
-- [ ] Team has reviewed changes
-- [ ] **Never remove existing tests** - only add new tests for refactoring validation
-
-## Integration Points
-
-Works with:
-- `senior-engineer` agent for refactoring execution
-- `technical-architecture-advisor` for large-scale refactoring
-- `/refactoring-plan` command for structured refactoring
-- `code-reviewer` agent for validating improvements
+- [ ] Tests pass before/after each step
+- [ ] Behavior unchanged
+- [ ] Never remove existing tests
