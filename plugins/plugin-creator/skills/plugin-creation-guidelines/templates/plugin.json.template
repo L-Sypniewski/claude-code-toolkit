@@ -1,0 +1,14 @@
+{
+  "name": "{{PLUGIN_NAME}}",
+  "version": "1.0.0",
+  "description": "{{DESCRIPTION}}",
+  "author": {
+    "name": "{{AUTHOR_NAME}}"
+  },
+  "keywords": [
+    {{KEYWORDS}}
+  ],
+  "license": "MIT",
+  "repository": "{{REPOSITORY_URL}}",
+  "homepage": "{{HOMEPAGE_URL}}"
+}

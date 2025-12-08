@@ -1,0 +1,17 @@
+{
+  "name": "plugin-name",
+  "version": "1.0.0",
+  "description": "Brief, comprehensive description of plugin capabilities and features",
+  "author": {
+    "name": "Author Name"
+  },
+  "keywords": [
+    "keyword1",
+    "keyword2",
+    "keyword3",
+    "keyword4"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/username/repository",
+  "homepage": "https://github.com/username/repository/tree/master/plugins/plugin-name"
+}

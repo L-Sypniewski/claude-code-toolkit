@@ -1,0 +1,13 @@
+---
+name: {{SKILL_NAME}}
+description: {{DESCRIPTION}}
+---
+
+# {{SKILL_TITLE}}
+
+{{SKILL_CONTENT}}
+
+## Integration Points
+
+Works with:
+- {{INTEGRATION_LIST}}

@@ -32,6 +32,12 @@ Quick reference for all Claude Code Skills in the toolkit.
 | `agent-documentation` | AGENTS.md for AI agents | Creating AI agent instructions |
 | `claude-delegation-rules` | Agent delegation patterns | Designing agent systems |
 
+### UI/UX Audit (1 skill)
+
+| Skill | Description | Use When |
+|-------|-------------|----------|
+| `ui-ux-audit-guidelines` | Professional UI/UX audit methodology | Conducting visual design audits |
+
 ## By Use Case
 
 ### Code Quality
@@ -47,15 +53,18 @@ Quick reference for all Claude Code Skills in the toolkit.
 - `agent-documentation` - AGENTS.md for AI coding agents
 - `claude-delegation-rules` - Agent coordination patterns
 
+### UI/UX Design Quality
+- `ui-ux-audit-guidelines` - Professional audit methodology and design vocabulary
+
 ### Issue & Code Analysis
 - `github-issue-processing` - Issue analysis
 - `code-review-checklist` - Code quality review
 
 ## Quick Stats
 
-- **Total Skills**: 8
-- **Total Plugins with Skills**: 4
-- **Average Skills per Plugin**: 2
+- **Total Skills**: 9
+- **Total Plugins with Skills**: 5
+- **Average Skills per Plugin**: 1.8
 - **Specification**: Anthropic Agent Skills v1.0
 
 ## How Skills Work

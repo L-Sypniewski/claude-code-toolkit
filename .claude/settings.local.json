@@ -3,7 +3,16 @@
     "allow": [
       "mcp__sequential-thinking__sequentialthinking",
       "Bash(tree:*)",
-      "WebFetch(domain:docs.github.com)"
+      "WebFetch(domain:docs.github.com)",
+      "WebFetch(domain:www.youngleaders.tech)",
+      "WebFetch(domain:alexop.dev)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)",
+      "Bash(mkdir:*)",
+      "Bash(wc:*)",
+      "Bash(chmod:*)",
+      "Bash(touch:*)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []
