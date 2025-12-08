@@ -80,9 +80,4 @@ Transform issue analysis into PRP format:
 2. **Response**: Include analysis and proposed approach
 3. **Plan**: Break down into actionable steps with dependencies
 
-## Integration Points
 
-Works with:
-- `context-engineering-github-issue-analyzer` agent
-- `context-engineering-prp-generator` agent for issue → PRP conversion
-- `/initial-github-issue` command
