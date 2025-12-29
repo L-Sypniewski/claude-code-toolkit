@@ -1,8 +1,16 @@
 # Documentation Templates Plugin
 
-Templates and examples for creating comprehensive project documentation including AGENTS.md and Claude Code delegation rules with best practices.
+Templates and examples for creating comprehensive project documentation including AGENTS.md organization, nested structure, and Claude Code delegation rules with best practices.
 
 ## Features
+
+### Agents
+
+- **agents-md-organizer** - Analyzes and reorganizes large AGENTS.md files into efficient modular structure with nested files and references to save context window space
+
+### Commands
+
+- **`/organize-agents-md [path]`** - Analyze and reorganize AGENTS.md files to improve organization and reduce context window consumption
 
 ### Prompts
 
@@ -10,6 +18,7 @@ Templates and examples for creating comprehensive project documentation includin
 
 ### Skills
 
+- **agents-md-organization** - Patterns and best practices for organizing large AGENTS.md files using nested structure, modular references, and separation of concerns
 - **agent-documentation** - Standards and templates for documenting Claude Code agents including AGENTS.md structure, agent specifications, and delegation patterns
 - **claude-delegation-rules** - Rules and patterns for effective agent delegation including handoff protocols, coordination patterns, and best practices
 
@@ -34,11 +43,36 @@ Templates and examples for creating comprehensive project documentation includin
 This plugin is part of the Claude Code Toolkit marketplace. Install via:
 
 ```bash
-/plugin marketplace add <marketplace-url>
+/plugin marketplace add https://github.com/L-Sypniewski/claude-code-toolkit.git
 /plugin install documentation-templates
 ```
 
 ## Usage
+
+### Organizing Existing AGENTS.md
+
+When your AGENTS.md file becomes too large (>500 lines) or difficult to maintain:
+
+```bash
+# Analyze and reorganize AGENTS.md in current directory
+/organize-agents-md
+
+# Organize AGENTS.md in specific directory
+/organize-agents-md path/to/project
+```
+
+The agent will:
+1. Analyze your current AGENTS.md structure
+2. Propose a reorganization plan (nested files, extracted details, subproject separation)
+3. Show expected context window savings (typically 60-75% reduction)
+4. Execute reorganization with your approval
+5. Validate all content is preserved
+
+**Common Scenarios:**
+- **Large File**: AGENTS.md >500 lines → Extract detailed sections to `docs/` files
+- **Monorepo**: Multiple subprojects → Create nested `backend/AGENTS.md`, `frontend/AGENTS.md`
+- **Extensive Tests**: Testing guidelines >30% of content → Move to `tests/AGENTS.md`
+- **Mixed Tech Stacks**: Different technologies → Separate into component-specific files
 
 ### Creating AGENTS.md for Your Project
 
@@ -61,15 +95,27 @@ This plugin is part of the Claude Code Toolkit marketplace. Install via:
 
 ## Benefits
 
+- **Context Window Efficiency**: Save 60-75% context window space with organized structure
+- **Better Organization**: Nested AGENTS.md files for subprojects, extracted details for clarity
 - **Consistency**: Standardized documentation across projects
 - **Onboarding**: New team members quickly understand project standards
 - **Automation**: Claude Code agents follow documented patterns automatically
 - **Quality**: Clear quality gates and acceptance criteria
 - **Efficiency**: Reusable templates save documentation time
+- **Maintainability**: Easier to update and maintain modular structure
 
 ## Best Practices
 
-### For AGENTS.md
+### For AGENTS.md Organization
+
+- **Keep Root Concise**: Target 200-400 lines for root AGENTS.md
+- **Use Nested Structure**: Create subdirectory AGENTS.md for subprojects (backend, frontend, infra)
+- **Extract Details**: Move detailed conventions to referenced files (docs/coding-standards.md, docs/testing-guide.md)
+- **Maintain Navigation**: Add "Quick Links" section with references to detailed files
+- **Context Window Efficiency**: Reduce typical context window usage by 60-75%
+- **Preserve Content**: Never delete, always extract or move to appropriate location
+
+### For AGENTS.md Creation
 
 - Start with a concise TL;DR that captures project essence
 - Define clear, measurable quality gates
