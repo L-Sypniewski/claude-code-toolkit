@@ -1,6 +1,6 @@
 ---
 name: agents-md-organizer
-description: Analyzes and reorganizes large AGENTS.md files into modular structure with nested files and references. Use PROACTIVELY when AGENTS.md files are too large (>500 lines) or when organizing project documentation. Do NOT use for: creating new AGENTS.md from scratch, general documentation, or non-AGENTS.md files.
+description: Analyzes and reorganizes large AGENTS.md files into modular structure with nested files and references. Use when AGENTS.md files are too large (>500 lines) or need better organization.
 tools: mcp__sequentialthinking__sequentialthinking, Read, Write, Edit, Bash, Glob, Grep, AskUserQuestion
 color: purple
 model: sonnet

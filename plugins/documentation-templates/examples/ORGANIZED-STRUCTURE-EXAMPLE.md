@@ -817,10 +817,11 @@ This organized structure provides:
 ✅ **Agent Efficiency**: Agents load only relevant context for current location
 
 **Usage Pattern:**
-- Working on root-level concerns → Load root AGENTS.md (250 lines)
-- Working in backend → Load backend/AGENTS.md (300 lines) + root context
-- Working in frontend → Load frontend/AGENTS.md (350 lines) + root context
-- Need testing details → Reference docs/testing-guide.md (400 lines)
-- Need deployment info → Reference docs/deployment.md (200 lines)
+- Working on root-level concerns → Load root AGENTS.md (250 lines) - 79% savings
+- Working in backend → Load backend/AGENTS.md (300 lines) + root (550 total) - 54% savings
+- Working in frontend → Load frontend/AGENTS.md (350 lines) + root (600 total) - 50% savings
+- Need testing details → Reference docs/testing-guide.md (400 lines) when needed
+- Need deployment info → Reference docs/deployment.md (200 lines) when needed
 
-**Result:** Agents consume 200-500 lines instead of 1200 lines in typical scenarios.
+**Result:** Agents typically load 250-600 lines depending on context, compared to always loading 1200 lines.
+**Average savings across typical scenarios: 50-79% context window reduction**

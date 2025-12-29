@@ -187,7 +187,7 @@ When test guidelines are extensive, create nested AGENTS.md in test directory:
 
 ## How AI Agents Use Nested AGENTS.md
 
-AI agents (Claude Code, GitHub Copilot, Cursor) automatically:
+AI agents (Claude Coder, GitHub Copilot, Cursor) automatically:
 1. **Load root AGENTS.md** first for general context
 2. **Discover nested AGENTS.md files** when working in subdirectories
 3. **Merge settings** with more specific (nested) files taking precedence
