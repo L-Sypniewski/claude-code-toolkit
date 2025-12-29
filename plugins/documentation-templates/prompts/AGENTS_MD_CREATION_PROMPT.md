@@ -24,6 +24,8 @@ Track your progress against this plan throughout the work to ensure comprehensiv
 - Read existing documentation (README.md, contributing guidelines, package files, config files)
 - Identify the primary technology stack, build tools, testing frameworks, and deployment methods
 - Look for existing agent-specific documentation (.github/copilot-instructions.md, .cursorrules, etc.)
+- **Assess project complexity**: Single project vs monorepo with subprojects (backend, frontend, infra)
+- **Evaluate documentation needs**: Will AGENTS.md be large (>500 lines)? Consider organization strategy
 
 ### 2. **Validation Phase (Critical)**
 - **Cross-reference documentation claims with actual codebase** - this is essential for accuracy
@@ -32,7 +34,34 @@ Track your progress against this plan throughout the work to ensure comprehensiv
 - Validate build commands by checking build configuration files and scripts
 - Ensure dependency management approach matches actual implementation
 
-### 3. **Structure Creation**
+### 3. **Organization Strategy (New!)**
+
+**Before creating content**, decide on organization approach:
+
+**For Simple Projects (<500 lines expected):**
+- Create single root AGENTS.md with all content
+
+**For Complex Projects (>500 lines or monorepo):**
+- Use **modular organization** with nested structure
+- Reference the `agents-md-organization` skill for patterns
+- Consider:
+  - **Pattern 1: Root + Referenced Details** - Extract detailed sections to docs/ files
+  - **Pattern 2: Nested AGENTS.md** - Create subdirectory AGENTS.md for subprojects
+  - **Pattern 3: Category-Based** - Organize by concern type
+  - **Pattern 4: Tests Subdirectory** - Extensive testing guidelines in tests/AGENTS.md
+
+**Benefits of Modular Organization:**
+- 60-75% context window reduction
+- Better maintainability
+- Clearer navigation
+- Agents load only relevant context
+
+**Examples:**
+- Monorepo → Root AGENTS.md (200 lines) + backend/AGENTS.md + frontend/AGENTS.md
+- Detailed conventions → Root AGENTS.md references docs/coding-standards.md
+- Extensive testing → Root references tests/AGENTS.md
+
+### 4. **Structure Creation**
 Follow this proven structure, adapting sections as needed:
 
 ## Required Sections Template
@@ -166,6 +195,10 @@ Before finalizing, verify:
 
 - Official format documentation: https://agents.md/
 - Examples from 20k+ open source projects: https://github.com/search?q=path%3AAGENTS.md&type=code
+- **NEW: Organization patterns**: Reference `agents-md-organization` skill for modular structure
+- **NEW: Organized example**: See `examples/ORGANIZED-STRUCTURE-EXAMPLE.md` for complete before/after
+
+**Consider running `/organize-agents-md` after creation if the file becomes large (>500 lines).**
 
 Remember: This AGENTS.md will be used by autonomous agents who cannot ask clarifying questions. Accuracy and completeness are essential for successful automation.
 ````

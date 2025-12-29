@@ -11,12 +11,15 @@ This skill provides standards for creating AGENTS.md files - dedicated instructi
 
 AGENTS.md is the "README for AI agents" - a machine-readable guide that provides explicit instructions for AI coding tools (like Claude, Copilot, Cursor) working with your project. Unlike README.md (for humans), AGENTS.md gives AI agents unambiguous, step-by-step guidance.
 
+**Important**: For large projects or monorepos, use modular organization (nested AGENTS.md files and referenced detail files) to save context window space. See the `agents-md-organization` skill for patterns.
+
 ## Purpose
 
 - **Centralized Instructions**: Single source of truth for all AI agents
 - **Explicit Guidance**: Clear setup commands, coding standards, testing workflows
 - **Project Context**: Architecture decisions, conventions, constraints
 - **Consistency**: Ensures AI-generated code matches project standards
+- **Efficiency**: Modular organization saves 60-75% context window space in complex projects
 
 ## AGENTS.md Structure
 
@@ -208,3 +211,7 @@ dotnet ef database update
 - [AGENTS.md Specification](https://agents.md/)
 - [GitHub's AGENTS.md Guide](https://github.blog/ai-and-ml/github-copilot/how-to-write-a-great-agents-md-lessons-from-over-2500-repositories/)
 - [OpenAI AGENTS.md Repo](https://github.com/openai/agents.md)
+- **Organization patterns**: See `agents-md-organization` skill for modular structure
+- **Complete example**: See `examples/ORGANIZED-STRUCTURE-EXAMPLE.md` for organized structure
+
+**For large AGENTS.md files (>500 lines)**: Use `/organize-agents-md` command to reorganize into efficient modular structure.
