@@ -310,9 +310,9 @@ Include clear references in root AGENTS.md:
 - Root AGENTS.md: 200 lines (overview + references)
 - backend/AGENTS.md: 300 lines (loaded only when in backend)
 - docs/testing-guide.md: 400 lines (loaded only when needed)
-- Context window: 200-500 lines depending on location and need
+- Context window: 200-600 lines depending on location and need
 
-**Savings: 60-75% context window reduction**
+**Savings: 50-79% context window reduction**
 
 ## Real-World Examples
 

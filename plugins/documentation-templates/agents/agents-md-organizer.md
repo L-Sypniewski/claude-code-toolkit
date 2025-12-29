@@ -356,7 +356,7 @@ Reference `agents-md-organization` skill for detailed guidance, but in summary:
 
 A successful reorganization achieves:
 - ✅ Root AGENTS.md under 400 lines
-- ✅ 60-75% context window reduction in typical usage
+- ✅ 50-79% context window reduction in typical usage
 - ✅ Clear navigation with working links
 - ✅ No information loss
 - ✅ Logical file organization

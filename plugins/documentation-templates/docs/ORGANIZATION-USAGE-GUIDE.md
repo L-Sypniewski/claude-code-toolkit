@@ -2,7 +2,7 @@
 
 ## What's New
 
-The documentation-templates plugin now includes comprehensive tools for organizing large AGENTS.md files into efficient, modular structures that save 60-75% context window space.
+The documentation-templates plugin now includes comprehensive tools for organizing large AGENTS.md files into efficient, modular structures that save 50-79% context window space.
 
 ## Problem Solved
 
@@ -61,7 +61,7 @@ Real-world example showing:
 - Original 1200-line AGENTS.md
 - Reorganized structure (root + nested + referenced)
 - Complete file contents for all components
-- 60-75% context window savings
+- 50-79% context window savings
 
 ## Organization Patterns
 
@@ -169,7 +169,7 @@ Inform team about new structure:
 ### Context Window Efficiency
 - **Before**: 1200 lines loaded every time (100% usage)
 - **After**: 200-500 lines depending on location (25-40% usage)
-- **Savings**: 60-75% reduction
+- **Savings**: 50-79% reduction
 
 ### Maintainability
 - Easier to update specific sections

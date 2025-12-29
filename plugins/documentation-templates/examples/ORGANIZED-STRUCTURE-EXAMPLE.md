@@ -19,7 +19,7 @@ Project: Full-stack web application with backend (Node.js), frontend (React), an
 - docs/testing-guide.md: 400 lines (detailed testing)
 - docs/deployment.md: 200 lines (deployment procedures)
 
-**Result:** 60-75% context window reduction in typical usage
+**Result:** 50-79% context window reduction in typical usage
 
 ---
 
@@ -809,7 +809,7 @@ await waitFor(() => {
 
 This organized structure provides:
 
-✅ **Context Window Efficiency**: 60-75% reduction (250 lines root vs 1200 lines original)
+✅ **Context Window Efficiency**: 50-79% reduction (250 lines root vs 1200 lines original)
 ✅ **Clear Navigation**: Quick links to all relevant documentation
 ✅ **Subproject Isolation**: Separate AGENTS.md for backend and frontend
 ✅ **Detailed References**: Comprehensive guides extracted to docs/

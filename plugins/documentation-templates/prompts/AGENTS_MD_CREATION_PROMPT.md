@@ -51,7 +51,7 @@ Track your progress against this plan throughout the work to ensure comprehensiv
   - **Pattern 4: Tests Subdirectory** - Extensive testing guidelines in tests/AGENTS.md
 
 **Benefits of Modular Organization:**
-- 60-75% context window reduction
+- 50-79% context window reduction
 - Better maintainability
 - Clearer navigation
 - Agents load only relevant context

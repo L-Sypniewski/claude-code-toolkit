@@ -64,7 +64,7 @@ When your AGENTS.md file becomes too large (>500 lines) or difficult to maintain
 The agent will:
 1. Analyze your current AGENTS.md structure
 2. Propose a reorganization plan (nested files, extracted details, subproject separation)
-3. Show expected context window savings (typically 60-75% reduction)
+3. Show expected context window savings (typically 50-79% reduction)
 4. Execute reorganization with your approval
 5. Validate all content is preserved
 
@@ -95,7 +95,7 @@ The agent will:
 
 ## Benefits
 
-- **Context Window Efficiency**: Save 60-75% context window space with organized structure
+- **Context Window Efficiency**: Save 50-79% context window space with organized structure
 - **Better Organization**: Nested AGENTS.md files for subprojects, extracted details for clarity
 - **Consistency**: Standardized documentation across projects
 - **Onboarding**: New team members quickly understand project standards
@@ -112,7 +112,7 @@ The agent will:
 - **Use Nested Structure**: Create subdirectory AGENTS.md for subprojects (backend, frontend, infra)
 - **Extract Details**: Move detailed conventions to referenced files (docs/coding-standards.md, docs/testing-guide.md)
 - **Maintain Navigation**: Add "Quick Links" section with references to detailed files
-- **Context Window Efficiency**: Reduce typical context window usage by 60-75%
+- **Context Window Efficiency**: Reduce typical context window usage by 50-79%
 - **Preserve Content**: Never delete, always extract or move to appropriate location
 
 ### For AGENTS.md Creation

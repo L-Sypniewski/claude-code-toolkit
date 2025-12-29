@@ -16,7 +16,7 @@ Analyze and reorganize AGENTS.md file at {{path | default: "."}} to improve orga
 4. Execute the reorganization with your approval
 5. Validate that all content is preserved and properly referenced
 
-The agent uses patterns from the `agents-md-organization` skill to create an efficient, maintainable structure that reduces context window usage by 60-75% while preserving all valuable information.
+The agent uses patterns from the `agents-md-organization` skill to create an efficient, maintainable structure that reduces context window usage by 50-79% while preserving all valuable information.
 
 **Expected Outcomes:**
 - Root AGENTS.md reduced to 200-400 lines (overview + references)
