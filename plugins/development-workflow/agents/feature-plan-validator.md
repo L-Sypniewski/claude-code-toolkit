@@ -1,7 +1,7 @@
 ---
 name: feature-plan-validator
 description: Validates feature implementation plans for completeness, feasibility, and clarity. Auto-invoke before implementation to ensure plans are ready. Do NOT use for requirements gathering or implementation.
-tools: Read, mcp__sequentialthinking__sequentialthinking, mcp__context7__resolve-library-id, mcp__context7__query-docs, Grep, Glob
+tools: Read, mcp__sequentialthinking__sequentialthinking, mcp__context7__resolve_library_id, mcp__context7__get_library_docs, Grep, Glob
 color: purple
 model: sonnet
 ---
