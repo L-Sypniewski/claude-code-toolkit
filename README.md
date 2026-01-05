@@ -274,15 +274,16 @@ See the [Claude Code Plugin Reference](https://docs.claude.com/en/docs/claude-co
 
 ### External Resources
 
-#### Official Claude Code Documentation
-- [Claude Code Documentation](https://docs.claude.com/en/docs/claude-code) - Main documentation hub
-- [Plugin Development Reference](https://docs.claude.com/en/docs/claude-code/plugins-reference) - How to build plugins
-- [Plugin Marketplace Guide](https://docs.claude.com/en/docs/claude-code/plugin-marketplaces) - Publishing to marketplaces
-- [Agent Skills Documentation](https://docs.claude.com/en/docs/claude-code/agent-skills) - Creating and using skills
+#### Claude Code Documentation References
+- **Official Claude Code Sub-Agents**: https://code.claude.com/docs/en/sub-agents
+- **Official Claude Code Skills**: https://code.claude.com/docs/en/skills
+- **Agent Skills Platform Overview**: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
+- **Agent Skills Open Standard**: https://agentskills.io/home
+- **Claude Code Components Guide**: https://www.youngleaders.tech/p/claude-skills-commands-subagents-plugins
 
 #### Skills Resources
 - [Anthropic Skills Repository](https://github.com/anthropics/skills) - Official skills examples
-- [Agent Skills Overview](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) - Technical deep dive
+- [Agent Skills Engineering Blog](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) - Technical deep dive
 - [Skills Specification](https://github.com/anthropics/skills/blob/main/agent_skills_spec.md) - SKILL.md format
 
 ## 🤝 Contributing

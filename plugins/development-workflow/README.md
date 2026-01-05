@@ -135,6 +135,24 @@ The **senior-engineer** and **technical-architecture-advisor** agents are design
 - Skills provide procedural knowledge that agents automatically access when relevant
 - Leverage code-review-checklist for thorough quality assessment
 
+## Documentation References
+
+For understanding how agents, skills, and commands work in Claude Code:
+
+- **Official Claude Code Sub-Agents**: https://code.claude.com/docs/en/sub-agents
+- **Official Claude Code Skills**: https://code.claude.com/docs/en/skills
+- **Agent Skills Platform Overview**: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
+- **Agent Skills Open Standard**: https://agentskills.io/home
+- **Claude Code Components Guide**: https://www.youngleaders.tech/p/claude-skills-commands-subagents-plugins
+
+### Key Concepts
+
+**Skills** are auto-invoked context providers. Claude loads them based on description matching - you don't explicitly assign skills to agents. Skills use progressive disclosure: metadata loaded at startup, full SKILL.md loaded when triggered.
+
+**Subagents** are explicit workflow orchestrators invoked via Task tool. They run in separate context windows with configurable tool access.
+
+**Commands** are user-initiated shortcuts (`/command`) that invoke subagents or execute workflows.
+
 ## License
 
 MIT
