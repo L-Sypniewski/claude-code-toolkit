@@ -1,12 +1,16 @@
 {
   "name": "development-workflow",
-  "version": "1.3.0",
-  "description": "Comprehensive development toolkit with senior engineering, code review, architecture advisory, screenshot comparison, and PR management capabilities for end-to-end software development",
+  "version": "1.4.0",
+  "description": "Comprehensive development toolkit with intelligent feature workflows, senior engineering, code review, architecture advisory, screenshot comparison, and PR management capabilities for end-to-end software development",
   "author": {
     "name": "Claude Code Toolkit"
   },
   "keywords": [
     "development",
+    "feature-workflow",
+    "orchestration",
+    "planning",
+    "validation",
     "code-review",
     "architecture",
     "pull-request",
