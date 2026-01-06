@@ -1,152 +1,109 @@
 ---
 name: workflow-orchestration
-description: Coordinate multi-step workflows involving multiple agents, commands, and validation points. Use when managing complex development workflows that require coordination between different specialized agents.
+description: Execute and manage multi-step workflows with progress tracking, error handling, and validation. Use when running complex development workflows, coordinating multi-phase tasks, or managing workflow state and recovery.
 ---
 
 # Workflow Orchestration
 
-This skill provides patterns for orchestrating complex workflows with multiple agents and validation points.
+Execute and manage complex workflows with multiple phases and validation points.
 
-## Workflow Patterns
+## Core Execution Principles
 
-### Sequential Workflow
+### 1. Phase-Based Execution
 
-For workflows where each step depends on the previous one:
+Break workflows into distinct phases with clear boundaries:
 
 ```markdown
-1. Initial Analysis → 2. Planning → 3. Implementation → 4. Validation
+Phase 1: Analysis → Phase 2: Implementation → Phase 3: Validation
 ```
 
-**When to use**: Linear dependencies, each step builds on previous results
+Each phase should have:
+- Clear entry criteria (what must be true to start)
+- Defined deliverables (what it produces)
+- Exit criteria (when it's complete)
 
-### Parallel Workflow
+### 2. Visible Progress
 
-For independent tasks that can run concurrently:
-
-```markdown
-        ┌→ Task A ┐
-Start → ├→ Task B ├→ Merge → Continue
-        └→ Task C ┘
-```
-
-**When to use**: Independent components, can be developed/tested separately
-
-### Iterative Workflow
-
-For workflows requiring refinement:
+Track progress explicitly so status is always clear:
 
 ```markdown
-Plan → Implement → Review → [Refine Plan] → Loop until criteria met
-```
-
-**When to use**: Exploratory tasks, requirements evolve during execution
-
-## Agent Coordination
-
-### Handoff Pattern
-
-Clear transitions between specialized agents:
-
-```markdown
-1. github-issue-analyzer: Extract requirements
-2. prp-generator: Create structured plan
-3. executor: Implement solution
-4. Code review (external): Validate quality
-```
-
-**Handoff checklist**:
-- [ ] Previous agent completed all deliverables
-- [ ] Next agent has required context
-- [ ] Success criteria clearly defined
-
-### Delegation Pattern
-
-Main orchestrator delegates to specialists:
-
-```markdown
-Orchestrator
-    ├→ Technical research → Report findings
-    ├→ Implementation → Deliver code
-    └→ Documentation → Update docs
-```
-
-**Delegation checklist**:
-- [ ] Clear scope and boundaries for each agent
-- [ ] Expected outputs defined
-- [ ] Time/resource constraints communicated
-
-## Progress Tracking
-
-Use structured tracking for visibility:
-
-```markdown
-## Workflow Status
-
-### Phase 1: Analysis ✅
-- [x] GitHub issue analyzed
-- [x] Requirements extracted
-- [x] PRP generated
-
 ### Phase 2: Implementation 🔄
-- [x] Core functionality implemented
-- [ ] Edge cases handled
-- [ ] Tests written
-
-### Phase 3: Validation ⏸️
-- [ ] Code review
-- [ ] Integration tests
-- [ ] Documentation updated
+- [x] Core functionality
+- [ ] Edge cases
+- [ ] Tests
 ```
 
 Symbols: ✅ Complete | 🔄 In Progress | ⏸️ Blocked | ❌ Failed
 
+### 3. Graceful Recovery
+
+Every workflow should handle failures:
+- Define contingency plans before starting
+- Know when to rollback vs. retry vs. escalate
+- Document failures for future learning
+
+## Workflow Patterns
+
+### Sequential
+```
+Step 1 → Step 2 → Step 3 → Done
+```
+**Use when**: Each step depends on the previous step's output
+
+### Parallel
+```
+     ┌→ Task A ┐
+Start├→ Task B ├→ Merge → Continue
+     └→ Task C ┘
+```
+**Use when**: Tasks are independent and can run concurrently
+
+### Iterative
+```
+Plan → Execute → Review → [Refine] → Loop until done
+```
+**Use when**: Requirements evolve or refinement cycles needed
+
+## Progress Tracking
+
+**For detailed tracking patterns**, see [guides/progress-tracking.md](guides/progress-tracking.md).
+
+**Quick reference** - Status template:
+```markdown
+## Workflow Status
+
+### Phase 1: [Name] ✅
+- [x] Task completed
+
+### Phase 2: [Name] 🔄
+- [x] Task done
+- [ ] Task pending
+```
+
 ## Error Handling
 
-Define fallback strategies:
+**For error handling strategies**, see [guides/error-handling.md](guides/error-handling.md).
 
-```markdown
-## Contingency Plans
-
-### If implementation fails:
-1. Rollback to previous stable state
-2. Analyze failure root cause
-3. Adjust plan based on learnings
-4. Retry with updated approach
-
-### If validation fails:
-1. Document specific failures
-2. Create targeted fixes
-3. Re-run validation subset
-4. Escalate if pattern of failures
-```
+**Quick reference** - When failures occur:
+1. **Rollback**: If implementation broke existing functionality
+2. **Retry**: If failure was due to correctable issue
+3. **Escalate**: If issue is beyond current scope
 
 ## Workflow Templates
 
-### Bug Fix Workflow
+**For ready-to-use templates**, see [guides/workflow-templates.md](guides/workflow-templates.md).
 
-```markdown
-1. Issue Analysis → Reproduce bug
-2. Root Cause → Identify problem
-3. Fix Design → Plan solution
-4. Implementation → Apply fix
-5. Testing → Verify resolution
-6. Regression Check → Ensure no side effects
-```
+Available templates:
+- Bug Fix Workflow
+- Feature Development Workflow
+- Refactoring Workflow
+- Investigation Workflow
 
-### Feature Development Workflow
+## Best Practices Checklist
 
-```markdown
-1. Requirements → Define scope
-2. Design Review → Architecture validation
-3. Prototype → Quick proof of concept
-4. Implementation → Full feature build
-5. Testing → Comprehensive validation
-6. Documentation → User-facing docs
-7. Deployment → Staged rollout
-```
-
-## Integration with Plugin Components
-
-- **Orchestrator agent**: Uses these patterns for workflow management
-- **Executor agent**: Follows orchestration directives
-- **Commands**: `/generate-prp`, `/execute-prp` implement workflow steps
+- [ ] Workflow broken into clear phases
+- [ ] Each phase has entry/exit criteria
+- [ ] Progress tracked with status symbols
+- [ ] Contingency plans defined
+- [ ] Deliverables specified for each phase
+- [ ] Recovery strategy known before starting
