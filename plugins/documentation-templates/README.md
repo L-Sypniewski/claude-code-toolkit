@@ -159,6 +159,30 @@ The included examples are from actual projects and demonstrate:
 - Integrating quality standards with practical guidance
 - Creating actionable delegation rules
 
+## Documentation References
+
+For understanding how agents, skills, and commands work in Claude Code:
+
+- **Official AGENTS.md Specification**: https://agents.md/
+- **GitHub's AGENTS.md Guide**: https://github.blog/ai-and-ml/github-copilot/how-to-write-a-great-agents-md-lessons-from-over-2500-repositories/
+- **Official Claude Code Sub-Agents**: https://code.claude.com/docs/en/sub-agents
+- **Official Claude Code Skills**: https://code.claude.com/docs/en/skills
+- **Agent Skills Platform Overview**: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
+- **Agent Skills Open Standard**: https://agentskills.io/home
+- **Claude Code Components Guide**: https://www.youngleaders.tech/p/claude-skills-commands-subagents-plugins
+
+**For synthesized insights from these sources**, see [docs/external-references.md](docs/external-references.md).
+
+### Key Concepts
+
+**Skills** are auto-invoked context providers. Claude loads them based on description matching - you don't explicitly assign skills to agents. Skills use progressive disclosure: metadata loaded at startup, full SKILL.md loaded when triggered, supporting files loaded on-demand.
+
+**Subagents** are explicit workflow orchestrators invoked via Task tool. They run in separate context windows with configurable tool access.
+
+**Commands** are user-initiated shortcuts (`/command`) that invoke subagents or execute workflows.
+
+**AGENTS.md** is the "README for AI agents" - providing project-specific conventions, commands, and quality gates that AI coding tools use automatically.
+
 ## License
 
 MIT

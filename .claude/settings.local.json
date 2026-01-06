@@ -12,7 +12,9 @@
       "Bash(wc:*)",
       "Bash(chmod:*)",
       "Bash(touch:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "WebFetch(domain:agents.md)",
+      "WebFetch(domain:github.blog)"
     ],
     "deny": [],
     "ask": []
