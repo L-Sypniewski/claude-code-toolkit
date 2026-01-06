@@ -1,6 +1,6 @@
 {
   "name": "context-engineering",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Advanced context engineering workflow with PRP generation, execution orchestration, and GitHub issue analysis for efficient software development processes",
   "author": {
     "name": "Claude Code Toolkit"

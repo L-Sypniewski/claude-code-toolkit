@@ -1,6 +1,6 @@
 {
   "name": "git-project-management",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Git worktree management and project planning utilities for efficient version control workflows and parallel development",
   "author": {
     "name": "Claude Code Toolkit"
