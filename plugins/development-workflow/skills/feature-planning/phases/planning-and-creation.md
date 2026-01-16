@@ -24,9 +24,9 @@
 
    IMPORTANT PLANNING RULES:
    - Do NOT include any time estimates
-   - Each step that produces testable code MUST include its test
+   - Each step that produces testable code MUST include its test(s)
    - Tests are NOT batched at the end - they go with each step
-   - Favor integration tests with real infrastructure (test containers, local DB)
+   - Favor integration tests with real infrastructure; test infra must be created during tests and removed afterwards
    - Plan must be trackable so another agent can resume from any step
 
    Provide:

@@ -10,10 +10,11 @@
 
 ### Critical Rules
 
-1. **Test with each step** - Do not proceed to next step until tests pass
+1. **Test with each step** - Do not proceed to next step until tests pass and/or acceptance criteria is met
 2. **Update plan immediately** - Mark step complete in plan file before moving on
 3. **Real infrastructure** - Use test containers, local instances over mocks
-4. **Stop on failure** - If tests fail, fix before proceeding
+4. **Ephemeral test infra** - Test infrastructure must be created during tests and removed afterwards
+5. **Stop on failure** - If tests fail, fix before proceeding
 
 ### Steps
 
@@ -31,23 +32,13 @@
    a) **Implement the step**
    b) **Run tests for that step** (if applicable)
       - Use integration tests with real infrastructure when possible
-      - Example: Test containers for databases
-      ```bash
-      # Start test infrastructure
-      docker run -d --name test-db -p 5432:5432 postgres:15
-      
-      # Run tests
-      npm test
-      
-      # Cleanup
-      docker stop test-db && docker rm test-db
-      ```
+      - Test infrastructure must be created during tests and removed afterwards
    c) **Verify success criteria met**
    d) **Update plan file immediately**:
       - Mark step checkbox as complete: `[x]`
       - Add implementation notes
       - Update "Last Updated" timestamp
-   e) **Do NOT proceed if tests fail**
+   e) **Do NOT proceed if tests fail or acceptance criteria not met**
 
 3. **After Each Major Section**
 

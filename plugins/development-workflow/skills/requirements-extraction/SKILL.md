@@ -1,6 +1,6 @@
 ---
 name: requirements-extraction
-description: Extract and normalize feature requirements from various input sources (GitHub issues, text prompts, files). Auto-invoke when processing feature requests from any source. Provides consistent structured output for downstream planning.
+description: Extract and normalize feature requirements from various input sources (GitHub issues, text prompts, files). Use when processing feature requests from /feature-from-issue, /feature-from-prompt, or /feature-from-file commands. Do NOT use for already-structured requirements or direct code tasks.
 ---
 
 # Requirements Extraction

@@ -1,11 +1,13 @@
 ---
 name: feature-planning
-description: End-to-end feature implementation workflow from requirements to completion. Auto-invoke for feature-from-issue, feature-from-prompt, feature-from-file, and resume-feature commands. Handles complexity assessment, planning, validation, approval, implementation, and completion phases.
+description: End-to-end feature implementation workflow from requirements to completion. Use when implementing features via /feature-from-issue, /feature-from-prompt, /feature-from-file, or /resume-feature commands. Do NOT use for simple code changes, bug fixes, or refactoring tasks.
 ---
 
 # Feature Planning Workflow
 
 Centralized workflow for implementing features from any input source. Execute phases sequentially with mandatory user approval between each phase.
+
+If anything is unclear during planning, use the `AskUserQuestion` tool to ask the user for clarification before proceeding.
 
 ## Critical Rules
 
@@ -46,6 +48,8 @@ Use sequential thinking, Context7, and microsoft-docs for latest documentation a
 
 ## Phase Execution Protocol
 
+**These rules apply to the generated plan file and its execution:**
+
 After completing each phase:
 
 1. **Update plan file** - Mark completed tasks with `[x]`
@@ -67,24 +71,10 @@ After completing each phase:
 **For testable features**, each implementation step should include:
 
 1. **Test scaffolding** - Create test files alongside implementation
-2. **Integration tests preferred** - Use real infrastructure:
-   - Test containers (Docker)
-   - Local database instances
-   - CLI tools to spawn/teardown services
-3. **Step not complete** until tests pass
-4. **Test before moving on** - Don't batch tests at the end
-
-**Infrastructure patterns**:
-```bash
-# Example: Start test database
-docker run -d --name test-db -p 5432:5432 postgres:15
-
-# Run tests against real database
-npm test
-
-# Cleanup
-docker stop test-db && docker rm test-db
-```
+2. **Integration tests preferred** - Use real infrastructure (test containers, local instances)
+3. **Ephemeral test infrastructure** - Test infra must be created during tests and removed afterwards
+4. **Step not complete** until tests pass and/or acceptance criteria met
+5. **Test before moving on** - Don't batch tests at the end
 
 ## Quick Reference
 

@@ -15,7 +15,14 @@ Extract and normalize feature requirements from a GitHub issue.
    ```
    Parse owner and repository name.
 
-2. **Fetch issue details** using GitHub MCP tools:
+2. **Fetch issue details** (prefer `gh` CLI, fallback to GitHub MCP if `gh` fails):
+   
+   **Primary method - gh CLI**:
+   ```bash
+   gh issue view <issue-number> --json title,body,labels,assignees,comments
+   ```
+   
+   **Fallback - GitHub MCP tools** if `gh` CLI fails:
    - Issue title and body
    - Labels and assignees
    - Comments for additional context
