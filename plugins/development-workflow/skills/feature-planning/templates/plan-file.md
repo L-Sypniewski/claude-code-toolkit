@@ -45,16 +45,19 @@ FEATURE, EXAMPLES, DOCUMENTATION, OTHER CONSIDERATIONS]
 **IMPORTANT**: Each step includes its test. Tests are NOT batched at the end.
 
 #### Step 1: [Name]
+
 - [ ] **Implementation**: [What to build]
 - [ ] **Test**: [Test to write/run for this step]
 - **Success Criteria**: [How to verify step is complete]
 
 #### Step 2: [Name]
+
 - [ ] **Implementation**: [What to build]
 - [ ] **Test**: [Test to write/run for this step]
 - **Success Criteria**: [How to verify step is complete]
 
 #### Step 3: [Name]
+
 - [ ] **Implementation**: [What to build]
 - [ ] **Test**: [Test to write/run for this step - favor integration tests]
 - **Success Criteria**: [How to verify step is complete]
@@ -62,6 +65,7 @@ FEATURE, EXAMPLES, DOCUMENTATION, OTHER CONSIDERATIONS]
 ### Testing Strategy
 
 **Prefer integration tests** with real infrastructure:
+
 - Test containers for databases (PostgreSQL, MongoDB, etc.)
 - Local service instances via Docker/CLI
 - Real API calls to local services
@@ -70,12 +74,14 @@ FEATURE, EXAMPLES, DOCUMENTATION, OTHER CONSIDERATIONS]
 ### Validation Criteria
 
 [Specific, measurable criteria - must all pass before completion]
+
 - [ ] Criterion 1: [Measurable requirement]
 - [ ] Criterion 2: [Measurable requirement]
 
 ## Validation Results
 
 [Filled by feature-plan-validator]
+
 - Status: [APPROVED | APPROVED WITH NOTES | NEEDS REVISION]
 - Issues: [List any issues found]
 - Recommendations: [List recommendations]
@@ -83,6 +89,7 @@ FEATURE, EXAMPLES, DOCUMENTATION, OTHER CONSIDERATIONS]
 ## Progress Tracking
 
 ### Phase Progress
+
 - [x] Phase 1: Setup
 - [x] Phase 2: Complexity Assessment
 - [x] Phase 3: Implementation Planning
@@ -93,18 +100,23 @@ FEATURE, EXAMPLES, DOCUMENTATION, OTHER CONSIDERATIONS]
 - [ ] Phase 8: Completion
 
 ### Implementation Progress
+
 [Updated as steps complete - another agent can resume from here]
+
 - Last completed step: [Step N]
 - Next step: [Step N+1]
 - Blocking issues: [None | List issues]
 
 ### Implementation Notes
+
 [Filled during implementation]
 
 ### Changes from Original Plan
+
 [Document any deviations]
 
 ## Metadata
+
 **Plan File**: plans/feature-[sanitized-title]-[timestamp].md
 **Assigned Agent**: [senior-engineer | other]
 **Related Issue**: [#X if GitHub issue source, otherwise N/A]

@@ -34,18 +34,23 @@ Extract and normalize feature requirements from a local specification file.
 
 ```markdown
 ## FEATURE
+
 [Extracted from Overview/Description sections]
 
 ## EXAMPLES
+
 [From Examples/Scenarios/User Stories sections]
 
 ## DOCUMENTATION
+
 [From Technical Context/References sections]
 
 ## OTHER CONSIDERATIONS
+
 [From Constraints/Notes/Requirements sections]
 
 ---
+
 **SOURCE**: file
 **REFERENCE**: [file-path]
 **COMPLETENESS**: [COMPLETE | INCOMPLETE]
