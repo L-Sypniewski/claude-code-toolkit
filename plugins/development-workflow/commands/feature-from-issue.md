@@ -45,21 +45,15 @@ The analyzer will:
 - Post analysis comment to the GitHub issue
 - Return normalized requirements with completeness status
 
-### 3. Handle Incomplete Requirements
+### 3. Continue with Feature Planning Workflow
 
-If `feature-issue-analyzer` returns `COMPLETENESS: INCOMPLETE`:
-- Invoke `feature-requirements-clarifier` agent with the gaps
-- Get enriched requirements
-- Continue with complete requirements
-
-### 4. Continue with Feature Planning Workflow
-
-Pass the normalized requirements and source metadata to the `feature-planning` skill workflow:
+Pass the requirements output and source metadata to the `feature-planning` skill workflow:
 - Source type: "github-issue"
 - Source reference: Issue #$ARGUMENTS
-- Requirements: [structured output from analyzer]
+- Requirements: [output from analyzer, may be complete or incomplete]
 
-The `feature-planning` skill handles all subsequent phases:
+The `feature-planning` skill handles:
+- Incomplete requirements resolution via `feature-requirements-clarifier` (if needed)
 - Complexity assessment (0-8 scoring)
 - Implementation planning (senior-engineer + optional arch advisor)
 - Plan file creation

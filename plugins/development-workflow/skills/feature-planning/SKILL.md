@@ -10,15 +10,30 @@ Centralized workflow for implementing features from any input source. This skill
 ## Prerequisites
 
 Before invoking this workflow, the caller must:
-1. Obtain normalized requirements from `feature-issue-analyzer` agent
-2. Pass the structured requirements (FEATURE/EXAMPLES/DOCUMENTATION/CONSIDERATIONS format)
+1. Obtain requirements from input source (GitHub issue, prompt, or file)
+2. Delegate to `feature-issue-analyzer` agent for normalization
 3. Provide source metadata (type: "github-issue" | "prompt" | "file", reference: issue number/file path/none)
+
+### Handling Incomplete Requirements
+
+If `feature-issue-analyzer` returns `COMPLETENESS: INCOMPLETE`:
+1. Invoke `feature-requirements-clarifier` agent with the gaps
+2. The clarifier will ask targeted questions to resolve ambiguities
+3. Get enriched requirements with user clarifications
+4. Continue workflow with complete requirements
+
+See `requirements-clarification` skill for question patterns.
 
 ## Workflow Phases
 
-### PHASE 1: Setup
+### PHASE 1: Setup (Requirements Handling)
 
-1. **Create TodoWrite for Progress Tracking**
+1. **Verify Requirements Completeness**
+   Check the `COMPLETENESS` status from analyzer output.
+   - If `COMPLETE`: Proceed to Phase 2
+   - If `INCOMPLETE`: Invoke `feature-requirements-clarifier` agent first
+
+2. **Create TodoWrite for Progress Tracking**
    Initialize todo list with workflow phases:
    - [ ] Requirements analysis
    - [ ] Complexity assessment

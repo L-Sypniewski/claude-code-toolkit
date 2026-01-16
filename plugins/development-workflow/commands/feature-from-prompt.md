@@ -35,21 +35,15 @@ The analyzer will:
 - Structure into FEATURE/EXAMPLES/DOCUMENTATION/CONSIDERATIONS format
 - Return normalized requirements with completeness status
 
-### 2. Handle Incomplete Requirements
+### 2. Continue with Feature Planning Workflow
 
-If `feature-issue-analyzer` returns `COMPLETENESS: INCOMPLETE`:
-- Invoke `feature-requirements-clarifier` agent with the gaps
-- Get enriched requirements via clarifying questions
-- Continue with complete requirements
-
-### 3. Continue with Feature Planning Workflow
-
-Pass the normalized requirements and source metadata to the `feature-planning` skill workflow:
+Pass the requirements output and source metadata to the `feature-planning` skill workflow:
 - Source type: "prompt"
 - Source reference: None
-- Requirements: [structured output from analyzer]
+- Requirements: [output from analyzer, may be complete or incomplete]
 
-The `feature-planning` skill handles all subsequent phases:
+The `feature-planning` skill handles:
+- Incomplete requirements resolution via `feature-requirements-clarifier` (if needed)
 - Complexity assessment (0-8 scoring)
 - Implementation planning (senior-engineer + optional arch advisor)
 - Plan file creation
