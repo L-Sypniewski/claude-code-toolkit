@@ -1,6 +1,6 @@
 {
   "name": "development-workflow",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Comprehensive development toolkit with intelligent feature workflows, senior engineering, code review, architecture advisory, screenshot comparison, and PR management capabilities for end-to-end software development",
   "author": {
     "name": "Claude Code Toolkit"

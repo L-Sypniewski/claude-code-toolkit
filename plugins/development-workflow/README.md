@@ -67,6 +67,7 @@ See individual command files for detailed documentation and examples.
 - **pull-request-creator** - Professional PR documentation and creation
 - **technical-architecture-advisor** - Architecture evaluation and design guidance
 - **screenshot-comparator** - Visual regression testing and UI comparison
+- **frontend-ui-designer** - UI design direction, layout, and interaction guidance
 
 ### Commands
 
@@ -84,6 +85,7 @@ See individual command files for detailed documentation and examples.
 - **code-review-checklist** - Comprehensive checklist covering correctness, performance, security, and maintainability
 - **refactoring-patterns** - Proven refactoring techniques for improving code quality and reducing complexity
 - **workflow-orchestration** - Multi-step workflow coordination patterns for complex development tasks
+- **ui-design-guidelines** - UI design methodology, visual systems, and spec templates for frontend work
 
 ## Installation
 
