@@ -245,7 +245,7 @@ Each plugin follows Claude Code standards:
 - `.claude-plugin/plugin.json` with metadata
 - Standard directory structure (`agents/`, `commands/`, `skills/`)
 - Individual README with usage instructions
-- Semantic versioning
+- [Semantic versioning](https://code.claude.com/docs/en/plugins-reference#version-management)
 
 Plugin structure:
 ```
@@ -260,7 +260,22 @@ plugin-name/
 └── README.md
 ```
 
-See the [Claude Code Plugin Reference](https://docs.claude.com/en/docs/claude-code/plugins-reference) for plugin development guidelines and the [Anthropic Skills Repository](https://github.com/anthropics/skills) for skill creation guidance.
+### Version Management
+
+When modifying plugins, update versions consistently:
+
+1. **Plugin version** in `plugin.json` - tracks the individual plugin release
+2. **Marketplace version** in `marketplace.json` - tracks the marketplace catalog release
+3. **Plugin version in marketplace** - should match the plugin's `plugin.json` version
+
+Learn more about [version management](https://code.claude.com/docs/en/plugins-reference#version-management) and [marketplace creation](https://code.claude.com/docs/en/plugin-marketplaces).
+
+### Development Resources
+
+- [Create Plugins Guide](https://code.claude.com/docs/en/plugins) - comprehensive plugin development guide
+- [Plugin Reference](https://code.claude.com/docs/en/plugins-reference) - complete technical specifications
+- [Create and Distribute Marketplaces](https://code.claude.com/docs/en/plugin-marketplaces) - marketplace setup and distribution
+- [Anthropic Skills Repository](https://github.com/anthropics/skills) - official skills examples
 
 ## 📖 Documentation
 

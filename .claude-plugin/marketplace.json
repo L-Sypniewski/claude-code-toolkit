@@ -5,7 +5,7 @@
     "url": "https://github.com/L-Sypniewski/claude-code-toolkit"
   },
   "metadata": {
-    "version": "1.4.0",
+    "version": "1.4.1",
     "description": "A comprehensive collection of Claude Code plugins for enhanced development workflows, context engineering, git management, and documentation",
     "pluginRoot": "./plugins"
   },
@@ -28,7 +28,7 @@
       "name": "development-workflow",
       "source": "./plugins/development-workflow",
       "description": "Comprehensive development toolkit with senior engineering, code review, architecture advisory, and PR management capabilities",
-      "version": "1.4.0",
+      "version": "1.4.1",
       "category": "development",
       "keywords": [
         "development",
