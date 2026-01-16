@@ -10,7 +10,7 @@
 
 ### Critical Rules
 
-1. **Test with each step** - Do not proceed to next step until tests pass and/or acceptance criteria is met
+1. **Test with each step** - Do not proceed to next step until tests pass and/or acceptance criteria are met
 2. **Update plan immediately** - Mark step complete in plan file before moving on
 3. **Real infrastructure** - Use test containers, local instances over mocks
 4. **Ephemeral test infra** - Test infrastructure must be created during tests and removed afterwards
@@ -38,7 +38,7 @@
       - Mark step checkbox as complete: `[x]`
       - Add implementation notes
       - Update "Last Updated" timestamp
-   e) **Do NOT proceed if tests fail or acceptance criteria not met**
+   e) **Do NOT proceed if tests fail or acceptance criteria are not met**
 
 3. **After Each Major Section**
 

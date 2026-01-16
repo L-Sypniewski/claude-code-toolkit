@@ -73,7 +73,7 @@ After completing each phase:
 1. **Test scaffolding** - Create test files alongside implementation
 2. **Integration tests preferred** - Use real infrastructure (test containers, local instances)
 3. **Ephemeral test infrastructure** - Test infra must be created during tests and removed afterwards
-4. **Step not complete** until tests pass and/or acceptance criteria met
+4. **Step not complete** until tests pass and/or acceptance criteria are met
 5. **Test before moving on** - Don't batch tests at the end
 
 ## Quick Reference
