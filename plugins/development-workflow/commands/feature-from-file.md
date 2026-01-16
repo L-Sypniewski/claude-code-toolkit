@@ -10,9 +10,7 @@ Implement a feature from the specification file: $ARGUMENTS
 ## Instructions
 
 1. **Verify file exists**:
-   ```bash
-   test -f "$ARGUMENTS" && echo "exists" || echo "not found"
-   ```
+   Verify that the file at "$ARGUMENTS" exists.
    If not found: Show error and exit.
 
 2. **Extract requirements** using `requirements-extraction` skill:

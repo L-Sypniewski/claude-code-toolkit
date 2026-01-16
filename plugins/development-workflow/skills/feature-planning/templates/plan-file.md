@@ -71,6 +71,11 @@ FEATURE, EXAMPLES, DOCUMENTATION, OTHER CONSIDERATIONS]
 - Real API calls to local services
 - Spawn/teardown pattern for clean tests
 
+Example infrastructure setup:
+
+Describe how to spin up the necessary services (e.g., database, cache) for integration testing. Ensure they are ephemeral.
+```
+
 ### Validation Criteria
 
 [Specific, measurable criteria - must all pass before completion]
@@ -121,6 +126,7 @@ FEATURE, EXAMPLES, DOCUMENTATION, OTHER CONSIDERATIONS]
 **Assigned Agent**: [senior-engineer | other]
 **Related Issue**: [#X if GitHub issue source, otherwise N/A]
 **Related PR**: [Will be added when created]
+
 ```
 
 ## Status Values
@@ -137,3 +143,4 @@ FEATURE, EXAMPLES, DOCUMENTATION, OTHER CONSIDERATIONS]
 3. **Trackable state** - clear checkboxes, "Last completed step" field
 4. **Success criteria** for each step
 5. **Integration tests** preferred over mocks
+```
