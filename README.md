@@ -216,27 +216,33 @@ claude-code-toolkit/
 This marketplace includes three types of components that work together:
 
 ### 🤖 Agents
+
 **Specialized AI entities** with dedicated context for complex tasks
+
 - Have their own context windows and tool access
 - Actively perform work (implement features, review code, etc.)
 - Explicitly invoked or automatically activated based on context
 - Example: `senior-engineer`, `code-reviewer`
 
 ### ⚡ Commands
+
 **User-invoked actions** via slash commands
+
 - Direct user control with `/command-name`
 - Execute specific workflows or tasks
 - Example: `/create-pr`, `/generate-prp`
 
 ### 📚 Skills
+
 **Modular knowledge packages** that Claude auto-loads
+
 - Provide procedural knowledge and templates
 - Automatically loaded when context matches
 - No explicit invocation needed
 - Complement agents by providing domain expertise
 - Example: `code-review-checklist`, `git-worktree-patterns`
 
-**Key Difference**: Agents *do work*, commands *trigger workflows*, skills *provide knowledge*.
+**Key Difference**: Agents _do work_, commands _trigger workflows_, skills _provide knowledge_.
 
 ## 🛠️ Plugin Development
 
@@ -245,9 +251,10 @@ Each plugin follows Claude Code standards:
 - `.claude-plugin/plugin.json` with metadata
 - Standard directory structure (`agents/`, `commands/`, `skills/`)
 - Individual README with usage instructions
-- Semantic versioning
+- [Semantic versioning](https://code.claude.com/docs/en/plugins-reference#version-management)
 
 Plugin structure:
+
 ```
 plugin-name/
 ├── .claude-plugin/
@@ -260,7 +267,22 @@ plugin-name/
 └── README.md
 ```
 
-See the [Claude Code Plugin Reference](https://docs.claude.com/en/docs/claude-code/plugins-reference) for plugin development guidelines and the [Anthropic Skills Repository](https://github.com/anthropics/skills) for skill creation guidance.
+### Version Management
+
+When modifying plugins, update versions consistently:
+
+1. **Plugin version** in `plugin.json` - tracks the individual plugin release
+2. **Marketplace version** in `marketplace.json` - tracks the marketplace catalog release
+3. **Plugin version in marketplace** - should match the plugin's `plugin.json` version
+
+Learn more about [version management](https://code.claude.com/docs/en/plugins-reference#version-management) and [marketplace creation](https://code.claude.com/docs/en/plugin-marketplaces).
+
+### Development Resources
+
+- [Create Plugins Guide](https://code.claude.com/docs/en/plugins) - comprehensive plugin development guide
+- [Plugin Reference](https://code.claude.com/docs/en/plugins-reference) - complete technical specifications
+- [Create and Distribute Marketplaces](https://code.claude.com/docs/en/plugin-marketplaces) - marketplace setup and distribution
+- [Anthropic Skills Repository](https://github.com/anthropics/skills) - official skills examples
 
 ## 📖 Documentation
 
@@ -275,6 +297,7 @@ See the [Claude Code Plugin Reference](https://docs.claude.com/en/docs/claude-co
 ### External Resources
 
 #### Claude Code Documentation References
+
 - **Official Claude Code Sub-Agents**: https://code.claude.com/docs/en/sub-agents
 - **Official Claude Code Skills**: https://code.claude.com/docs/en/skills
 - **Agent Skills Platform Overview**: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
@@ -282,6 +305,7 @@ See the [Claude Code Plugin Reference](https://docs.claude.com/en/docs/claude-co
 - **Claude Code Components Guide**: https://www.youngleaders.tech/p/claude-skills-commands-subagents-plugins
 
 #### Skills Resources
+
 - [Anthropic Skills Repository](https://github.com/anthropics/skills) - Official skills examples
 - [Agent Skills Engineering Blog](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) - Technical deep dive
 - [Skills Specification](https://github.com/anthropics/skills/blob/main/agent_skills_spec.md) - SKILL.md format

@@ -80,6 +80,7 @@ See individual command files for detailed documentation and examples.
 
 ### Skills
 
+- **feature-planning** - End-to-end feature implementation workflow from requirements to completion (auto-invoked by feature commands)
 - **code-review-checklist** - Comprehensive checklist covering correctness, performance, security, and maintainability
 - **refactoring-patterns** - Proven refactoring techniques for improving code quality and reducing complexity
 - **workflow-orchestration** - Multi-step workflow coordination patterns for complex development tasks
