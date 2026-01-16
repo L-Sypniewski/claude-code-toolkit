@@ -10,18 +10,11 @@ Extract and normalize feature requirements from a GitHub issue.
 ## Extraction Steps
 
 1. **Get repository info**:
-   ```bash
-   git remote get-url origin
-   ```
-   Parse owner and repository name.
+   Read the git remote origin URL and parse owner and repository name.
 
 2. **Fetch issue details** (prefer `gh` CLI, fallback to GitHub MCP if `gh` fails):
    
-   **Primary method - gh CLI**:
-   ```bash
-   gh issue view <issue-number> --json title,body,labels,assignees,comments
-   ```
-   
+   **Primary method - gh CLI**: Fetch issue title, body, labels, assignees, and comments.
    **Fallback - GitHub MCP tools** if `gh` CLI fails:
    - Issue title and body
    - Labels and assignees

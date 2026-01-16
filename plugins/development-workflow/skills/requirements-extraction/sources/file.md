@@ -15,10 +15,7 @@ Extract and normalize feature requirements from a local specification file.
 ## Extraction Steps
 
 1. **Verify file exists**:
-   ```bash
-   test -f "$FILE_PATH" && echo "exists"
-   ```
-   If not: Return error with path.
+   Confirm the path exists and is readable. If not: Return error with path.
 
 2. **Read file content** using Read tool
 

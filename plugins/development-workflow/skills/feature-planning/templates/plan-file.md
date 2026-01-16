@@ -67,18 +67,6 @@ FEATURE, EXAMPLES, DOCUMENTATION, OTHER CONSIDERATIONS]
 - Real API calls to local services
 - Spawn/teardown pattern for clean tests
 
-Example infrastructure setup:
-```bash
-# Start test database
-docker run -d --name test-db -p 5432:5432 postgres:15
-
-# Run tests
-npm test
-
-# Cleanup
-docker stop test-db && docker rm test-db
-```
-
 ### Validation Criteria
 
 [Specific, measurable criteria - must all pass before completion]
