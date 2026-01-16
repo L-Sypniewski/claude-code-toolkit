@@ -5,7 +5,7 @@
 ### 1. Delegate to Planning Agents
 
 **Always invoke senior-engineer**:
-Use Task tool to invoke `senior-engineer` with prompt:
+Use Task Tool to invoke `senior-engineer` with prompt:
 ```
 Create an implementation plan for this feature based on the following requirements:
 
@@ -24,7 +24,7 @@ Focus on architectural approach and strategy, not detailed code.
 ```
 
 **Conditionally invoke technical-architecture-advisor** (if complexity ≥ 5):
-Use Task tool to invoke `technical-architecture-advisor` with prompt:
+Use Task Tool to invoke `technical-architecture-advisor` with prompt:
 ```
 Review this feature and provide architectural guidance:
 

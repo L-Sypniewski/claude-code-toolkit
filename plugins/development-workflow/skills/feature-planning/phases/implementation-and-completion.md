@@ -12,7 +12,7 @@ Update plan file:
 
 ### 2. Delegate to Implementation Agent
 
-Use Task tool to invoke the approved agent (typically `senior-engineer`) with:
+Use Task Tool to invoke the approved agent (typically `senior-engineer`) with:
 ```
 Implement the feature according to this plan:
 

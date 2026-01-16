@@ -4,7 +4,7 @@
 
 ### 1. Delegate to feature-plan-validator Agent
 
-Use Task tool to invoke `feature-plan-validator` with:
+Use Task Tool to invoke `feature-plan-validator` with:
 - Plan file path from Phase 4
 - Request comprehensive validation (completeness, feasibility, clarity)
 

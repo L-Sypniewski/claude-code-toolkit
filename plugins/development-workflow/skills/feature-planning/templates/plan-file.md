@@ -79,7 +79,7 @@ FEATURE, EXAMPLES, DOCUMENTATION, OTHER CONSIDERATIONS]
 [Will be documented as they occur]
 
 ## Metadata
-**Plan File**: plans/feature-[name]-[timestamp].md
+**Plan File**: plans/feature-[sanitized-title]-[timestamp].md
 **Assigned Agent**: [To be confirmed after validation]
 **Related Issue**: [#X if GitHub issue source, otherwise N/A]
 **Related PR**: [Will be added when created]
