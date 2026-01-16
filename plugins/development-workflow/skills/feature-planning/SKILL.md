@@ -47,27 +47,15 @@ See `requirements-clarification` skill for question patterns.
 
 1. **Calculate Complexity Score (0-8 points)**
 
-   Use the `complexity-scoring` skill to analyze requirements:
+   Use the `complexity-scoring` skill to analyze requirements across four dimensions:
+   - File Scope (0-2 points)
+   - Pattern Introduction (0-2 points)
+   - Integration Complexity (0-2 points)
+   - Breaking Changes (0-2 points)
 
-   **File Scope (0-2 points)**:
-   - 0: Single file modification
-   - 1: 2-4 files mentioned
-   - 2: 5+ files or new directory structure needed
+   See `complexity-scoring` skill for detailed scoring criteria and examples.
 
-   **Pattern Introduction (0-2 points)**:
-   - 0: Using existing patterns (mentions "existing pattern", "similar to")
-   - 1: Minor pattern variation (mentions "adapt", "modify")
-   - 2: New architectural pattern (mentions "new pattern", "introduce")
-
-   **Integration Complexity (0-2 points)**:
-   - 0: Isolated feature (no external systems mentioned)
-   - 1: Integration with 1-2 systems/APIs
-   - 2: Integration with 3+ systems or external APIs
-
-   **Breaking Changes (0-2 points)**:
-   - 0: Backward compatible (no mention of breaking changes)
-   - 1: Minor breaking changes or internal API changes
-   - 2: Major breaking changes, public API modifications, or migration required
+   **Threshold**: If total score ≥ 5, involve `technical-architecture-advisor` in planning phase.
 
    **Display to User**:
    ```
