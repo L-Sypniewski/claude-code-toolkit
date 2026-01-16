@@ -12,16 +12,16 @@ Template for generating plan files at `plans/feature-[sanitized-title]-[timestam
 ```markdown
 # Feature: [Title]
 
-**Status**: Planning
+**Status**: Planning | Approved | Implementation | Completed
+**Current Phase**: Phase [N]: [Name]
 **Source**: [GitHub Issue #X | Prompt | File: path]
 **Complexity Score**: X/8 (Architecture Advisor: Yes/No)
-**Recommended Agent**: [from senior-engineer response]
 **Created**: [ISO timestamp]
 **Last Updated**: [ISO timestamp]
 
 ## Requirements Analysis
 
-[Full output from feature-issue-analyzer, including all sections:
+[Full output from requirements-extraction, including all sections:
 FEATURE, EXAMPLES, DOCUMENTATION, OTHER CONSIDERATIONS]
 
 ## Implementation Plan
@@ -33,63 +33,107 @@ FEATURE, EXAMPLES, DOCUMENTATION, OTHER CONSIDERATIONS]
 
 ### Implementation Strategy
 
-[High-level approach from senior-engineer]
+[High-level approach - NO time estimates]
 
 ### Files to Modify/Create
 
-[List from senior-engineer with checkboxes:]
 - [ ] `path/to/file1.ts` - Description of changes
 - [ ] `path/to/file2.ts` - Description of changes
 
 ### Implementation Steps
 
-[Phases from senior-engineer with checkboxes:]
-- [ ] Phase 1: Foundation
-  - [ ] Step 1.1: Description
-  - [ ] Step 1.2: Description
-- [ ] Phase 2: Enhancement
-  - [ ] Step 2.1: Description
-- [ ] Phase 3: Integration & Validation
-  - [ ] Step 3.1: Description
+**IMPORTANT**: Each step includes its test. Tests are NOT batched at the end.
+
+#### Step 1: [Name]
+- [ ] **Implementation**: [What to build]
+- [ ] **Test**: [Test to write/run for this step]
+- **Success Criteria**: [How to verify step is complete]
+
+#### Step 2: [Name]
+- [ ] **Implementation**: [What to build]
+- [ ] **Test**: [Test to write/run for this step]
+- **Success Criteria**: [How to verify step is complete]
+
+#### Step 3: [Name]
+- [ ] **Implementation**: [What to build]
+- [ ] **Test**: [Test to write/run for this step - favor integration tests]
+- **Success Criteria**: [How to verify step is complete]
+
+### Testing Strategy
+
+**Prefer integration tests** with real infrastructure:
+- Test containers for databases (PostgreSQL, MongoDB, etc.)
+- Local service instances via Docker/CLI
+- Real API calls to local services
+- Spawn/teardown pattern for clean tests
+
+Example infrastructure setup:
+```bash
+# Start test database
+docker run -d --name test-db -p 5432:5432 postgres:15
+
+# Run tests
+npm test
+
+# Cleanup
+docker stop test-db && docker rm test-db
+```
 
 ### Validation Criteria
 
-[Specific, testable criteria from senior-engineer:]
-- [ ] Criterion 1: Measurable requirement
-- [ ] Criterion 2: Measurable requirement
+[Specific, measurable criteria - must all pass before completion]
+- [ ] Criterion 1: [Measurable requirement]
+- [ ] Criterion 2: [Measurable requirement]
 
 ## Validation Results
 
-[Will be filled by feature-plan-validator]
+[Filled by feature-plan-validator]
+- Status: [APPROVED | APPROVED WITH NOTES | NEEDS REVISION]
+- Issues: [List any issues found]
+- Recommendations: [List recommendations]
 
 ## Progress Tracking
 
-**Current Phase**: Planning
+### Phase Progress
+- [x] Phase 1: Setup
+- [x] Phase 2: Complexity Assessment
+- [x] Phase 3: Implementation Planning
+- [x] Phase 4: Plan File Creation
+- [ ] Phase 5: Plan Validation
+- [ ] Phase 6: User Approval
+- [ ] Phase 7: Implementation
+- [ ] Phase 8: Completion
 
-### Completed Tasks
-- [x] Requirements analysis completed by feature-issue-analyzer
-- [x] Complexity assessment completed
-- [x] Planning completed by senior-engineer
-- [ ] Validation in progress...
+### Implementation Progress
+[Updated as steps complete - another agent can resume from here]
+- Last completed step: [Step N]
+- Next step: [Step N+1]
+- Blocking issues: [None | List issues]
 
 ### Implementation Notes
-[Will be filled during implementation]
+[Filled during implementation]
 
 ### Changes from Original Plan
-[Will be documented as they occur]
+[Document any deviations]
 
 ## Metadata
 **Plan File**: plans/feature-[sanitized-title]-[timestamp].md
-**Assigned Agent**: [To be confirmed after validation]
+**Assigned Agent**: [senior-engineer | other]
 **Related Issue**: [#X if GitHub issue source, otherwise N/A]
 **Related PR**: [Will be added when created]
 ```
 
 ## Status Values
 
-- **Planning**: Initial state, plan being created
-- **Validation**: Plan under review by validator
-- **Approved**: Ready for implementation
-- **Implementation**: Feature being built
-- **Completed**: Implementation finished
-- **Ready for Review**: Implementation done, awaiting code review
+- **Planning**: Plan being created (Phases 1-4)
+- **Approved**: User approved, ready for implementation (Phase 6 complete)
+- **Implementation**: Feature being built (Phase 7)
+- **Completed**: Implementation finished and verified (Phase 8)
+
+## Key Rules
+
+1. **No time estimates** anywhere in the plan
+2. **Tests with steps** - not batched at the end
+3. **Trackable state** - clear checkboxes, "Last completed step" field
+4. **Success criteria** for each step
+5. **Integration tests** preferred over mocks

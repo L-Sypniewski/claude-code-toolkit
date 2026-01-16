@@ -2,98 +2,157 @@
 
 ## Phase 7: Implementation
 
-### 1. Update Plan File Status
+### Success Criteria
+- [ ] All implementation steps completed
+- [ ] All tests pass for each step
+- [ ] Plan file updated after each step
+- [ ] User approved completion
 
-Update plan file:
-- Status: "Planning" → "Implementation"
-- Current Phase: "Planning" → "Implementation"
-- Assigned Agent: [confirmed agent from user approval]
-- Last Updated: [new timestamp]
+### Critical Rules
 
-### 2. Delegate to Implementation Agent
+1. **Test with each step** - Do not proceed to next step until tests pass
+2. **Update plan immediately** - Mark step complete in plan file before moving on
+3. **Real infrastructure** - Use test containers, local instances over mocks
+4. **Stop on failure** - If tests fail, fix before proceeding
 
-Use Task Tool to invoke the approved agent (typically `senior-engineer`) with:
-```
-Implement the feature according to this plan:
+### Steps
 
-Plan file: plans/feature-[name]-[timestamp].md
-Source: [source metadata]
+1. **Update Plan File Status**
 
-CRITICAL INSTRUCTIONS:
-1. Read the complete plan file first
-2. Follow the implementation strategy and steps
-3. Update the plan file IMMEDIATELY after EACH step (not batched)
-4. Mark checkboxes as you complete them
-5. Document any deviations in "Changes from Original Plan"
-6. Add implementation notes as you progress
-7. Run validation tests after each phase
-8. Update status when complete
+   Update plan file:
+   - Status: "Planning" → "Implementation"
+   - Current Phase: "Phase 7: Implementation"
+   - Last Updated: [timestamp]
 
-The plan file is the single source of truth. Keep it updated in real-time.
-```
+2. **Execute Each Implementation Step**
 
-Run this in the background if possible (saves context for main thread to track progress).
+   For each step in the plan:
+   
+   a) **Implement the step**
+   b) **Run tests for that step** (if applicable)
+      - Use integration tests with real infrastructure when possible
+      - Example: Test containers for databases
+      ```bash
+      # Start test infrastructure
+      docker run -d --name test-db -p 5432:5432 postgres:15
+      
+      # Run tests
+      npm test
+      
+      # Cleanup
+      docker stop test-db && docker rm test-db
+      ```
+   c) **Verify success criteria met**
+   d) **Update plan file immediately**:
+      - Mark step checkbox as complete: `[x]`
+      - Add implementation notes
+      - Update "Last Updated" timestamp
+   e) **Do NOT proceed if tests fail**
 
-### 3. Monitor Progress (if running in background)
+3. **After Each Major Section**
 
-Periodically:
-- Read plan file to check progress
-- Update TodoWrite based on completed steps
-- Show progress updates to user
+   Report progress to user:
+   ```
+   Implementation Progress:
+   - Steps completed: X/Y
+   - Tests passing: [Yes/No]
+   - Current section: [name]
+   
+   Continue with next section?
+   ```
 
-If not running in background:
-- Wait for agent completion
-- Agent updates plan file directly
+   **WAIT for user approval before continuing.**
+
+4. **On Implementation Complete**
+
+   ```
+   Phase 7 (Implementation) complete.
+   
+   Summary:
+   - All steps completed: [X/X]
+   - All tests passing: Yes
+   - Plan file updated: Yes
+   
+   Proceed to Phase 8 (Completion)?
+   ```
+
+**WAIT for user approval before proceeding.**
+
+---
 
 ## Phase 8: Completion
 
-### 1. Verify Implementation Complete
+### Success Criteria
+- [ ] All implementation verified complete
+- [ ] Feature working as specified
+- [ ] User chose post-implementation actions
+- [ ] Plan file finalized
 
-Read plan file and verify:
-- All implementation step checkboxes are marked
-- Status is updated to "Completed" or "Ready for Review"
-- Validation criteria are addressed
+### Steps
 
-### 2. Post-Implementation Options (Ask User)
+1. **Verify Implementation Complete**
 
-Use AskUserQuestion:
-```
-Question: "Implementation complete! What would you like to do next?"
-MultiSelect: true
-Options:
-- "Run code review" (invoke code-reviewer agent)
-- "Create pull request" (invoke pull-request-creator agent)
-- "Update GitHub issue" (post completion comment) [only if source is GitHub issue]
-- "Nothing, I'll handle it manually"
-```
+   Read plan file and verify:
+   - All implementation step checkboxes marked `[x]`
+   - All tests passing
+   - Validation criteria addressed
 
-### 3. Execute User Choices
+2. **Final Verification**
 
-Based on user selection:
-- Code review: Invoke `code-reviewer` with plan file and changed files
-- Create PR: Invoke `pull-request-creator` with plan file context
-- Update issue: Post completion comment to GitHub issue with plan summary (if applicable)
-- Manual: Provide user with plan file location and next steps
+   If testable:
+   - Run full test suite
+   - Verify no regressions
+   - Test feature end-to-end
 
-### 4. Final TodoWrite Update
+3. **Present Completion Summary**
 
-- Mark "Implementation" as completed
-- Mark "Completion" as completed
-- Show final summary
+   ```
+   Feature Implementation Complete!
 
-### 5. Final Summary to User
+   - Feature: [Title]
+   - Plan: plans/feature-[name]-[timestamp].md
+   - Source: [GitHub Issue #X | Prompt | File: path]
+   - Steps completed: X/X
+   - Tests: All passing
+   ```
 
-```
-Feature Implementation Complete!
+4. **Offer Post-Implementation Options**
 
-- Feature: [Title]
-- Plan: plans/feature-[name]-[timestamp].md
-- Source: [GitHub Issue #X | Prompt | File: path]
-- Implementation Agent: [agent-name]
-- Status: [Completed/Ready for Review]
+   Ask user:
+   ```
+   What would you like to do next?
+   
+   Options (select multiple):
+   - Run code review (invoke code-reviewer agent)
+   - Create pull request (invoke pull-request-creator agent)
+   - Update GitHub issue (post completion comment) [if applicable]
+   - Nothing, I'll handle it manually
+   ```
 
-[If PR created: Pull Request: #XYZ]
-[If code review done: Code review feedback in plan file]
+5. **Execute User Choices**
 
-Next steps: [Based on user choices]
-```
+   Based on selection:
+   - Code review: Invoke `code-reviewer` with plan file and changed files
+   - Create PR: Invoke `pull-request-creator` with plan file context
+   - Update issue: Post completion comment to GitHub issue (if source was github-issue)
+   - Manual: Provide plan file location
+
+6. **Finalize Plan File**
+
+   Update plan file:
+   - Status: "Completed"
+   - Add completion timestamp
+   - Add PR link if created
+   - Add code review notes if performed
+
+7. **Final Summary**
+
+   ```
+   Phase 8 (Completion) complete.
+   
+   Feature workflow finished.
+   - Plan file: plans/feature-[name]-[timestamp].md
+   - Status: Completed
+   [- PR: #X if created]
+   [- Code review: Completed if performed]
+   ```

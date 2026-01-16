@@ -2,76 +2,126 @@
 
 ## Phase 5: Plan Validation
 
-### 1. Delegate to feature-plan-validator Agent
+### Success Criteria
+- [ ] Validator reviewed plan
+- [ ] Validation results recorded in plan file
+- [ ] If NEEDS REVISION: revisions completed
+- [ ] User approved to proceed
 
-Use Task Tool to invoke `feature-plan-validator` with:
-- Plan file path from Phase 4
-- Request comprehensive validation (completeness, feasibility, clarity)
+### Steps
 
-The validator will return a validation report with:
-- Approval decision (APPROVED / APPROVED WITH NOTES / NEEDS REVISION)
-- Specific feedback on completeness, feasibility, clarity
-- Recommendations for improvements
+1. **Delegate to feature-plan-validator Agent**
 
-### 2. Update Plan File with Validation Results
+   Invoke `feature-plan-validator` with:
+   - Plan file path from Phase 4
+   - Request comprehensive validation (completeness, feasibility, clarity)
 
-Append validation report to plan file in "Validation Results" section.
+   Validator checks:
+   - No time estimates in plan
+   - Each step has success criteria
+   - Tests are included with steps (not batched)
+   - Plan is trackable/resumable
 
-If validation status is NEEDS REVISION:
-- Show validation feedback to user
-- Ask if they want to:
-  a) Revise plan manually
-  b) Re-run planning with additional context
-  c) Proceed anyway (override)
-- If revising, return to Phase 3
+   Returns:
+   - Approval decision (APPROVED / APPROVED WITH NOTES / NEEDS REVISION)
+   - Specific feedback on completeness, feasibility, clarity
+   - Recommendations for improvements
 
-### 3. Update TodoWrite
+2. **Update Plan File with Validation Results**
 
-- Mark "Plan validation" as completed
-- Mark "User approval" as in_progress
+   Append validation report to plan file in "Validation Results" section.
+
+   If validation status is NEEDS REVISION:
+   - Show validation feedback to user
+   - Ask if they want to:
+     a) Revise plan manually
+     b) Re-run planning with additional context
+     c) Proceed anyway (override)
+   - If revising, return to Phase 3
+
+3. **Update TodoWrite and ask for approval**:
+   - Mark Phase 5 as complete
+   
+   ```
+   Phase 5 (Plan Validation) complete.
+   
+   Summary:
+   - Validation status: [APPROVED/APPROVED WITH NOTES/NEEDS REVISION]
+   - Issues found: [count or "None"]
+   - Recommendations: [brief list]
+   
+   Proceed to Phase 6 (User Approval)?
+   ```
+
+**WAIT for user approval before proceeding.**
+
+---
 
 ## Phase 6: User Approval
 
-### 1. Present Plan Summary to User
+### Success Criteria
+- [ ] Plan summary presented to user
+- [ ] User explicitly approved implementation
+- [ ] Agent assignment confirmed
+- [ ] User approved to proceed to implementation
 
-```
-Plan Summary:
-- Feature: [Title]
-- Complexity: X/8 [with/without] architecture advisor input
-- Files to modify: Y files
-- Implementation phases: Z phases
-- Recommended agent: [agent-name]
-- Validation status: [APPROVED/APPROVED WITH NOTES]
+### Steps
 
-Plan file: plans/feature-[name]-[timestamp].md
-Source: [GitHub Issue #X | Prompt | File: path]
+1. **Present Plan Summary to User**
 
-[If APPROVED WITH NOTES, show key recommendations]
-```
+   ```
+   Plan Summary:
+   - Feature: [Title]
+   - Complexity: X/8
+   - Architecture advisor: [Yes/No]
+   - Files to modify: Y files
+   - Implementation steps: Z steps
+   - Validation status: [APPROVED/APPROVED WITH NOTES]
 
-### 2. Get User Approval
+   Plan file: plans/feature-[name]-[timestamp].md
+   Source: [GitHub Issue #X | Prompt | File: path]
 
-Use AskUserQuestion tool:
-```
-Question: "Ready to proceed with implementation?"
-Options:
-- "Yes, proceed with [recommended-agent]" (Recommended)
-- "Yes, but use different agent" (specify which)
-- "No, let me review the plan first"
-- "No, the plan needs changes"
-```
+   [If APPROVED WITH NOTES, show key recommendations]
+   ```
 
-If user wants to review or make changes:
-- Pause workflow
-- Show plan file location
-- Inform about `/resume-feature [plan-file]` command
-- Exit workflow
+2. **Get Explicit User Approval**
 
-If user chooses different agent:
-- Update plan file with new agent assignment
-- Continue to Phase 7
+   Ask user:
+   ```
+   Ready to proceed with implementation?
+   
+   Options:
+   - "Yes, proceed with senior-engineer"
+   - "Yes, but use different agent"
+   - "No, let me review the plan first"
+   - "No, the plan needs changes"
+   ```
 
-### 3. Update TodoWrite
+   If user wants to review or make changes:
+   - Pause workflow
+   - Show plan file location
+   - Inform about `/resume-feature [plan-file]` command
+   - **STOP** - Do not proceed
 
-- Mark "User approval" as completed
-- Mark "Implementation" as in_progress
+   If user chooses different agent:
+   - Update plan file with new agent assignment
+
+3. **Record Approval**
+
+   Update plan file:
+   - Status: "Approved for Implementation"
+   - Assigned Agent: [confirmed agent]
+
+4. **Ask for approval to begin implementation**:
+   
+   ```
+   Phase 6 (User Approval) complete.
+   
+   Summary:
+   - User approved: Yes
+   - Assigned agent: [agent name]
+   
+   Begin Phase 7 (Implementation)?
+   ```
+
+**WAIT for user approval before proceeding.**
