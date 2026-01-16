@@ -274,6 +274,7 @@ When modifying plugins, update versions consistently:
 1. **Plugin version** in `plugin.json` - tracks the individual plugin release
 2. **Marketplace version** in `marketplace.json` - tracks the marketplace catalog release
 3. **Plugin version in marketplace** - should match the plugin's `plugin.json` version
+4. **Skills summary** in `SKILLS_SUMMARY.md` - update when adding/removing skills
 
 Learn more about [version management](https://code.claude.com/docs/en/plugins-reference#version-management) and [marketplace creation](https://code.claude.com/docs/en/plugin-marketplaces).
 
