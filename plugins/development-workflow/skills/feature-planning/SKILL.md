@@ -45,7 +45,7 @@ See `requirements-clarification` skill for question patterns.
 
 ### PHASE 2: Complexity Assessment
 
-2. **Calculate Complexity Score (0-8 points)**
+1. **Calculate Complexity Score (0-8 points)**
 
    Use the `complexity-scoring` skill to analyze requirements:
 
@@ -81,14 +81,14 @@ See `requirements-clarification` skill for question patterns.
    Architecture Advisor: [Will be involved | Not needed]
    ```
 
-3. **Update TodoWrite**
+2. **Update TodoWrite**
    - Mark "Requirements analysis" as completed
    - Mark "Complexity assessment" as completed
    - Mark "Implementation planning" as in_progress
 
 ### PHASE 3: Implementation Planning
 
-4. **Delegate to Planning Agents**
+1. **Delegate to Planning Agents**
 
    **Always invoke senior-engineer**:
    Use Task tool to invoke `senior-engineer` with prompt:
@@ -130,13 +130,13 @@ See `requirements-clarification` skill for question patterns.
 
    The architecture advisor provides guidance BEFORE implementation begins (consultation pattern, no callbacks during implementation).
 
-5. **Update TodoWrite**
+2. **Update TodoWrite**
    - Mark "Implementation planning" as completed
    - Mark "Plan validation" as in_progress
 
 ### PHASE 4: Plan File Creation
 
-6. **Generate Plan File**
+1. **Generate Plan File**
 
    Create file: `plans/feature-[sanitized-title]-[timestamp].md`
 
@@ -223,10 +223,10 @@ See `requirements-clarification` skill for question patterns.
 
 ### PHASE 5: Plan Validation
 
-7. **Delegate to feature-plan-validator Agent**
+1. **Delegate to feature-plan-validator Agent**
 
    Use Task tool to invoke `feature-plan-validator` with:
-   - Plan file path from step 6
+   - Plan file path from Phase 4
    - Request comprehensive validation (completeness, feasibility, clarity)
 
    The validator will return a validation report with:
@@ -234,7 +234,7 @@ See `requirements-clarification` skill for question patterns.
    - Specific feedback on completeness, feasibility, clarity
    - Recommendations for improvements
 
-8. **Update Plan File with Validation Results**
+2. **Update Plan File with Validation Results**
 
    Append validation report to plan file in "Validation Results" section.
 
@@ -246,13 +246,13 @@ See `requirements-clarification` skill for question patterns.
      c) Proceed anyway (override)
    - If revising, return to Phase 3
 
-9. **Update TodoWrite**
+3. **Update TodoWrite**
    - Mark "Plan validation" as completed
    - Mark "User approval" as in_progress
 
 ### PHASE 6: User Approval
 
-10. **Present Plan Summary to User**
+1. **Present Plan Summary to User**
 
     ```
     Plan Summary:
@@ -269,7 +269,7 @@ See `requirements-clarification` skill for question patterns.
     [If APPROVED WITH NOTES, show key recommendations]
     ```
 
-11. **Get User Approval**
+2. **Get User Approval**
 
     Use AskUserQuestion tool:
     ```
@@ -291,13 +291,13 @@ See `requirements-clarification` skill for question patterns.
     - Update plan file with new agent assignment
     - Continue to Phase 7
 
-12. **Update TodoWrite**
+3. **Update TodoWrite**
     - Mark "User approval" as completed
     - Mark "Implementation" as in_progress
 
 ### PHASE 7: Implementation
 
-13. **Update Plan File Status**
+1. **Update Plan File Status**
 
     Update plan file:
     - Status: "Planning" → "Implementation"
@@ -305,7 +305,7 @@ See `requirements-clarification` skill for question patterns.
     - Assigned Agent: [confirmed agent from user approval]
     - Last Updated: [new timestamp]
 
-14. **Delegate to Implementation Agent**
+2. **Delegate to Implementation Agent**
 
     Use Task tool to invoke the approved agent (typically `senior-engineer`) with:
     ```
@@ -329,7 +329,7 @@ See `requirements-clarification` skill for question patterns.
 
     Run this in the background if possible (saves context for main thread to track progress).
 
-15. **Monitor Progress** (if running in background)
+3. **Monitor Progress** (if running in background)
 
     Periodically:
     - Read plan file to check progress
@@ -342,14 +342,14 @@ See `requirements-clarification` skill for question patterns.
 
 ### PHASE 8: Completion
 
-16. **Verify Implementation Complete**
+1. **Verify Implementation Complete**
 
     Read plan file and verify:
     - All implementation step checkboxes are marked
     - Status is updated to "Completed" or "Ready for Review"
     - Validation criteria are addressed
 
-17. **Post-Implementation Options** (Ask User)
+2. **Post-Implementation Options** (Ask User)
 
     Use AskUserQuestion:
     ```
@@ -362,7 +362,7 @@ See `requirements-clarification` skill for question patterns.
     - "Nothing, I'll handle it manually"
     ```
 
-18. **Execute User Choices**
+3. **Execute User Choices**
 
     Based on user selection:
     - Code review: Invoke `code-reviewer` with plan file and changed files
@@ -370,12 +370,12 @@ See `requirements-clarification` skill for question patterns.
     - Update issue: Post completion comment to GitHub issue with plan summary (if applicable)
     - Manual: Provide user with plan file location and next steps
 
-19. **Final TodoWrite Update**
+4. **Final TodoWrite Update**
     - Mark "Implementation" as completed
     - Mark "Completion" as completed
     - Show final summary
 
-20. **Final Summary to User**
+5. **Final Summary to User**
 
     ```
     Feature Implementation Complete!
