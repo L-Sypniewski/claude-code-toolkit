@@ -494,3 +494,10 @@ This means workflows can be:
 - Resumed multiple times
 
 The workflow is robust, stateful, and designed for real-world interruptions.
+
+## See Also
+
+- `feature-planning` skill - Complete workflow documentation
+- `feature-issue-analyzer` agent - Requirements normalization
+- `feature-plan-validator` agent - Plan validation
+- `senior-engineer` agent - Implementation agent
