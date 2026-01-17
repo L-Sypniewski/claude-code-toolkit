@@ -14,6 +14,7 @@ Create `AddFeatureNameServicesExtension` class with `AddFeatureNameServices(ISer
 - Method naming: `AddFeatureNameServices`
 - Register all feature services and configuration
 - Return `IServiceCollection` for chaining
+- In `Program.cs`, call `builder.Services.AddFeatureNameServices(builder.Configuration);`
 
 ### Example for "InvoicePrinting" feature
 
@@ -48,7 +49,7 @@ public static class OrderEndpoints
         return app;
     }
 
-    private static async Task<IResult> GetOrder(string id, OrderService service)
+    private static async Task<Results<Ok<Order>, NotFound>> GetOrder(string id, OrderService service)
         => // handler logic
 }
 ```
@@ -59,29 +60,20 @@ Register in `Program.cs`: `app.MapOrderEndpoints();`
 
 Use `Results<TOk, TNotFound, TBadRequest>` and `TypedResults` instead of `IResult` for compile-time safety and OpenAPI inference.
 
-Example: `Results<Ok<Order>, NotFound>` with `TypedResults.Ok(order)` or `TypedResults.NotFound()`
-
 ### Inline DTOs
 
 For simple endpoints, define request/response DTOs inline with record types:
-
-```csharp
-record CreateOrderRequest(string CustomerId, List<OrderItem> Items);
-record CreateOrderResponse(string OrderId, string Status);
-```
 
 ### Complex Endpoints - Extract to Service
 
 For business logic, validation, or multiple dependencies, inject service and delegate:
 
 ```csharp
-private static async Task<IResult> ProcessPayment(
+private static async Task<Results<Ok<PaymentResult>, BadRequest>> ProcessPayment(
     PaymentRequest request,
     PaymentService service,
     ILogger<PaymentService> logger)
-{
-    return await service.ProcessPaymentAsync(request);
-}
+    => await service.ProcessPaymentAsync(request);
 ```
 
 ### Endpoint Filters
@@ -93,8 +85,6 @@ Add cross-cutting concerns (validation, logging, caching) with endpoint filters.
 ```
 Features/Orders/
   ├── OrderEndpoints.cs       // Endpoint mappings
-  ├── Order.cs                // Model
-  ├── OrderService.cs         // Business logic
   └── AddOrderServices.cs     // DI registration
 ```
 
@@ -108,18 +98,8 @@ Features/Orders/
 
 - Inherit from `BackgroundService`
 - Override `ExecuteAsync(CancellationToken stoppingToken)`
-- Create scopes for scoped dependencies (`IServiceScopeFactory`)
 - Handle exceptions (except `OperationCanceledException`)
 - Respect `CancellationToken` for graceful shutdown
-- Retry with delay on failures
-
-### Common Use Cases
-
-- Periodic cleanup jobs
-- Message queue consumers
-- Health monitoring
-- Cache refresh
-- Data synchronization
 
 Register as `services.AddHostedService<TBackgroundService>();`
 
@@ -129,34 +109,15 @@ Register as `services.AddHostedService<TBackgroundService>();`
 
 **Pipeline order matters**: Authentication → Authorization → Endpoints
 
-### Custom Middleware
-
-- Create class with `InvokeAsync(HttpContext context, RequestDelegate next)`
-- Inject services via constructor
-- Call `await next(context)` to continue pipeline
-- Short-circuit with `context.Response.WriteAsync()` when needed
-- Avoid blocking operations
-
-Register with `app.UseMiddleware<TMiddleware>()` or extension method.
-
-[Middleware](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware)
-
 ## Configuration & Options
 
-**Options pattern** for type-safe configuration.
+Use **Options pattern** for type-safe configuration.
 
 ### Implementation
 
 - Define options class with `const string SectionName = "ConfigSection"`
-- Use `required` properties or data annotations
-- Implement `IValidateOptions<T>` for custom validation
-- Register with `services.Configure<TOptions>(configuration.GetSection(TOptions.SectionName))`
-
-### Options Lifetimes
-
-- **`IOptions<T>`** - Singleton, read once at startup (most common)
-- **`IOptionsSnapshot<T>`** - Scoped, reloads per request (multi-tenant)
-- **`IOptionsMonitor<T>`** - Singleton, reloads on config change (hot reload)
+- Use `required` properties and data annotations
+- Validate on startup
 
 [Options Pattern](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options)
 
@@ -164,20 +125,11 @@ Register with `app.UseMiddleware<TMiddleware>()` or extension method.
 
 **Background consumers** for async message processing.
 
-### Patterns
-
 - Implement `BackgroundService` for queue consumer
 - Event-driven failure handling (publish failure events)
 - Transactional message processing (consume + business logic in transaction)
 - Dead letter queues for failed messages
 - Idempotency for at-least-once delivery
-
-### Common Technologies
-
-- Azure Service Bus
-- RabbitMQ
-- AWS SQS
-- Kafka
 
 ## References
 

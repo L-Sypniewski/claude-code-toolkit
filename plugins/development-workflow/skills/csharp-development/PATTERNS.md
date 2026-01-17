@@ -109,20 +109,13 @@ Register all implementations as services, inject `IServiceProvider` into factory
 
 ## Options Pattern
 
-**Type-safe configuration with `IOptions<T>`.** Bind configuration sections to strongly-typed classes.
+Use **Options pattern** for type-safe configuration.
 
 ### Implementation
 
 - Define options class with `const string SectionName`
-- Use `required` properties or data annotations for validation
-- Implement `IValidateOptions<T>` for custom validation
-- Register with `services.Configure<TOptions>(configuration.GetSection(...))`
-
-### Options Lifetime
-
-- **`IOptions<T>`** - Singleton, read once at startup
-- **`IOptionsSnapshot<T>`** - Scoped, reloads per request (multi-tenant scenarios)
-- **`IOptionsMonitor<T>`** - Singleton, reloads when config changes (hot reload)
+- Use `required` properties and data annotations
+- Validate on startup
 
 [Options Pattern](https://learn.microsoft.com/en-us/dotnet/core/extensions/options)
 
