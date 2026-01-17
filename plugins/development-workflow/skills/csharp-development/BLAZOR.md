@@ -12,7 +12,7 @@ Patterns for Blazor applications in .NET 10 - Server, WebAssembly, and Static SS
 - **Required parameters** - Use `[Parameter, EditorRequired]` for required props
 - **Events over state mutation** - Use `EventCallback<T>` for parent communication
 - **Avoid business logic** - Delegate to services
-- **Small, focused** - Easy to understand and test
+- **Small, focused** - Single clear responsibility
 
 ### Parameters & Events
 
@@ -49,7 +49,7 @@ Override lifecycle methods when needed:
 - Use `<CascadingValue Value="@value">` to provide
 - Use `[CascadingParameter]` to receive
 - Prefer explicit parameters for direct parent-child communication
-- Good for app-wide state (user, theme, culture)
+- Use for app-wide state (user, theme, culture)
 
 ### State Containers
 
@@ -98,23 +98,23 @@ Choose rendering mode based on interactivity needs:
 
 ### Static SSR (Server-Side Rendering)
 
-**Default mode.** Fast initial load, no interactivity, SEO-friendly. Best for content-heavy pages.
+**Default mode.** Fast initial load, no interactivity, SEO-friendly. Use for content-heavy pages.
 
 ### Interactive Server
 
-**SignalR connection** to server. Server-side state, low latency, requires connection. Good for internal apps, dashboards.
+**SignalR connection** to server. Server-side state, low latency, requires persistent connection. Use for low-latency interactive applications with server proximity.
 
 Apply with `@rendermode InteractiveServer` on component or page.
 
 ### Interactive WebAssembly
 
-**Client-side execution** in browser. Offline-capable, no server round-trips, larger download. Good for rich client apps, offline scenarios.
+**Client-side execution** in browser. Offline-capable, no server round-trips, larger download. Use for offline scenarios or compute-intensive client-side operations.
 
 Apply with `@rendermode InteractiveWebAssembly` on component or page.
 
 ### Interactive Auto
 
-**Server initially, then WebAssembly** after download. Best of both worlds - fast first load, then client-side. Most flexible but most complex.
+**Server initially, then WebAssembly** after download. Fast first load, then client-side. Most flexible rendering strategy.
 
 Apply with `@rendermode InteractiveAuto` on component or page.
 
@@ -163,7 +163,7 @@ Apply with `@rendermode InteractiveAuto` on component or page.
 **DON'T:**
 - Put business logic in components
 - Share state through cascading parameters excessively
-- Use Server rendering mode for public internet apps at scale
+- Use Server rendering mode for high-scale public internet applications
 - Ignore component disposal
 - Overuse StateHasChanged()
 

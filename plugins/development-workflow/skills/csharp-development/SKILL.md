@@ -26,12 +26,10 @@ Expert .NET C# guidance for .NET 10 and C# 14. Focused on production-tested patt
 - **`field` keyword** - Access backing field in property accessors for custom logic
 - **Extension members** - Add members to existing types without inheritance
 - **Null-conditional assignment** - `user?.Address ??= new Address()`
-- **Collection expression improvements** - Spread operators `[..first, ..second]` and range expressions
 
 ### C# 11-13 Features
-- **Primary constructors** (C# 12+) for DI - parameters become fields automatically
-- **Collection expressions** - `[1, 2, 3]` syntax
-- **`required` keyword** - Enforce property initialization
+- **Collection expressions** (C# 12) - `[1, 2, 3]` syntax with spread operators `[..first, ..second]`
+- **`required` keyword** (C# 11+) - Enforce property initialization
 - **File-scoped namespaces** - `namespace MyApp;`
 - **Init-only properties** - `init` keyword for immutability
 - **Records** - Immutable data structures for DTOs
@@ -49,7 +47,7 @@ Expert .NET C# guidance for .NET 10 and C# 14. Focused on production-tested patt
 - XML docs only for public APIs, complex algorithms, or cross-team interfaces
 
 ### Static Private Methods
-Prefer static private methods when no instance state is needed - clearer intent, prevents accidental coupling, easier to test.
+Prefer static private methods when no instance state is needed - clearer intent, prevents accidental coupling to instance state.
 
 ### Immutability
 Prefer immutable data structures using records and init-only properties.
@@ -64,14 +62,12 @@ Choose official Microsoft packages over third-party when available - better long
 
 **Accept repetition between slices** - don't extract shared code until patterns stabilize (Rule of Three).
 
-**Benefits:** High cohesion, discoverability, scalability, clear ownership
-
 See [PATTERNS.md](PATTERNS.md) for detailed structure and examples.
 
 ## Naming Conventions
 - **PascalCase**: Classes, methods, properties, public fields, constants
-- **camelCase**: Local variables, parameters, primary constructor params
-- **\_camelCase**: Private instance fields
+- **camelCase**: Local variables, parameters, constructor parameters
+- **\_camelCase**: Private instance fields (use readonly for injected dependencies)
 - **s\_camelCase**: Private static fields
 - **IPascalCase**: Interfaces (prefix `I`)
 - **Async suffix**: All async methods
@@ -86,7 +82,7 @@ See [PATTERNS.md](PATTERNS.md) for detailed structure and examples.
 - `CancellationToken` for long operations
 
 ## Dependency Injection
-**Primary constructor injection** (C# 12+) - parameters become fields automatically.
+**Constructor injection with readonly fields** - inject dependencies via constructor, store in readonly fields for immutability and clarity.
 
 **Lifetimes:**
 - **Singleton**: Stateless services, caches
@@ -145,7 +141,7 @@ See [PATTERNS.md](PATTERNS.md) for detailed structure and examples.
 **DO:**
 - Async/await consistently
 - Enable nullable reference types
-- Use dependency injection with primary constructors
+- Use dependency injection with constructor injection and readonly fields
 - Write tests (see [TESTING.md](TESTING.md))
 - Pattern matching over if-else
 - SOLID principles

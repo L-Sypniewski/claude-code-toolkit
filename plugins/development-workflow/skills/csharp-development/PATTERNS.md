@@ -27,30 +27,15 @@ src/Features/{FeatureName}/
 - Bug fix requires updating multiple features
 - Abstraction is stable and unlikely to change
 
-**Benefits:** Discoverability, scalability, maintainability, reduced cognitive load
+## Repository Pattern with EF Core
 
-**Trade-offs:** Acceptable duplication, learning curve for teams used to layered architecture
+**Usually unnecessary when using EF Core.** DbContext already implements Repository and Unit of Work patterns.
 
-## Anti-Patterns to Avoid
+### When to use DbContext directly
 
-### Repository Pattern with EF Core
+Use DbContext directly in services with constructor injection and readonly fields. Provides full EF Core capabilities (Include, projections, query filters).
 
-**Don't use Repository Pattern when EF Core is your ORM.** This was common with older ORMs, but EF Core's `DbContext` already implements Repository and Unit of Work patterns.
-
-#### Why it's an anti-pattern
-
-- **DbContext IS a repository** - `DbSet<T>` provides repository functionality
-- **DbContext IS unit of work** - `SaveChangesAsync()` handles transactions
-- **Loses capabilities** - Can't use EF Core features (Include, projections, query filters)
-- **Adds complexity** - Extra abstraction layer with no value
-- **Reduces testability** - Must mock both repository and DbContext
-- **Hinders performance** - Harder to optimize queries
-
-#### What to use instead
-
-**Use DbContext directly in services** with primary constructor injection. This gives full EF Core capabilities, simpler testing with in-memory database or TestContainers, and better performance.
-
-#### When Repository Pattern IS appropriate
+### When Repository Pattern is appropriate
 
 Use Repository Pattern when:
 - Abstracting non-EF data sources (Dapper, HTTP APIs, file system, external services)
@@ -62,9 +47,9 @@ Use Repository Pattern when:
 
 ### Over-abstraction
 
-**Don't create abstractions before they're needed (YAGNI).** Skip interfaces for single implementations. Create concrete classes until you have multiple implementations or need polymorphism.
+**Skip interfaces for single implementations.** Create concrete classes until multiple implementations exist or polymorphism is needed.
 
-If you need to mock for testing, use integration tests with real implementations or test doubles.
+For testing, use integration tests with real implementations or TestContainers.
 
 ## Specification Pattern
 
