@@ -311,8 +311,6 @@ Learn more about [version management](https://code.claude.com/docs/en/plugins-re
 - [Documentation Templates Plugin](plugins/documentation-templates/README.md)
 - [UI/UX Audit Plugin](plugins/ui-ux-audit/README.md)
 - [.NET Development Plugin](plugins/dotnet-development/README.md)
-- [Documentation Templates Plugin](plugins/documentation-templates/README.md)
-- [UI/UX Audit Plugin](plugins/ui-ux-audit/README.md)
 
 ### External Resources
 
