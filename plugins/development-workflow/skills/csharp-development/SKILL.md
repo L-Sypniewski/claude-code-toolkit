@@ -1,137 +1,175 @@
 ---
 name: csharp-development
-description: Expert guidance for .NET C# development covering best practices, design patterns, architecture, testing, and modern C# idioms. Includes production-tested patterns from enterprise applications. Use when writing, reviewing, or refactoring C# code, designing .NET applications, or implementing enterprise patterns. DO NOT use for non-.NET languages or frontend-only JavaScript/TypeScript work.
+description: Expert guidance for .NET 10/C# 14 development covering best practices, design patterns, architecture, testing, and modern C# idioms. Emphasizes SOLID principles, YAGNI, feature slices, and simplicity. Use when writing, reviewing, or refactoring C# code, designing .NET applications, or implementing enterprise patterns. DO NOT use for non-.NET languages or frontend-only JavaScript/TypeScript work.
 ---
 
 # .NET C# Development Expert
 
-Expert .NET C# guidance with production-tested patterns from Blazor, ASP.NET Core, and Entity Framework Core applications.
+Expert .NET C# guidance for .NET 10 and C# 14. Focused on production-tested patterns from Blazor, ASP.NET Core, and Entity Framework Core applications.
 
 ## When to Use
 
-**USE for:** C# code, .NET architecture, design patterns, testing, async/await, LINQ, ASP.NET Core, EF Core  
+**USE for:** C# code, .NET architecture, design patterns, testing, async/await, LINQ, ASP.NET Core, EF Core
 **DON'T use for:** Non-.NET languages, frontend-only work, F#/VB.NET
+
+## Core Principles
+
+**SOLID** - Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion
+
+**YAGNI** - You Aren't Gonna Need It. Avoid over-engineering, build what's needed now, not what might be needed later.
+
+**Simplicity** - Prefer straightforward solutions over clever abstractions. Three similar lines are better than premature abstraction.
 
 ## Modern C# Features
 
-- Nullable reference types (`?` annotations)
-- Pattern matching over if-else
-- Records for DTOs
-- Primary constructors (C# 12+) for DI
-- Collection expressions `[1, 2, 3]`
-- `required` keyword (C# 11+)
-- File-scoped namespaces `namespace MyApp;`
-- Init-only properties (`init`)
-- Target-typed new `new()`
-- Raw string literals `"""`
+### C# 14 Features
+- **`field` keyword** - Access backing field in property accessors for custom logic
+- **Extension members** - Add members to existing types without inheritance
+- **Null-conditional assignment** - `user?.Address ??= new Address()`
+- **Collection expression improvements** - Spread operators `[..first, ..second]` and range expressions
 
-## Naming Conventions
+### C# 11-13 Features
+- **Primary constructors** (C# 12+) for DI - parameters become fields automatically
+- **Collection expressions** - `[1, 2, 3]` syntax
+- **`required` keyword** - Enforce property initialization
+- **File-scoped namespaces** - `namespace MyApp;`
+- **Init-only properties** - `init` keyword for immutability
+- **Records** - Immutable data structures for DTOs
+- **Pattern matching** - Replace if-else chains
+- **Nullable reference types** - `?` annotations
 
-- **PascalCase**: Classes, methods, properties, public fields, constants
-- **camelCase**: Local variables, parameters, primary constructor params
-- **\_camelCase**: Private instance fields
-- **s_camelCase**: Private static fields
-- **IPascalCase**: Interfaces (prefix `I`)
-- **Async suffix**: All async methods
-- **Repository suffix**: Repository classes
+[C# Language Reference](https://learn.microsoft.com/en-us/dotnet/csharp/)
+
+## Code Style Principles
+
+### Comments: Write WHYs, Not WHATs
+- Code should be self-documenting (use descriptive names)
+- Comment business rules, non-obvious decisions, reasoning
+- Avoid redundant comments that just describe what code does
+- XML docs only for public APIs, complex algorithms, or cross-team interfaces
+
+### Static Private Methods
+Prefer static private methods when no instance state is needed - clearer intent, prevents accidental coupling, easier to test.
+
+### Immutability
+Prefer immutable data structures using records and init-only properties.
+
+### Prefer Microsoft Packages
+Choose official Microsoft packages over third-party when available - better long-term support, integration, and performance. Use third-party only when Microsoft doesn't provide equivalent or when industry-standard (e.g., Serilog).
 
 ## Code Organization
 
-**Feature-based structure** (vertical slices): `Features/Users/`, `Features/Orders/`
+### Feature Slices Architecture
+**Vertical slices over horizontal layers** - organize by feature, not technical role. Each feature folder contains models, services, data access, and DI registration.
 
-- One type per file, filename matches type name
-- Keep related code together (models, services, repos in same feature folder)
+**Accept repetition between slices** - don't extract shared code until patterns stabilize (Rule of Three).
 
-**Helper methods:** Static when no instance state needed, skip interfaces for single implementations
+**Benefits:** High cohesion, discoverability, scalability, clear ownership
+
+See [PATTERNS.md](PATTERNS.md) for detailed structure and examples.
+
+## Naming Conventions
+- **PascalCase**: Classes, methods, properties, public fields, constants
+- **camelCase**: Local variables, parameters, primary constructor params
+- **\_camelCase**: Private instance fields
+- **s\_camelCase**: Private static fields
+- **IPascalCase**: Interfaces (prefix `I`)
+- **Async suffix**: All async methods
+- **Feature-based DI extensions**: `AddFeatureNameServices.cs`
 
 ## Async/Await
-
 - Use async/await consistently
 - **NEVER** use `.Result` or `.Wait()` (deadlocks)
 - `ConfigureAwait(false)` in libraries only
-- Return `Task<T>` when just returning awaitable
-- `ValueTask<T>` for hot paths
-- Always `Async` suffix
+- `ValueTask<T>` for hot paths (frequently synchronous completion)
+- Always `Async` suffix on method names
 - `CancellationToken` for long operations
 
 ## Dependency Injection
-
-**Constructor injection** (prefer primary constructors C# 12+)
+**Primary constructor injection** (C# 12+) - parameters become fields automatically.
 
 **Lifetimes:**
-
 - **Singleton**: Stateless services, caches
-- **Scoped**: DbContext, repositories (per-request)
-- **Transient**: Lightweight, stateless
+- **Scoped**: DbContext, per-request services (HTTP request lifetime)
+- **Transient**: Lightweight, stateless services
 
 ## Error Handling
-
-- Exceptions for exceptional cases
-- Result pattern for expected failures
-- **Never** swallow exceptions - log and re-throw
-- Use `ArgumentException.ThrowIfNullOrEmpty()`
+- Exceptions for exceptional cases only
+- Result pattern for expected failures (return `Result<T>` or `Option<T>`)
+- Never swallow exceptions - log and re-throw
+- Use `ArgumentException.ThrowIfNullOrEmpty()` and `ArgumentNullException.ThrowIfNull()`
 
 ## Null Safety
-
-- Enable `<Nullable>enable</Nullable>`
+- Enable `<Nullable>enable</Nullable>` in csproj
 - Pattern matching: `if (user is not null)`
 - Null-conditional: `user?.Name ?? "Unknown"`
-- Null-coalescing: `_cache ??= new()`
+- Null-coalescing assignment: `_cache ??= new()`
 - Explicit nullability: `User?` vs `User`
 
 ## LINQ
-
 - Multi-line for readability
 - Understand deferred vs immediate execution
 - **Avoid N+1**: Use `.Include()` in EF Core
+- Query syntax for complex queries, method syntax for simple operations
+
+[LINQ Documentation](https://learn.microsoft.com/en-us/dotnet/csharp/linq/)
 
 ## Additional Resources
 
-**Detailed patterns:** See [PATTERNS.md](PATTERNS.md) for Repository, Unit of Work, Factory, Strategy, Options patterns
+**Detailed patterns:** See [PATTERNS.md](PATTERNS.md) for feature slices, Specification Pattern, Factory, Strategy, Options patterns, and **anti-patterns to avoid**
 
-**ASP.NET Core:** See [ASPNET-CORE.md](ASPNET-CORE.md) for service registration, background services, message queues, middleware
+**ASP.NET Core:** See [ASPNET-CORE.md](ASPNET-CORE.md) for service registration, Minimal APIs, background services, middleware
 
 **Blazor:** See [BLAZOR.md](BLAZOR.md) for component design, lifecycle, state management, forms, rendering modes
 
-## Testing
+**Infrastructure:** See [INFRASTRUCTURE.md](INFRASTRUCTURE.md) for .NET Aspire orchestration and csproj-based dockerization
 
-**Comprehensive testing guidelines:** See [TESTING.md](TESTING.md)
+**Testing:** See [TESTING.md](TESTING.md) for TUnit, AwesomeAssertions, and TestContainers
 
 ## Common Pitfalls
 
 **DON'T:**
-
 - Use `.Result` / `.Wait()` (deadlocks)
 - Swallow exceptions
 - Use `async void` (except event handlers)
-- Use `DateTime.Now` (use `UtcNow` or `DateTimeOffset`)
+- Use `DateTime.Now` (use `TimeProvider.GetUtcNow()` or `DateTimeOffset.UtcNow`)
 - Hardcode configs
 - Ignore `CancellationToken`
 - Compare strings without `StringComparison`
 - Mutate collections while iterating
+- Use Repository Pattern with EF Core (see [PATTERNS.md](PATTERNS.md) anti-patterns)
+- Over-comment code (write WHYs, not WHATs)
+- Create instance methods when static would work
+- Create abstractions before they're needed (YAGNI)
 
 **DO:**
-
 - Async/await consistently
 - Enable nullable reference types
-- Use dependency injection
-- Write tests
-- Pattern matching
+- Use dependency injection with primary constructors
+- Write tests (see [TESTING.md](TESTING.md))
+- Pattern matching over if-else
 - SOLID principles
-- Records for DTOs
+- Records for DTOs and immutable data
 - Structured logging
 - Handle disposal (`IDisposable`, `using`)
+- Use feature slices architecture
+- Prefer static private methods for stateless logic
+- Prefer Microsoft packages
+- Write comments that explain WHY, not WHAT
 
 ## References
 
-- [Microsoft C# Coding Conventions](https://docs.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)
-- [.NET Design Guidelines](https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/)
-- [xUnit](https://xunit.net/) | [FluentAssertions](https://fluentassertions.com/) | [EF Core](https://docs.microsoft.com/en-us/ef/core/)
+- [C# Coding Conventions](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)
+- [.NET Design Guidelines](https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/)
+- [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/)
 
 ## Skill Files
 
 - **SKILL.md** - Core patterns (this file)
+- **[PATTERNS.md](PATTERNS.md)** - Design patterns and anti-patterns
 - **[ASPNET-CORE.md](ASPNET-CORE.md)** - ASP.NET Core patterns
 - **[BLAZOR.md](BLAZOR.md)** - Blazor component patterns
+- **[INFRASTRUCTURE.md](INFRASTRUCTURE.md)** - .NET Aspire and dockerization
+- **[TESTING.md](TESTING.md)** - Testing with TUnit and AwesomeAssertions
 
-**Write readable, maintainable, testable code. Correctness and clarity before performance optimization.**
+**Write simple, readable, maintainable code. Follow SOLID and YAGNI. Correctness and clarity before performance optimization.**
