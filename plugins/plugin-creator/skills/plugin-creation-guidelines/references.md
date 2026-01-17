@@ -60,6 +60,64 @@ This document contains the source URLs and references for best practices distill
 - Skill auto-loading behavior
 - Tool access specification
 
+### 5. Claude Code 2.1 Skills Documentation
+**URL**: https://code.claude.com/docs/en/skills
+
+**Key Topics**:
+- Skills in forked context (`context: fork`)
+- Progressive disclosure of skill content
+- Hot reloading of skills from `.claude/skills`
+- Skills as slash commands convergence
+- New metadata fields (`allowed-tools`, `license`, `metadata`)
+
+**Critical Insights**:
+- Skills can now run in isolated subagent contexts for safe, parallel execution
+- Only skill names/descriptions load initially (progressive disclosure)
+- Changes to skills are instantly available without restart (hot reload)
+- Unified extension model: skills, commands, and subagents are converging
+
+### 6. Subagents, Commands and Skills Convergence
+**URL**: https://vivekhaldar.com/articles/claude-code-subagents-commands-skills-converging/
+
+**Key Topics**:
+- Unified invocation model for extensions
+- Skills appearing in slash command menu
+- Forked context for skill isolation
+- Reduced cognitive overhead in choosing extension type
+
+**Critical Insights**:
+- The distinction between skills, commands, and subagents is blurring
+- Skills can be invoked explicitly like commands
+- Skills can run in forked contexts like subagents
+- Single unified approach reduces complexity
+
+### 7. Claude Code 2.1 Update Overview
+**URL**: https://www.geeky-gadgets.com/claude-code-2-1-update-overview/
+
+**Key Topics**:
+- Hot reloading for skills
+- Session portability between environments
+- Wildcard tool permissions
+- Enhanced output controls
+
+### 8. Claude Skills Context Window Guide
+**URL**: https://tylerfolkman.substack.com/p/the-complete-guide-to-claude-skills
+
+**Key Topics**:
+- Progressive disclosure reduces context window usage
+- Skills load only when relevant
+- Context window management strategies
+- Forked context for isolated execution
+
+### 9. Understanding Skills, Agents, and MCP
+**URL**: https://colinmcnamara.com/blog/understanding-skills-agents-and-mcp-in-claude-code
+
+**Key Topics**:
+- When to use Skills vs Agents vs MCP
+- Forked context use cases
+- Skill invocation as commands
+- Best practices for extension selection
+
 ## Pattern Sources by Section
 
 ### Token Optimization (300-400 line recommendation)
@@ -85,6 +143,24 @@ This document contains the source URLs and references for best practices distill
 - Source: alexop.dev blog post
 - Principle: "Skills provide superior context efficiency"
 - Pattern: Automatic contextual loading vs explicit invocation
+
+### Advanced Skill Features (Claude Code 2.1+)
+- Source: Claude Code 2.1 documentation and blog posts
+- Features: Forked context, progressive disclosure, hot reloading
+- Convergence: Skills, commands, and subagents unified model
+- Decision Guide: When to use forked context vs shared context
+
+### Forked Context Pattern
+- Source: code.claude.com/docs/en/skills#run-skills-in-a-forked-context
+- Use Case: Resource-intensive operations, safe experimentation
+- Syntax: `context: fork` in YAML frontmatter
+- Benefit: Context isolation prevents main session pollution
+
+### Progressive Disclosure Pattern
+- Source: tylerfolkman.substack.com guide
+- Principle: Only load full skill content when needed
+- Impact: Significant context window savings
+- Best Practice: Clear descriptions ensure proper activation
 
 ## Usage Notes
 

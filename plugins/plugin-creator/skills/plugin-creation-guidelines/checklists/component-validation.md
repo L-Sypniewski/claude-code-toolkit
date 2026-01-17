@@ -48,6 +48,15 @@ Comprehensive validation checklist for all plugin components.
 - [ ] Integration points documented
 - [ ] No security vulnerabilities in example code
 
+### Advanced Skill Validation (Claude Code 2.1+)
+
+- [ ] If `context: fork` is used, skill genuinely benefits from isolation
+- [ ] If `allowed-tools` specified, tools are appropriate for skill purpose
+- [ ] If `metadata` present, includes useful organizational info (author, version)
+- [ ] Skill description enables proper progressive disclosure activation
+- [ ] Description under 200 chars for efficient initial loading
+- [ ] Forked context skills document isolation rationale
+
 ## Command Validation
 
 - [ ] Command file name is kebab-case
@@ -125,6 +134,12 @@ Comprehensive validation checklist for all plugin components.
 - **Organization**: Clear sections and subsections
 - **Examples**: Both good and bad patterns shown
 - **Reusability**: Multiple agents can reference
+
+### Advanced Skill Quality (Claude Code 2.1+)
+- **Context Isolation**: Forked context used appropriately (not overused)
+- **Progressive Disclosure**: Description triggers correct activation
+- **Metadata**: Optional fields used meaningfully when present
+- **Tool Access**: `allowed-tools` list is minimal and appropriate
 
 ### Command Quality
 - **Line Count**: 50-150 lines

@@ -136,6 +136,7 @@ For each subdirectory in `skills/`:
 **Description Check**:
 - Follows WHEN + WHEN NOT pattern
 - Clear usage boundaries
+- Description under 200 characters for efficient progressive disclosure
 
 **Content Check**:
 - Line count: 300-500 (comprehensive reference)
@@ -144,6 +145,20 @@ For each subdirectory in `skills/`:
 - Integration points documented
 - No security vulnerabilities in example code
 
+**Advanced Features Check (Claude Code 2.1+)**:
+- If `context: fork` present:
+  - Verify skill genuinely benefits from isolation
+  - Document isolation rationale in skill content
+  - Warn if used for simple reference material
+- If `allowed-tools` present:
+  - Verify tools are appropriate for skill purpose
+  - Check tool names are valid
+- If `metadata` present:
+  - Verify useful organizational info (author, version)
+  - Check for valid key-value pairs
+- If `license` present:
+  - Verify valid license identifier
+
 **Security Check for Code Examples**:
 - Bash examples: Proper quoting, no injection risks
 - Python examples: No eval/exec, safe subprocess usage
@@ -151,9 +166,18 @@ For each subdirectory in `skills/`:
 
 **Report per skill**:
 ```
-| Skill | Lines | WHEN/WHEN NOT | Examples | Integration | Security | Status |
-|-------|-------|---------------|----------|-------------|----------|--------|
-| skill-name | 450 | ✅ | ✅ | ✅ | ✅ | PASS |
+| Skill | Lines | WHEN/WHEN NOT | Examples | Integration | Advanced | Security | Status |
+|-------|-------|---------------|----------|-------------|----------|----------|--------|
+| skill-name | 450 | ✅ | ✅ | ✅ | ✅ | ✅ | PASS |
+```
+
+**Advanced Features Report** (if present):
+```
+### Advanced Skill Features
+| Skill | Context | Allowed-Tools | Metadata | Status |
+|-------|---------|---------------|----------|--------|
+| skill-name | fork (appropriate) | Read, Grep | ✅ | PASS |
+| skill-2 | standard | - | - | PASS |
 ```
 
 #### Commands Validation

@@ -1,6 +1,15 @@
 ---
 name: {{SKILL_NAME}}
 description: {{DESCRIPTION}}
+# Optional fields (Claude Code 2.1+):
+# context: fork                  # Uncomment for isolated execution
+# allowed-tools:                 # Uncomment and list pre-approved tools
+#   - Read
+#   - Grep
+# license: MIT                   # Uncomment for licensing
+# metadata:                      # Uncomment for custom metadata
+#   author: "{{AUTHOR}}"
+#   version: "1.0.0"
 ---
 
 # {{SKILL_TITLE}}

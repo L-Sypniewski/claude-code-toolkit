@@ -214,9 +214,42 @@ The plugin-creation-guidelines skill teaches four proven patterns:
 - **Agent → Skill**: Explicit reference section
 - **Agent → Agent**: Task tool for spawning
 
+### Advanced Skill Features (Claude Code 2.1+)
+
+The plugin-creator supports the latest Claude Code 2.1 skill features for generating modern plugins:
+
+#### Forked Context (`context: fork`)
+Generate skills that run in isolated subagent contexts for:
+- Resource-intensive operations that shouldn't consume main context
+- Safe experimentation without polluting main session state
+- Parallel skill execution for speedup
+
+**When to use**: Large codebase analysis, experimental operations, parallel processing.
+
+**When NOT to use**: Simple reference skills, templates, checklists (most cases).
+
+#### Progressive Disclosure
+Generate skills with descriptions optimized for progressive disclosure:
+- Clear, specific descriptions (under 200 chars) ensure skills are selected when relevant
+- Use WHEN/WHEN NOT pattern for accurate skill routing
+- Reduces initial context window usage for generated plugins
+
+#### Skills as Commands (Convergence)
+Design plugins where skills can also be invoked as slash commands:
+- Unified extension model reduces complexity
+- Generated skills work both contextually (auto-loaded) and explicitly (invoked)
+- Reduced cognitive overhead for end users
+
+#### New Metadata Fields
+Generate skills with optional fields for better organization:
+- `context: fork` - Isolated execution
+- `allowed-tools` - Pre-approved tools list
+- `metadata` - Custom key-value pairs (author, version, category)
+- `license` - Skill licensing
+
 ## Validation Checklist
 
-The plugin-validator checks ~80 criteria across 10 categories:
+The plugin-validator checks ~90 criteria across 11 categories:
 
 1. **File Structure**: Required files and directories
 2. **Metadata**: plugin.json completeness and correctness
@@ -228,6 +261,7 @@ The plugin-validator checks ~80 criteria across 10 categories:
 8. **Integration**: Correct component references
 9. **Security**: Script vulnerabilities, prompt safety
 10. **Token Optimization**: Line counts, DRY compliance
+11. **Advanced Features (2.1+)**: Forked context appropriateness, metadata validation
 
 ## Integration
 
@@ -369,6 +403,20 @@ This plugin distills best practices from authoritative sources:
 - [Claude Code Skills](https://code.claude.com/docs/en/skills)
 - [Claude Code Sub-agents](https://code.claude.com/docs/en/sub-agents)
 - [Claude Code Commands](https://code.claude.com/docs/en/slash-commands)
+
+### Claude Code 2.1+ Features
+- [Subagents, Commands and Skills Convergence](https://vivekhaldar.com/articles/claude-code-subagents-commands-skills-converging/)
+  - Unified extension model
+  - Forked context for skills
+  - Skills as slash commands
+- [Claude Code 2.1 Update Overview](https://www.geeky-gadgets.com/claude-code-2-1-update-overview/)
+  - Hot reloading
+  - Session portability
+- [Claude Skills Context Window Guide](https://tylerfolkman.substack.com/p/the-complete-guide-to-claude-skills)
+  - Progressive disclosure
+  - Context window management
+- [Understanding Skills, Agents, and MCP](https://colinmcnamara.com/blog/understanding-skills-agents-and-mcp-in-claude-code)
+  - When to use each extension type
 
 ## Troubleshooting
 
