@@ -183,19 +183,19 @@ Start
 
 ## Advanced Skill Features (Claude Code 2.1+)
 
-Claude Code 2.1 introduced powerful new skill capabilities that enable more sophisticated plugin architectures. These features are critical for building modern, efficient plugins.
+Claude Code 2.1 introduced powerful new skill capabilities. When generating plugins, consider these features to create more sophisticated and efficient plugins for end users.
 
 ### Forked Context Execution
 
-**Purpose**: Run skills in isolated subagent contexts to prevent context pollution and enable parallel, safe execution.
+**Purpose**: Generate skills configured to run in isolated subagent contexts to prevent context pollution and enable parallel, safe execution.
 
-**When to Use**:
+**When to Generate Skills with Forked Context**:
 - Resource-intensive skill operations that shouldn't consume main context
 - Experimental or exploratory skill operations
 - Skills that perform destructive or risky operations
 - Parallel skill execution for speedup
 
-**YAML Frontmatter**:
+**YAML Frontmatter for Generated Skills**:
 ```yaml
 ---
 name: skill-name
@@ -230,27 +230,6 @@ context: fork  # Runs in isolated subagent context
 ```yaml
 description: Code security analysis patterns and vulnerability detection. Use when: analyzing code for security issues, reviewing authentication logic, checking input validation. Do NOT use for: performance optimization, code formatting, or general refactoring.
 ```
-
-### Hot Reloading
-
-**Purpose**: Skills in `.claude/skills` or `~/.claude/skills` directories are instantly available without session restart.
-
-**Benefits**:
-- **Rapid Iteration**: Modify skills and test immediately
-- **No Restart Required**: Changes take effect instantly
-- **Development Workflow**: Faster skill development and debugging
-
-**Directory Structure**:
-```
-~/.claude/skills/           # User-level skills (global)
-.claude/skills/             # Project-level skills (local)
-plugins/plugin-name/skills/ # Plugin-bundled skills
-```
-
-**Priority Order** (highest to lowest):
-1. Project-level (`.claude/skills/`)
-2. User-level (`~/.claude/skills/`)
-3. Plugin-bundled (`plugins/*/skills/`)
 
 ### Skills as Commands (Convergence)
 

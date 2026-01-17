@@ -216,10 +216,10 @@ The plugin-creation-guidelines skill teaches four proven patterns:
 
 ### Advanced Skill Features (Claude Code 2.1+)
 
-The plugin-creator supports the latest Claude Code 2.1 skill features:
+The plugin-creator supports the latest Claude Code 2.1 skill features for generating modern plugins:
 
 #### Forked Context (`context: fork`)
-Run skills in isolated subagent contexts for:
+Generate skills that run in isolated subagent contexts for:
 - Resource-intensive operations that shouldn't consume main context
 - Safe experimentation without polluting main session state
 - Parallel skill execution for speedup
@@ -229,25 +229,19 @@ Run skills in isolated subagent contexts for:
 **When NOT to use**: Simple reference skills, templates, checklists (most cases).
 
 #### Progressive Disclosure
-Skills only load names/descriptions initially, with full content loaded on-demand:
-- Write clear, specific descriptions (under 200 chars)
-- Use WHEN/WHEN NOT pattern to ensure proper activation
-- Reduces initial context window usage
-
-#### Hot Reloading
-Skills in `.claude/skills` directories are instantly available without restart:
-- Rapid iteration during skill development
-- No session restart required for changes
-- Supports project-level and user-level skill directories
+Generate skills with descriptions optimized for progressive disclosure:
+- Clear, specific descriptions (under 200 chars) ensure skills are selected when relevant
+- Use WHEN/WHEN NOT pattern for accurate skill routing
+- Reduces initial context window usage for generated plugins
 
 #### Skills as Commands (Convergence)
-Skills can be invoked as slash commands:
-- Unified extension model
-- Skills work both contextually (auto-loaded) and explicitly (invoked)
-- Reduced cognitive overhead when choosing between extension types
+Design plugins where skills can also be invoked as slash commands:
+- Unified extension model reduces complexity
+- Generated skills work both contextually (auto-loaded) and explicitly (invoked)
+- Reduced cognitive overhead for end users
 
 #### New Metadata Fields
-Optional fields for better organization:
+Generate skills with optional fields for better organization:
 - `context: fork` - Isolated execution
 - `allowed-tools` - Pre-approved tools list
 - `metadata` - Custom key-value pairs (author, version, category)
