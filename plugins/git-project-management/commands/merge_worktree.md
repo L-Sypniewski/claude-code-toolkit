@@ -1,3 +1,8 @@
+---
+description: Merge the current worktree back to the target branch and clean up
+argument-hint: <target-branch>
+---
+
 Merge the current worktree back to the target branch and clean up: $ARGUMENTS
 
 Parse arguments to extract:

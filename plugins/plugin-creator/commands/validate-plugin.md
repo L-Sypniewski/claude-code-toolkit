@@ -1,3 +1,8 @@
+---
+description: Validate an existing Claude Code plugin against best practices, security guidelines, and architectural patterns
+argument-hint: <plugin-path>
+---
+
 # Validate Plugin
 
 Validate an existing Claude Code plugin against best practices, security guidelines, and architectural patterns.

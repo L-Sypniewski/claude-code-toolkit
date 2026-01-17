@@ -1,3 +1,8 @@
+---
+description: Implement bug fix following the investigation plan and track progress while implementing
+argument-hint: <bug-fix-plan-file>
+---
+
 Architecture advisor and senior-engineer must implement bug fix following the investigation plan and track progress while implementing.
 
 MANDATORY WORKFLOW:

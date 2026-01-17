@@ -1,3 +1,8 @@
+---
+description: Write a detailed refactoring plan with problem analysis and step-by-step strategy for another AI Agent
+argument-hint: ""
+---
+
 Architecture advisor and senior-engineer should write plan for code refactoring - analyze the issues and write down a markdown file with a problem analysis and a plan (but without actual code snippets) for another AI Agent, so that it knows what needs to be done and can track progress without context of this conversation. The refactoring should improve code quality, maintainability, and performance without changing external behavior. Adhere to SOLID and YAGNI principles - avoid over-engineering or unnecessary abstractions.
 
 MANDATORY WORKFLOW:

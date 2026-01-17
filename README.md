@@ -309,7 +309,8 @@ Learn more about [version management](https://code.claude.com/docs/en/plugins-re
 
 - [Anthropic Skills Repository](https://github.com/anthropics/skills) - Official skills examples
 - [Agent Skills Engineering Blog](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) - Technical deep dive
-- [Skills Specification](https://github.com/anthropics/skills/blob/main/agent_skills_spec.md) - SKILL.md format
+- [Agent Skills Specification](https://agentskills.io/specification) - Official SKILL.md format specification
+- [Skills Specification (GitHub)](https://github.com/anthropics/skills/blob/main/spec/agent-skills-spec.md) - Pointer to canonical spec
 
 ## 🤝 Contributing
 
@@ -334,7 +335,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🔗 Related Resources
 
 - [Claude Code CLI](https://claude.ai/code)
-- [Claude Code Documentation](https://docs.claude.com/en/docs/claude-code)
+- [Claude Code Documentation](https://code.claude.com/docs/en/overview)
 - [Claude Code GitHub](https://github.com/anthropics/claude-code)
 - [Official Claude Code Examples](https://github.com/anthropics/claude-code-examples)
 - [Copilot Agent Equivalents](https://github.com/TwentyFiveDev-L-Sypniewski/.github-private) - GitHub Copilot agent equivalents for these Claude Code plugins

@@ -1,3 +1,8 @@
+---
+description: Create a pull request for the current branch against master with informative description
+argument-hint: ""
+---
+
 Create a pull request for the current branch against master. Use both commit messages and diff on changed files to create a concise yet informative PR description.
 
 WORKFLOW:

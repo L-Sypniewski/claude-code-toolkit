@@ -1,3 +1,8 @@
+---
+description: Implement plan and track progress while implementing
+argument-hint: <plan-file>
+---
+
 Architecture advisor and senior-engineer must implement plan and track progress while implementing.
 
 MANDATORY WORKFLOW:

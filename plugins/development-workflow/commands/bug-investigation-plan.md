@@ -1,3 +1,8 @@
+---
+description: Investigate bug and write comprehensive plan for fix with problem analysis and step-by-step fix strategy
+argument-hint: <bug-description>
+---
+
 Architecture advisor and senior-engineer should investigate bug and write comprehensive plan for fix - analyze the bug report, reproduce the issue, identify root cause, and write down a markdown file with problem analysis and fix plan (but without actual code snippets) for another AI Agent, so that it knows what needs to be done and can track progress without context of this conversation.
 
 MANDATORY WORKFLOW:

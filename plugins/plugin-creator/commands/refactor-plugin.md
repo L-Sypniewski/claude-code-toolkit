@@ -1,3 +1,8 @@
+---
+description: Refactor existing Claude Code plugin to improve architecture, apply best practices, optimize tokens, or add new components
+argument-hint: <plugin-path> [goals]
+---
+
 # Refactor Plugin
 
 Refactor an existing Claude Code plugin to improve architecture, apply best practices, optimize tokens, or add new components.
