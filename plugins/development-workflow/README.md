@@ -6,8 +6,6 @@ Comprehensive development toolkit with intelligent feature workflows, senior eng
 
 ### 🎨 Frontend Design Excellence
 
-**NEW in v1.5.0**: Expert frontend designer agent with comprehensive design guidelines for creating distinctive, aesthetically exceptional interfaces.
-
 #### Agent
 
 - **frontend-designer** - Expert frontend designer specializing in creating production-grade UI/UX that avoids generic AI aesthetics. Uses Sequential Thinking and Context7 for design planning and best practices.

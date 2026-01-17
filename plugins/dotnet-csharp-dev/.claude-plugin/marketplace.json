@@ -1,0 +1,46 @@
+{
+    "name": "dotnet-csharp-dev",
+    "owner": {
+        "name": "L-Sypniewski",
+        "email": "contact@example.com"
+    },
+    "metadata": {
+        "description": "Professional .NET C# development skill for building production-ready applications with best practices",
+        "version": "1.0.0"
+    },
+    "plugins": [
+        {
+            "name": "dotnet-csharp-dev",
+            "source": "./",
+            "description": "Comprehensive .NET C# development skill covering best practices, design patterns, architecture, testing, and modern C# idioms for building production-ready applications",
+            "version": "1.0.0",
+            "author": {
+                "name": "L-Sypniewski"
+            },
+            "homepage": "https://github.com/L-Sypniewski/claude-code-toolkit",
+            "repository": "https://github.com/L-Sypniewski/claude-code-toolkit",
+            "license": "MIT",
+            "keywords": [
+                "dotnet",
+                "csharp",
+                "development",
+                "best-practices",
+                "design-patterns",
+                "testing",
+                "architecture",
+                "async",
+                "dependency-injection",
+                "linq"
+            ],
+            "category": "development",
+            "tags": [
+                "dotnet",
+                "csharp",
+                "backend",
+                "enterprise",
+                "architecture"
+            ],
+            "strict": true
+        }
+    ]
+}
