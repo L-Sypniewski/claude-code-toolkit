@@ -1,8 +1,41 @@
 # Development Workflow Plugin
 
-Comprehensive development toolkit with intelligent feature workflows, senior engineering expertise, code review, architecture advisory, visual testing, and PR management capabilities for end-to-end software development workflows.
+Comprehensive development toolkit with intelligent feature workflows, senior engineering expertise, code review, architecture advisory, frontend design, visual testing, and PR management capabilities for end-to-end software development workflows.
 
 ## Features
+
+### 🎨 Frontend Design Excellence
+
+**NEW in v1.5.0**: Expert frontend designer agent with comprehensive design guidelines for creating distinctive, aesthetically exceptional interfaces.
+
+#### Agent
+
+- **frontend-designer** - Expert frontend designer specializing in creating production-grade UI/UX that avoids generic AI aesthetics. Uses Sequential Thinking and Context7 for design planning and best practices.
+
+#### Skill
+
+- **frontend-design-guidelines** - Comprehensive guidelines for typography, color, layout, animation, and visual details. Auto-loaded when building web interfaces.
+
+#### Key Capabilities
+
+- **Bold Aesthetic Direction**: Commits to distinctive design choices (minimalist, maximalist, retro, brutalist, etc.)
+- **Anti-Generic Design**: Explicitly avoids common AI patterns (Inter fonts, purple gradients, predictable layouts)
+- **Production-Grade Code**: Creates accessible (WCAG AA), responsive, performant implementations
+- **Sequential Thinking**: Uses structured design thinking to plan creative approaches
+- **Context7 Integration**: Leverages current best practices and design standards
+
+#### Example Usage
+
+The **frontend-designer** agent activates automatically when:
+- Building web interfaces, components, pages, or applications
+- Implementing frontend features with design requirements
+- Creating UI/UX with aesthetic focus
+
+```bash
+# The agent will be invoked automatically for frontend design tasks
+# Example: "Create a landing page for a retro gaming SaaS with bold aesthetics"
+# Example: "Design a dashboard with brutalist minimal aesthetic"
+```
 
 ### 🆕 Intelligent Feature Workflow
 
@@ -62,6 +95,7 @@ See individual command files for detailed documentation and examples.
 
 ### Agents
 
+- **frontend-designer** - Expert frontend designer for distinctive UI/UX with bold aesthetics
 - **senior-engineer** - Primary development agent for implementation and problem-solving
 - **code-reviewer** - Expert code review with comprehensive quality analysis
 - **pull-request-creator** - Professional PR documentation and creation
@@ -80,6 +114,7 @@ See individual command files for detailed documentation and examples.
 
 ### Skills
 
+- **frontend-design-guidelines** - Comprehensive guidelines for creating distinctive, aesthetically exceptional interfaces
 - **feature-planning** - End-to-end feature implementation workflow from requirements to completion (auto-invoked by feature commands)
 - **code-review-checklist** - Comprehensive checklist covering correctness, performance, security, and maintainability
 - **refactoring-patterns** - Proven refactoring techniques for improving code quality and reducing complexity
@@ -100,10 +135,11 @@ This plugin is part of the Claude Code Toolkit marketplace. Install via:
 
 1. **Planning**: Use **/plan-markdown-writer** to create structured project plans
 2. **Architecture Planning**: Use **technical-architecture-advisor** for design decisions
-3. **Implementation**: Use **senior-engineer** for feature development
-4. **Code Review**: Use **code-reviewer** for quality assurance
-5. **Visual Verification**: Use **screenshot-comparator** for UI testing
-6. **PR Creation**: Use **/create-pr** or **pull-request-creator** for documentation
+3. **Frontend Design**: Use **frontend-designer** for UI/UX with exceptional aesthetics
+4. **Implementation**: Use **senior-engineer** for feature development
+5. **Code Review**: Use **code-reviewer** for quality assurance
+6. **Visual Verification**: Use **screenshot-comparator** for UI testing
+7. **PR Creation**: Use **/create-pr** or **pull-request-creator** for documentation
 
 ### Bug Fixing Workflow
 
@@ -121,20 +157,29 @@ This plugin is part of the Claude Code Toolkit marketplace. Install via:
 
 ## Agent Cooperation
 
-The **senior-engineer** and **technical-architecture-advisor** agents are designed to work together:
-- Architecture advisor provides high-level design guidance
-- Senior engineer implements the architectural decisions
+Agents are designed to work together seamlessly:
+
+### Frontend Design + Engineering
+- **frontend-designer** creates distinctive UI/UX with production-grade code
+- **senior-engineer** implements backend logic and integrations
+- **screenshot-comparator** validates visual consistency
+
+### Architecture + Implementation
+- **technical-architecture-advisor** provides high-level design guidance
+- **senior-engineer** implements the architectural decisions
 - Both agents ensure technical excellence and maintainability
 
 ## Best Practices
 
 - Start complex features with architecture review
+- Use **frontend-designer** for all UI/UX work requiring exceptional aesthetics
 - Use code review before creating PRs
 - Leverage visual testing for UI changes
 - Document decisions in PR descriptions
 - Follow systematic workflows for bugs and refactoring
 - Skills provide procedural knowledge that agents automatically access when relevant
 - Leverage code-review-checklist for thorough quality assessment
+- Let **frontend-designer** handle all web interface design to avoid generic AI aesthetics
 
 ## Documentation References
 
