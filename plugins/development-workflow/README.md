@@ -25,6 +25,7 @@ Comprehensive development toolkit with intelligent feature workflows, senior eng
 #### Example Usage
 
 The **frontend-designer** agent activates automatically when:
+
 - Building web interfaces, components, pages, or applications
 - Implementing frontend features with design requirements
 - Creating UI/UX with aesthetic focus
@@ -112,6 +113,7 @@ See individual command files for detailed documentation and examples.
 
 ### Skills
 
+- **csharp-development** - Expert C# development with modern patterns, ASP.NET Core, Blazor, and comprehensive testing (xUnit, FluentAssertions)
 - **frontend-design-guidelines** - Comprehensive guidelines for creating distinctive, aesthetically exceptional interfaces
 - **feature-planning** - End-to-end feature implementation workflow from requirements to completion (auto-invoked by feature commands)
 - **code-review-checklist** - Comprehensive checklist covering correctness, performance, security, and maintainability
@@ -158,11 +160,13 @@ This plugin is part of the Claude Code Toolkit marketplace. Install via:
 Agents are designed to work together seamlessly:
 
 ### Frontend Design + Engineering
+
 - **frontend-designer** creates distinctive UI/UX with production-grade code
 - **senior-engineer** implements backend logic and integrations
 - **screenshot-comparator** validates visual consistency
 
 ### Architecture + Implementation
+
 - **technical-architecture-advisor** provides high-level design guidance
 - **senior-engineer** implements the architectural decisions
 - Both agents ensure technical excellence and maintainability
