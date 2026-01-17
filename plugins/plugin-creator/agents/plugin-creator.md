@@ -74,6 +74,17 @@ Use AskUserQuestion to collect plugin requirements:
   - None: "Just standard tools (Read, Write, Edit, Bash)"
 - multiSelect: true
 
+**Question 5: Advanced Skill Features** (Optional, ask if user selected Skills)
+- Header: "Advanced Features"
+- Question: "Would you like to use any advanced skill features (Claude Code 2.1+)?"
+- Options:
+  - Forked Context: "Run skills in isolated subagent context (for resource-intensive operations)"
+  - Pre-approved Tools: "Specify allowed-tools for skill execution"
+  - Metadata: "Add custom metadata (author, version, category)"
+  - Standard: "Use standard skill format (recommended for most cases)"
+- multiSelect: true
+- Default: Standard
+
 ### Phase 2: Architecture Planning
 
 Use sequential thinking to plan plugin architecture:
@@ -85,12 +96,14 @@ Use sequential thinking to plan plugin architecture:
 5. **Security Considerations**: Identify security requirements (scripts, destructive ops)
 6. **Estimate Token Budget**: Calculate expected line counts per component
 7. **Create Dependency Graph**: Visualize component relationships
+8. **Evaluate Advanced Features**: Determine if forked context or other 2.1 features are appropriate
 
 Reference `plugin-creation-guidelines` skill for:
 - Architecture pattern details and token budgets
 - When to use each pattern (decision trees)
 - Component template structures
 - Security validation requirements
+- Advanced skill features decision guide (forked context, progressive disclosure)
 
 ### Phase 3: Directory Structure Creation
 
@@ -130,6 +143,25 @@ For each skill identified:
 - Add Integration Points section
 - Add Additional Resources section with relevant URLs
 - Target: 300-500 lines per skill
+
+**Advanced Skill Features (Claude Code 2.1+)**:
+If user selected advanced features, add to YAML frontmatter:
+- `context: fork` - For resource-intensive skills that benefit from isolation
+- `allowed-tools` - Pre-approved tools list (if specific tools needed)
+- `metadata` - Custom metadata (author, version, category)
+- `license` - Skill license (MIT by default)
+
+**Forked Context Decision**:
+Use `context: fork` ONLY when:
+- Skill performs resource-intensive operations (large codebase analysis)
+- Skill might pollute main session state
+- Skill needs to run in parallel with others
+- Skill is experimental or might fail destructively
+
+Do NOT use forked context for:
+- Simple reference skills (knowledge, checklists, templates)
+- Skills that need to share state with main session
+- Most standard plugin skills (keep it simple)
 
 #### 4.3: Agents
 

@@ -181,6 +181,177 @@ Start
 
 **Note**: Patterns can be combined (e.g., Orchestrator-Worker + Skill-Augmented).
 
+## Advanced Skill Features (Claude Code 2.1+)
+
+Claude Code 2.1 introduced powerful new skill capabilities that enable more sophisticated plugin architectures. These features are critical for building modern, efficient plugins.
+
+### Forked Context Execution
+
+**Purpose**: Run skills in isolated subagent contexts to prevent context pollution and enable parallel, safe execution.
+
+**When to Use**:
+- Resource-intensive skill operations that shouldn't consume main context
+- Experimental or exploratory skill operations
+- Skills that perform destructive or risky operations
+- Parallel skill execution for speedup
+
+**YAML Frontmatter**:
+```yaml
+---
+name: skill-name
+description: Skill description...
+context: fork  # Runs in isolated subagent context
+---
+```
+
+**Benefits**:
+- **Context Isolation**: Skill execution doesn't pollute main session state
+- **Parallel Execution**: Multiple forked skills can run simultaneously
+- **Safe Experimentation**: Failed skill operations don't affect main context
+- **Resource Management**: Each forked context has its own token budget
+
+**Example Use Case**: A code analysis skill that processes large codebases can run in forked context to avoid consuming main session tokens.
+
+### Progressive Disclosure
+
+**Purpose**: Only load full skill content when needed, reducing initial context window usage.
+
+**How It Works**:
+1. **Initial Load**: Only skill name and description are loaded into system prompt
+2. **On-Demand Activation**: Full skill content loads when Claude determines relevance
+3. **Context Efficiency**: Saves tokens by deferring full content loading
+
+**Best Practices**:
+- Write **clear, specific descriptions** that accurately trigger skill activation
+- Keep skill descriptions under 200 characters for efficient initial loading
+- Use WHEN/WHEN NOT pattern to ensure proper activation triggers
+
+**Example Description**:
+```yaml
+description: Code security analysis patterns and vulnerability detection. Use when: analyzing code for security issues, reviewing authentication logic, checking input validation. Do NOT use for: performance optimization, code formatting, or general refactoring.
+```
+
+### Hot Reloading
+
+**Purpose**: Skills in `.claude/skills` or `~/.claude/skills` directories are instantly available without session restart.
+
+**Benefits**:
+- **Rapid Iteration**: Modify skills and test immediately
+- **No Restart Required**: Changes take effect instantly
+- **Development Workflow**: Faster skill development and debugging
+
+**Directory Structure**:
+```
+~/.claude/skills/           # User-level skills (global)
+.claude/skills/             # Project-level skills (local)
+plugins/plugin-name/skills/ # Plugin-bundled skills
+```
+
+**Priority Order** (highest to lowest):
+1. Project-level (`.claude/skills/`)
+2. User-level (`~/.claude/skills/`)
+3. Plugin-bundled (`plugins/*/skills/`)
+
+### Skills as Commands (Convergence)
+
+**Purpose**: Skills can now be invoked as slash commands, unifying the extension model.
+
+**When to Use**:
+- Skill provides standalone functionality that users might invoke directly
+- Bridging between automatic skill activation and explicit user invocation
+- Creating flexible workflows that work both contextually and on-demand
+
+**Example**:
+```yaml
+---
+name: code-formatter
+description: Format code using style guidelines. Use when: formatting code files, cleaning up code style. Invoke with /code-formatter for explicit formatting.
+---
+```
+
+**Convergence Model**:
+| Component | Activation | Context | Best For |
+|-----------|------------|---------|----------|
+| Skills | Auto (contextual) | Shared or Forked | Knowledge, patterns, references |
+| Commands | Manual (slash) | Main | User-triggered workflows |
+| Subagents | Spawned (Task) | Forked | Parallel work, delegation |
+
+**Unified Pattern**: Skills can behave like commands (explicit invocation) or subagents (forked context), reducing the need to choose between overlapping abstractions.
+
+### Skill Metadata Fields
+
+**New Optional Fields** (Claude Code 2.1+):
+```yaml
+---
+name: skill-name
+description: Skill description with WHEN/WHEN NOT pattern
+context: fork                    # Optional: "fork" for isolated execution
+allowed-tools:                   # Optional: Pre-approved tools
+  - Read
+  - Grep
+  - Glob
+license: MIT                     # Optional: Skill license
+metadata:                        # Optional: Custom key-value pairs
+  author: "Plugin Author"
+  version: "1.0.0"
+  category: "code-analysis"
+---
+```
+
+**Field Descriptions**:
+- `context: fork` - Runs skill in isolated subagent context
+- `allowed-tools` - Tools pre-approved for this skill (Claude Code only)
+- `license` - License for the skill content
+- `metadata` - Custom metadata for organization and discovery
+
+### Nested Skills Discovery
+
+**Purpose**: Organize skills in nested folder structures for better modularity.
+
+**Structure**:
+```
+plugin-name/
+├── skills/
+│   ├── primary-skill/
+│   │   └── SKILL.md
+│   └── category/
+│       ├── sub-skill-1/
+│       │   └── SKILL.md
+│       └── sub-skill-2/
+│           └── SKILL.md
+```
+
+**Benefits**:
+- Better organization for plugins with many skills
+- Logical grouping by category or domain
+- Automatic discovery of nested skill directories
+
+### Decision Guide: When to Use Forked Context
+
+```
+Should this skill use forked context?
+  │
+  ├─ Does it perform resource-intensive operations?
+  │   ├─ Yes → Consider fork
+  │   └─ No ↓
+  │
+  ├─ Could it pollute the main session state?
+  │   ├─ Yes → Use fork
+  │   └─ No ↓
+  │
+  ├─ Does it need to run in parallel with other skills?
+  │   ├─ Yes → Use fork
+  │   └─ No ↓
+  │
+  ├─ Is it experimental or might fail destructively?
+  │   ├─ Yes → Use fork
+  │   └─ No ↓
+  │
+  └─ Default: Do NOT use fork (simpler, shared context)
+```
+
+**Note**: Most skills should NOT use forked context. Reserve it for specific use cases where isolation provides clear benefits.
+
 ## Best Practices from Research Sources
 
 ### Token Optimization

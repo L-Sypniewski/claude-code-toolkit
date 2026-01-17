@@ -6,6 +6,15 @@ Use this template as the foundation for creating new skill files.
 ---
 name: skill-name
 description: [Knowledge domain description]. Use when: [scenarios]. Do NOT use for: [anti-patterns].
+# Optional fields (Claude Code 2.1+):
+# context: fork                  # Run in isolated subagent context (optional)
+# allowed-tools:                 # Pre-approved tools for this skill (optional)
+#   - Read
+#   - Grep
+# license: MIT                   # Skill license (optional)
+# metadata:                      # Custom metadata (optional)
+#   author: "Author Name"
+#   version: "1.0.0"
 ---
 
 # Skill Title
@@ -60,3 +69,25 @@ Works with:
 - **DRY Principle**: Skills are the single source of truth - agents reference them
 - **Templates**: Include reusable templates agents can reference
 - **Integration**: Document how other components use this skill
+
+## Optional Fields (Claude Code 2.1+)
+
+| Field | Purpose | When to Use |
+|-------|---------|-------------|
+| `context: fork` | Run skill in isolated subagent context | Resource-intensive operations, safe experimentation |
+| `allowed-tools` | Pre-approve specific tools for the skill | When skill needs specific tool access |
+| `license` | Specify skill license | For open-source or shared skills |
+| `metadata` | Custom key-value pairs | Organization, versioning, categorization |
+
+## Forked Context Decision Guide
+
+Use `context: fork` when:
+- Skill performs resource-intensive operations
+- Skill might pollute main session state
+- Skill needs to run in parallel with others
+- Skill is experimental or might fail destructively
+
+Do NOT use forked context when:
+- Skill is lightweight reference material
+- Skill needs to share state with main session
+- Simplicity is preferred over isolation

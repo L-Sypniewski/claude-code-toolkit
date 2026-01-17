@@ -134,6 +134,61 @@ metadata:               # Custom key-value pairs
   version: "1.0"
 ```
 
+### Advanced Fields (Claude Code 2.1+)
+
+```yaml
+context: fork           # Run skill in isolated subagent context
+```
+
+## Advanced Skill Features (Claude Code 2.1+)
+
+### Forked Context Execution
+
+Skills can now run in isolated subagent contexts using `context: fork`:
+
+```yaml
+---
+name: resource-intensive-skill
+description: Heavy analysis skill. Use when: analyzing large codebases.
+context: fork
+---
+```
+
+**When to Use Forked Context**:
+- Resource-intensive operations that shouldn't consume main context
+- Operations that might pollute main session state
+- Skills that need to run in parallel with others
+- Experimental operations that might fail
+
+**When NOT to Use**:
+- Simple reference skills (knowledge, checklists, templates)
+- Skills that need to share state with main session
+- Most standard plugin skills (keep it simple)
+
+### Hot Reloading
+
+Skills in `.claude/skills` directories are instantly available without restart:
+
+```
+~/.claude/skills/           # User-level skills (global)
+.claude/skills/             # Project-level skills (local)
+plugins/plugin-name/skills/ # Plugin-bundled skills
+```
+
+Changes to skill files are immediately reflected without restarting your session.
+
+### Skills as Commands (Convergence)
+
+Skills can now be invoked as slash commands, unifying the extension model:
+
+| Component | Activation | Context | Best For |
+|-----------|------------|---------|----------|
+| Skills | Auto (contextual) | Shared or Forked | Knowledge, patterns, references |
+| Commands | Manual (slash) | Main | User-triggered workflows |
+| Subagents | Spawned (Task) | Forked | Parallel work, delegation |
+
+This convergence reduces cognitive overhead when choosing between extension types.
+
 ## Best Practices
 
 ### Using Skills
@@ -189,6 +244,9 @@ All skills in this toolkit are designed to work seamlessly with:
 - [Anthropic Skills Repository](https://github.com/anthropics/skills) - Official skills and examples
 - [Agent Skills Overview](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) - Technical deep dive
 - [Claude Code Documentation](https://docs.claude.com/en/docs/claude-code) - Official documentation
+- [Claude Code Skills Documentation](https://code.claude.com/docs/en/skills) - Official skills guide
+- [Subagents, Commands and Skills Convergence](https://vivekhaldar.com/articles/claude-code-subagents-commands-skills-converging/) - Understanding the unified model
+- [Claude Skills Context Window Guide](https://tylerfolkman.substack.com/p/the-complete-guide-to-claude-skills) - Progressive disclosure and efficiency
 
 ## Contributing Skills
 
