@@ -72,6 +72,20 @@ This repository serves as a **Claude Code Plugin Marketplace** containing curate
 
 [View Details →](plugins/ui-ux-audit/README.md)
 
+### 🔷 .NET Development
+
+**C# and .NET development skill with comprehensive best practices**
+
+- 1 Claude Code skill for C# and .NET development
+- SOLID principles and clean code practices
+- Modern C# features (C# 10+) and async/await patterns
+- ASP.NET Core API development guidelines
+- Entity Framework Core best practices
+- Testing strategies and security guidelines
+- Performance optimization techniques
+
+[View Details →](plugins/dotnet-development/README.md)
+
 ## 🚀 Installation
 
 ### Install the Entire Marketplace
@@ -94,6 +108,7 @@ Once the marketplace is added, install specific plugins:
 /plugin install git-project-management
 /plugin install documentation-templates
 /plugin install ui-ux-audit
+/plugin install dotnet-development
 ```
 
 ### Team Installation (Automatic)
@@ -119,7 +134,8 @@ claude-code-toolkit/
 │   ├── development-workflow/     # Development lifecycle tools
 │   ├── git-project-management/   # Git and planning utilities
 │   ├── documentation-templates/  # Documentation templates
-│   └── ui-ux-audit/              # UI/UX visual audit tools
+│   ├── ui-ux-audit/              # UI/UX visual audit tools
+│   └── dotnet-development/       # .NET development best practices
 ├── README.md                      # This file
 └── .claude/                       # Local settings
 ```
@@ -292,6 +308,9 @@ Learn more about [version management](https://code.claude.com/docs/en/plugins-re
 - [Context Engineering Plugin](plugins/context-engineering/README.md)
 - [Development Workflow Plugin](plugins/development-workflow/README.md)
 - [Git & Project Management Plugin](plugins/git-project-management/README.md)
+- [Documentation Templates Plugin](plugins/documentation-templates/README.md)
+- [UI/UX Audit Plugin](plugins/ui-ux-audit/README.md)
+- [.NET Development Plugin](plugins/dotnet-development/README.md)
 - [Documentation Templates Plugin](plugins/documentation-templates/README.md)
 - [UI/UX Audit Plugin](plugins/ui-ux-audit/README.md)
 

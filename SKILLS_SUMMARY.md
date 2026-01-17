@@ -44,12 +44,19 @@ Quick reference for all Claude Code Skills in the toolkit.
 | ------------------------ | ------------------------------------ | ------------------------------- |
 | `ui-ux-audit-guidelines` | Professional UI/UX audit methodology | Conducting visual design audits |
 
+### .NET Development (1 skill)
+
+| Skill                       | Description                               | Use When                              |
+| --------------------------- | ----------------------------------------- | ------------------------------------- |
+| `csharp-dotnet-development` | C# and .NET development best practices    | Developing/reviewing .NET applications |
+
 ## By Use Case
 
 ### Code Quality
 
 - `code-review-checklist` - Systematic review process
 - `refactoring-patterns` - Safe refactoring techniques
+- `csharp-dotnet-development` - .NET development best practices
 
 ### Development Workflow
 
@@ -77,9 +84,9 @@ Quick reference for all Claude Code Skills in the toolkit.
 
 ## Quick Stats
 
-- **Total Skills**: 15
-- **Total Plugins with Skills**: 5
-- **Average Skills per Plugin**: 3.0
+- **Total Skills**: 16
+- **Total Plugins with Skills**: 6
+- **Average Skills per Plugin**: 2.7
 - **Specification**: Anthropic Agent Skills v1.0
 
 ## How Skills Work

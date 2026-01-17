@@ -5,7 +5,7 @@
     "url": "https://github.com/L-Sypniewski/claude-code-toolkit"
   },
   "metadata": {
-    "version": "1.4.1",
+    "version": "1.5.0",
     "description": "A comprehensive collection of Claude Code plugins for enhanced development workflows, context engineering, git management, and documentation",
     "pluginRoot": "./plugins"
   },
@@ -81,6 +81,24 @@
         "screenshots",
         "visual-testing",
         "design-review"
+      ]
+    },
+    {
+      "name": "dotnet-development",
+      "source": "./plugins/dotnet-development",
+      "description": "C# and .NET development skill with best practices, patterns, conventions, and guidelines for building robust .NET applications",
+      "version": "1.0.0",
+      "category": "development",
+      "keywords": [
+        "dotnet",
+        "csharp",
+        "c#",
+        ".net",
+        "development",
+        "best-practices",
+        "patterns",
+        "aspnetcore",
+        "entityframework"
       ]
     }
   ]
