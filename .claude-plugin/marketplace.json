@@ -27,8 +27,8 @@
     {
       "name": "development-workflow",
       "source": "./plugins/development-workflow",
-      "description": "Comprehensive development toolkit with senior engineering, code review, architecture advisory, and PR management capabilities",
-      "version": "1.4.1",
+      "description": "Comprehensive development toolkit with senior engineering, code review, architecture advisory, PR management, and C# .NET development best practices",
+      "version": "1.5.0",
       "category": "development",
       "keywords": [
         "development",
@@ -36,7 +36,10 @@
         "architecture",
         "pull-request",
         "bug-fixing",
-        "refactoring"
+        "refactoring",
+        "dotnet",
+        "csharp",
+        "aspnetcore"
       ]
     },
     {
@@ -81,24 +84,6 @@
         "screenshots",
         "visual-testing",
         "design-review"
-      ]
-    },
-    {
-      "name": "dotnet-development",
-      "source": "./plugins/dotnet-development",
-      "description": "C# and .NET development skill with best practices, patterns, conventions, and guidelines for building robust .NET applications",
-      "version": "1.0.0",
-      "category": "development",
-      "keywords": [
-        "dotnet",
-        "csharp",
-        "c#",
-        ".net",
-        "development",
-        "best-practices",
-        "patterns",
-        "aspnetcore",
-        "entityframework"
       ]
     }
   ]

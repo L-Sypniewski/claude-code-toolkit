@@ -11,7 +11,7 @@ Quick reference for all Claude Code Skills in the toolkit.
 | `prp-structure`           | Standard PRP document format        | Creating/formatting PRP documents |
 | `github-issue-processing` | Extract actionable info from issues | Analyzing GitHub issues           |
 
-### Development Workflow (9 skills)
+### Development Workflow (10 skills)
 
 | Skill                        | Description                                          | Use When                                            |
 | ---------------------------- | ---------------------------------------------------- | --------------------------------------------------- |
@@ -24,6 +24,7 @@ Quick reference for all Claude Code Skills in the toolkit.
 | `code-review-checklist`      | Comprehensive code review                            | Performing code reviews                             |
 | `refactoring-patterns`       | Code refactoring techniques                          | Planning/executing refactoring                      |
 | `workflow-orchestration`     | Multi-step workflow coordination                     | Managing complex workflows                          |
+| `csharp-dotnet-development`  | C# and .NET development best practices               | Developing/reviewing .NET applications              |
 
 ### Git & Project Management (1 skill)
 
@@ -43,12 +44,6 @@ Quick reference for all Claude Code Skills in the toolkit.
 | Skill                    | Description                          | Use When                        |
 | ------------------------ | ------------------------------------ | ------------------------------- |
 | `ui-ux-audit-guidelines` | Professional UI/UX audit methodology | Conducting visual design audits |
-
-### .NET Development (1 skill)
-
-| Skill                       | Description                               | Use When                              |
-| --------------------------- | ----------------------------------------- | ------------------------------------- |
-| `csharp-dotnet-development` | C# and .NET development best practices    | Developing/reviewing .NET applications |
 
 ## By Use Case
 
@@ -85,8 +80,8 @@ Quick reference for all Claude Code Skills in the toolkit.
 ## Quick Stats
 
 - **Total Skills**: 16
-- **Total Plugins with Skills**: 6
-- **Average Skills per Plugin**: 2.7
+- **Total Plugins with Skills**: 5
+- **Average Skills per Plugin**: 3.2
 - **Specification**: Anthropic Agent Skills v1.0
 
 ## How Skills Work

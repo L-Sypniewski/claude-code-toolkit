@@ -1,6 +1,6 @@
 # Development Workflow Plugin
 
-Comprehensive development toolkit with intelligent feature workflows, senior engineering expertise, code review, architecture advisory, visual testing, and PR management capabilities for end-to-end software development workflows.
+Comprehensive development toolkit with intelligent feature workflows, senior engineering expertise, code review, architecture advisory, visual testing, PR management, and C# .NET development best practices for end-to-end software development workflows.
 
 ## Features
 
@@ -84,6 +84,7 @@ See individual command files for detailed documentation and examples.
 - **code-review-checklist** - Comprehensive checklist covering correctness, performance, security, and maintainability
 - **refactoring-patterns** - Proven refactoring techniques for improving code quality and reducing complexity
 - **workflow-orchestration** - Multi-step workflow coordination patterns for complex development tasks
+- **csharp-dotnet-development** - C# and .NET development best practices, patterns, and conventions (SOLID principles, async/await, EF Core, ASP.NET Core, security, performance)
 
 ## Installation
 

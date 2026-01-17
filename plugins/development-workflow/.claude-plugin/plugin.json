@@ -1,7 +1,7 @@
 {
   "name": "development-workflow",
-  "version": "1.4.1",
-  "description": "Comprehensive development toolkit with intelligent feature workflows, senior engineering, code review, architecture advisory, screenshot comparison, and PR management capabilities for end-to-end software development",
+  "version": "1.5.0",
+  "description": "Comprehensive development toolkit with intelligent feature workflows, senior engineering, code review, architecture advisory, screenshot comparison, PR management, and C# .NET development best practices for end-to-end software development",
   "author": {
     "name": "Claude Code Toolkit"
   },
@@ -17,7 +17,10 @@
     "bug-fixing",
     "refactoring",
     "senior-engineer",
-    "visual-testing"
+    "visual-testing",
+    "dotnet",
+    "csharp",
+    "aspnetcore"
   ],
   "license": "MIT",
   "repository": "https://github.com/L-Sypniewski/claude-code-toolkit",
