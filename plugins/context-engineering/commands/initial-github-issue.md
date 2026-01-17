@@ -1,3 +1,8 @@
+---
+description: Transform a GitHub issue to follow the INITIAL.md format for context engineering workflow
+argument-hint: <github-issue-url>
+---
+
 # Format GitHub Issue for Context Engineering
 
 ## GitHub Issue URL: $ARGUMENTS

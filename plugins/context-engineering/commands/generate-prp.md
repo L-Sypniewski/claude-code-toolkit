@@ -1,3 +1,8 @@
+---
+description: Generate a complete PRP (Prompt-Response-Plan) for general feature implementation with thorough research
+argument-hint: <github-issue-url>
+---
+
 # Create PRP
 
 ## GitHub Issue URL: $ARGUMENTS

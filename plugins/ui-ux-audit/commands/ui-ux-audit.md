@@ -1,3 +1,8 @@
+---
+description: Conduct a comprehensive, screenshot-based UI/UX audit of a local web application
+argument-hint: <url>
+---
+
 # UI/UX Audit
 
 Conduct a comprehensive, screenshot-based UI/UX audit of a local web application.

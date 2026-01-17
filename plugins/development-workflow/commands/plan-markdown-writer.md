@@ -1,3 +1,8 @@
+---
+description: Write a detailed implementation plan as markdown for AI Agent execution and progress tracking
+argument-hint: ""
+---
+
 Plan looks good. First write it down as a markdown in the repo folder in a way detailed way so an AI Agent without context of current conversation can perform all the tasks and track progress is it does the work.
 
 Plan must not include time estimates.

@@ -1,3 +1,8 @@
+---
+description: Interactively create a new, production-ready Claude Code plugin with best-practice architecture, security validation, and comprehensive documentation
+argument-hint: <plugin-name> [description]
+---
+
 # Create Plugin
 
 Interactively create a new, production-ready Claude Code plugin with best-practice architecture, security validation, and comprehensive documentation.

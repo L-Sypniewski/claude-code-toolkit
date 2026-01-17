@@ -1,3 +1,8 @@
+---
+description: Create a new Git worktree with branch name and optional path
+argument-hint: <branch-name> [worktree-path]
+---
+
 Create a new Git worktree with branch name and optional path: $ARGUMENTS
 
 First, parse the arguments to extract:
