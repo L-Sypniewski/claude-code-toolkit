@@ -69,7 +69,7 @@ Use `new AssertionScope()` to report all failures together instead of stopping a
 
 ## Mocking: FakeItEasy
 
-**Prefer real implementations over mocks.** Use mocks only for external dependencies (HTTP APIs, email services, payment gateways).
+**Mocking is a last resort.** Always prefer real implementations and test doubles. Use mocks only when absolutely necessary for external dependencies you cannot control and they cannot be ran in TestContainers.
 
 ### Basic Usage
 
@@ -104,7 +104,7 @@ Use `TimeProvider` injection for testable time-dependent code. Test with `FakeTi
 - Test behavior, not implementation details
 - Use descriptive names: `MethodName_Scenario_ExpectedResult`
 - Keep tests isolated (no shared state)
-- Prefer real objects over mocks (sociable tests)
+- Use real implementations (sociable tests) - mocking is a last resort
 - Use AssertionScope for multiple assertions
 - Test edge cases (null, empty, boundaries, exceptions)
 - Clean up resources (`IAsyncLifetime`, `IDisposable`)
@@ -114,7 +114,7 @@ Use `TimeProvider` injection for testable time-dependent code. Test with `FakeTi
 
 **DON'T:**
 - Test framework internals or third-party libraries
-- Over-mock (prefer real implementations)
+- Mock internal dependencies (use real implementations (TestContainers) or test doubles)
 - Write brittle tests (avoid coupling to implementation)
 - Share state between tests
 - Ignore flaky tests (fix or remove)
