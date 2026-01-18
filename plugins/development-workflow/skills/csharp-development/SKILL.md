@@ -98,26 +98,28 @@ See [PATTERNS.md](PATTERNS.md) for detailed structure and examples.
 
 **Testing:** See [TESTING.md](TESTING.md) for testing patterns and tools
 
-## Common Pitfalls
+## Coding Principles
 
-**DON'T:**
+**Critical Requirements:**
+- Use injected `TimeProvider` for all time operations (inject via DI, never use `DateTime.Now`)
+- Use configuration abstractions (`IOptions<T>`, `IConfiguration`) - never hardcode values
 
-- Use `DateTime.Now` (use `TimeProvider.GetUtcNow()` or `DateTimeOffset.UtcNow`)
-- Hardcode configs
-- Compare strings without `StringComparison`
-- Use Repository Pattern with EF Core (see [PATTERNS.md](PATTERNS.md) anti-patterns)
-- Over-comment code (write WHYs, not WHATs)
-- Create instance methods when static would work
-- Create abstractions before they're needed (YAGNI)
-
-**DO:**
-
-- SOLID principles
-- Records for DTOs and immutable data
+**Architecture & Design:**
+- Follow SOLID principles
 - Use feature slices architecture
+- Apply YAGNI - create abstractions only when actually needed
+- Use EF Core `DbContext` directly (avoid Repository Pattern over-abstraction)
+- Prefer dependency injection for all services
+- Only create interfaces when there are multiple implementations - avoid "interface for the sake of interface"
+
+**Modern C# Practices:**
+- Use records for DTOs and immutable data
+- Write self-documenting code; comments explain WHY, not WHAT
+- Prefer static methods when no instance state is needed
 - Prefer Microsoft packages
-- Write comments that explain WHY, not WHAT
-- Write tests (see [TESTING.md](TESTING.md))
+
+**Testing:**
+- Write tests for all features (see [TESTING.md](TESTING.md))
 
 ## References
 
