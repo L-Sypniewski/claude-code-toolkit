@@ -112,15 +112,19 @@ See [PATTERNS.md](PATTERNS.md) for detailed structure and examples.
 
 ## Additional Resources
 
-**Detailed patterns:** See [PATTERNS.md](PATTERNS.md) for feature slices, Specification Pattern, Factory, Strategy, Options patterns, and **anti-patterns to avoid**
+**Patterns:** See [PATTERNS.md](PATTERNS.md) for architectural patterns and anti-patterns
 
-**ASP.NET Core:** See [ASPNET-CORE.md](ASPNET-CORE.md) for service registration, Minimal APIs, background services, middleware
+**ASP.NET Core:** See [ASPNET-CORE.md](ASPNET-CORE.md) for web API and service patterns
 
-**Blazor:** See [BLAZOR.md](BLAZOR.md) for component design, lifecycle, state management, forms, rendering modes
+**Blazor:** See [BLAZOR.md](BLAZOR.md) for component patterns
 
-**Infrastructure:** See [INFRASTRUCTURE.md](INFRASTRUCTURE.md) for .NET Aspire orchestration and csproj-based dockerization
+**Infrastructure:** See [INFRASTRUCTURE.md](INFRASTRUCTURE.md) for orchestration and deployment patterns
 
-**Testing:** See [TESTING.md](TESTING.md) for TUnit, AwesomeAssertions, and TestContainers
+**Deployment:** See [DEPLOYMENT.md](DEPLOYMENT.md) for publishing patterns
+
+**DbContext Feature Slices:** See [DBCONTEXT_FEATURE_SLICES.md](DBCONTEXT_FEATURE_SLICES.md) for feature-based DbContext organization
+
+**Testing:** See [TESTING.md](TESTING.md) for testing patterns and tools
 
 ## Common Pitfalls
 
@@ -165,7 +169,9 @@ See [PATTERNS.md](PATTERNS.md) for detailed structure and examples.
 - **[PATTERNS.md](PATTERNS.md)** - Design patterns and anti-patterns
 - **[ASPNET-CORE.md](ASPNET-CORE.md)** - ASP.NET Core patterns
 - **[BLAZOR.md](BLAZOR.md)** - Blazor component patterns
-- **[INFRASTRUCTURE.md](INFRASTRUCTURE.md)** - .NET Aspire and dockerization
+- **[DATABASE.md](DATABASE.md)** - Feature-based DbContext organization
+- **[INFRASTRUCTURE.md](INFRASTRUCTURE.md)** - .NET Aspire orchestration
+- **[DEPLOYMENT.md](DEPLOYMENT.md)** - Container publishing and deployment
 - **[TESTING.md](TESTING.md)** - Testing with TUnit and AwesomeAssertions
 
 **Write simple, readable, maintainable code. Follow SOLID and YAGNI. Correctness and clarity before performance optimization.**

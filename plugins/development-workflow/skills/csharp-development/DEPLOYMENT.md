@@ -40,6 +40,7 @@ Common properties: `ContainerImageName`, `ContainerImageTag`, `ContainerRegistry
 ### When to Use Dockerfiles
 
 Use traditional Dockerfiles when:
+
 - Need multi-stage builds with custom build steps
 - Require OS-level dependencies (apt-get, apk)
 - Custom base image not in Microsoft registry
@@ -53,14 +54,6 @@ For most .NET apps, csproj-based publishing is simpler.
 ### Local Development
 
 Use .NET Aspire AppHost for full-stack local development. All services, databases, caches start together.
-
-### Production
-
-Options:
-1. **Azure Container Apps** - Native Aspire deployment with `azd up`
-2. **Kubernetes** - Generate manifests from Aspire with `aspirate`
-3. **Docker Compose** - Generate compose file from Aspire
-4. **Direct container publish** - Individual services with csproj publishing
 
 ### Configuration Management
 
