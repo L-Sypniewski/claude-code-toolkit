@@ -1,6 +1,6 @@
 # ASP.NET Core Patterns
 
-Production patterns for ASP.NET Core applications in .NET 10.
+Production patterns for ASP.NET Core applications.
 
 ## Service Registration Extensions
 
@@ -26,14 +26,14 @@ Register in `Program.cs`: `builder.Services.AddInvoicePrintingServices(builder.C
 
 ## Minimal APIs
 
-**Lightweight HTTP APIs without controllers.** Use for simple CRUD endpoints, microservices, or when you want explicit control over routing.
+**Use Minimal APIs by default.** Lightweight HTTP APIs without controllers.
 
 ### Principles
 
 - **IEndpointRouteBuilder extensions** - Group endpoints in extension methods
 - **Feature folders** - Organize endpoints with related code
 - **Single file for simple endpoints** - DTOs and handler in same file when small
-- **Extract to services for complex logic** - Don't put business logic in endpoints
+- **Extract to handlers for complex logic** - Don't put business logic in endpoints
 
 ### Basic Endpoint Structure
 
@@ -49,8 +49,10 @@ public static class OrderEndpoints
         return app;
     }
 
-    private static async Task<Results<Ok<Order>, NotFound>> GetOrder(string id, OrderService service)
-        => // handler logic
+    private static async Task<Results<Ok<Order>, NotFound>> GetOrder(string id, AppDbContext db)
+        => await db.Orders.FindAsync(id) is Order order
+            ? TypedResults.Ok(order)
+            : TypedResults.NotFound();
 }
 ```
 
@@ -58,23 +60,15 @@ Register in `Program.cs`: `app.MapOrderEndpoints();`
 
 ### TypedResults for Type-Safe Responses
 
-Use `Results<TOk, TNotFound, TBadRequest>` and `TypedResults` instead of `IResult` for compile-time safety and OpenAPI inference.
+Use `Results<TOk, TNotFound, TBadRequest>` and `TypedResults` instead of `IResult`.
 
 ### Inline DTOs
 
 For simple endpoints, define request/response DTOs inline with record types:
 
-### Complex Endpoints - Extract to Service
+### Complex Endpoints
 
-For business logic, validation, or multiple dependencies, inject service and delegate:
-
-```csharp
-private static async Task<Results<Ok<PaymentResult>, BadRequest>> ProcessPayment(
-    PaymentRequest request,
-    PaymentService service,
-    ILogger<PaymentService> logger)
-    => await service.ProcessPaymentAsync(request);
-```
+Extract complex logic to handlers or services.
 
 ### Endpoint Filters
 
@@ -92,22 +86,9 @@ Features/Orders/
 
 ## Background Services
 
-**Long-running tasks** using `BackgroundService` base class.
-
-### Implementation
-
-- Inherit from `BackgroundService`
-- Override `ExecuteAsync(CancellationToken stoppingToken)`
-- Handle exceptions (except `OperationCanceledException`)
-- Respect `CancellationToken` for graceful shutdown
-
-Register as `services.AddHostedService<TBackgroundService>();`
+Use `BackgroundService` base class for long-running tasks. Register as `services.AddHostedService<TBackgroundService>();`.
 
 [Background Services](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services)
-
-## Middleware
-
-**Pipeline order matters**: Authentication → Authorization → Endpoints
 
 ## Configuration & Options
 
@@ -123,13 +104,11 @@ Use **Options pattern** for type-safe configuration.
 
 ## Message Queues & Event-Driven
 
-**Background consumers** for async message processing.
+Use `BackgroundService` for async message processing.
 
 - Implement `BackgroundService` for queue consumer
 - Handle idempotency for at-least-once delivery
 - Use dead letter queues for failed messages
-
-Common technologies: Azure Service Bus, RabbitMQ, AWS SQS, Kafka
 
 ## References
 
