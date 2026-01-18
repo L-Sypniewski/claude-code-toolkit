@@ -11,10 +11,11 @@ Quick reference for all Claude Code Skills in the toolkit.
 | `prp-structure`           | Standard PRP document format        | Creating/formatting PRP documents |
 | `github-issue-processing` | Extract actionable info from issues | Analyzing GitHub issues           |
 
-### Development Workflow (9 skills)
+### Development Workflow (10 skills)
 
 | Skill                        | Description                                          | Use When                                            |
 | ---------------------------- | ---------------------------------------------------- | --------------------------------------------------- |
+| `frontend-design-guidelines` | Create distinctive, aesthetically exceptional UIs    | Building web components, pages, or applications     |
 | `feature-planning`           | End-to-end feature implementation workflow           | Feature development from requirements to completion |
 | `requirements-extraction`    | Extract requirements from various sources            | Processing GitHub issues, prompts, or files         |
 | `requirements-normalization` | Normalize requirements to standard format            | Converting raw input to structured requirements     |
@@ -68,6 +69,7 @@ Quick reference for all Claude Code Skills in the toolkit.
 
 ### UI/UX Design Quality
 
+- `frontend-design-guidelines` - Guidelines for distinctive, aesthetically exceptional interfaces
 - `ui-ux-audit-guidelines` - Professional audit methodology and design vocabulary
 
 ### Issue & Code Analysis
@@ -77,9 +79,9 @@ Quick reference for all Claude Code Skills in the toolkit.
 
 ## Quick Stats
 
-- **Total Skills**: 15
+- **Total Skills**: 16
 - **Total Plugins with Skills**: 5
-- **Average Skills per Plugin**: 3.0
+- **Average Skills per Plugin**: 3.2
 - **Specification**: Anthropic Agent Skills v1.0
 
 ## How Skills Work

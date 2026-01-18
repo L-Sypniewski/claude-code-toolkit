@@ -1,0 +1,141 @@
+---
+name: csharp-development
+description: Expert guidance for .NET 10/C# 14 development covering best practices, design patterns, architecture, testing, and modern C# idioms. Emphasizes SOLID principles, YAGNI, feature slices, and simplicity. Use when writing, reviewing, or refactoring C# code, designing .NET applications, or implementing enterprise patterns. DO NOT use for non-.NET languages or frontend-only JavaScript/TypeScript work.
+---
+
+# .NET C# Development Expert
+
+Expert .NET C# guidance for .NET 10 and C# 14. Focused on production-tested patterns from Blazor, ASP.NET Core, and Entity Framework Core applications.
+
+## When to Use
+
+**USE for:** C# code, .NET architecture, design patterns, testing, async/await, LINQ, ASP.NET Core, EF Core
+**DON'T use for:** Non-.NET languages, frontend-only work, F#/VB.NET
+
+## Core Principles
+
+**SOLID** - Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion
+
+**YAGNI** - You Aren't Gonna Need It. Avoid over-engineering, build what's needed now, not what might be needed later.
+
+**Simplicity** - Prefer straightforward solutions over clever abstractions. Three similar lines are better than premature abstraction.
+
+## Modern C# Features
+
+**Use the latest C# language features** unless explicitly prohibited in this skill's documentation. The project's `.editorconfig` file defines language rules and will surface violations in your IDE.
+
+**Key principles:**
+
+- Prefer modern syntax over legacy patterns
+- Follow `.editorconfig` rules for language version and style
+- Check skill documentation for specific feature restrictions (e.g., avoid primary constructors)
+
+**Essential modern features:**
+
+- `required` and `init` keywords for mandatory initialization
+- Records for immutable data and DTOs
+- Pattern matching over if-else chains
+
+[C# Language Reference](https://learn.microsoft.com/en-us/dotnet/csharp/)
+
+## Code Style Principles
+
+### Comments: Write WHYs, Not WHATs
+
+- Code should be self-documenting (use descriptive names)
+- Comment business rules, non-obvious decisions, reasoning
+- Avoid redundant comments that just describe what code does
+- XML docs only for public APIs, complex algorithms, or cross-team interfaces
+
+### Static Private Methods
+
+Prefer static private methods when no instance state is needed/accessed. Improves clarity, performance, and thread-safety.
+
+### Immutability
+
+Prefer immutable data structures using records and init-only properties.
+
+### Prefer Microsoft Packages
+
+Choose official Microsoft packages over third-party when available - better long-term support, integration, and performance. Use third-party only when Microsoft doesn't provide equivalent or when industry-standard (e.g., Serilog).
+
+## Code Organization and Structure
+
+See [PATTERNS.md](PATTERNS.md) for detailed structure and examples.
+
+## Dependency Injection
+
+**Constructor injection with readonly fields** - inject dependencies via constructor, store in readonly fields for immutability and clarity.
+
+## Error Handling
+
+- Exceptions for exceptional cases only - avoid using exceptions for control flow
+- Result pattern for expected failures
+- Never swallow exceptions - log and re-throw
+
+## LINQ
+
+- Multi-line for readability
+- Understand deferred vs immediate execution
+- **Avoid N+1**: Use `.Include()` in EF Core
+- Query syntax for complex queries, method syntax for simple operations
+
+[LINQ Documentation](https://learn.microsoft.com/en-us/dotnet/csharp/linq/)
+
+## Additional Resources
+
+**Patterns:** See [PATTERNS.md](PATTERNS.md) for architectural patterns and anti-patterns
+
+**ASP.NET Core:** See [ASPNET-CORE.md](ASPNET-CORE.md) for web API and service patterns
+
+**Blazor:** See [BLAZOR.md](BLAZOR.md) for component patterns
+
+**Infrastructure:** See [INFRASTRUCTURE.md](INFRASTRUCTURE.md) for orchestration and deployment patterns
+
+**Deployment:** See [DEPLOYMENT.md](DEPLOYMENT.md) for publishing patterns
+
+**DbContext Feature Slices:** See [DBCONTEXT_FEATURE_SLICES.md](DBCONTEXT_FEATURE_SLICES.md) for feature-based DbContext organization
+
+**Testing:** See [TESTING.md](TESTING.md) for testing patterns and tools
+
+## Coding Principles
+
+**Critical Requirements:**
+- Use injected `TimeProvider` for all time operations (inject via DI, never use `DateTime.Now`)
+- Use configuration abstractions (`IOptions<T>`, `IConfiguration`) - never hardcode values
+
+**Architecture & Design:**
+- Follow SOLID principles
+- Use feature slices architecture
+- Apply YAGNI - create abstractions only when actually needed
+- Use EF Core `DbContext` directly (avoid Repository Pattern over-abstraction)
+- Prefer dependency injection for all services
+- Only create interfaces when there are multiple implementations - avoid "interface for the sake of interface"
+
+**Modern C# Practices:**
+- Use records for DTOs and immutable data
+- Write self-documenting code; comments explain WHY, not WHAT
+- Prefer static methods when no instance state is needed
+- Prefer Microsoft packages
+
+**Testing:**
+- Write tests for all features (see [TESTING.md](TESTING.md))
+
+## References
+
+- [C# Coding Conventions](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)
+- [.NET Design Guidelines](https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/)
+- [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/)
+
+## Skill Files
+
+- **SKILL.md** - Core patterns (this file)
+- **[PATTERNS.md](PATTERNS.md)** - Design patterns and anti-patterns
+- **[ASPNET-CORE.md](ASPNET-CORE.md)** - ASP.NET Core patterns
+- **[BLAZOR.md](BLAZOR.md)** - Blazor component patterns
+- **[DBCONTEXT_FEATURE_SLICES.md](DBCONTEXT_FEATURE_SLICES.md** - Feature-based DbContext organization
+- **[INFRASTRUCTURE.md](INFRASTRUCTURE.md)** - .NET Aspire orchestration
+- **[DEPLOYMENT.md](DEPLOYMENT.md)** - Container publishing and deployment
+- **[TESTING.md](TESTING.md)** - Testing with TUnit and AwesomeAssertions
+
+**Write simple, readable, maintainable code. Follow SOLID and YAGNI. Correctness and clarity before performance optimization.**
