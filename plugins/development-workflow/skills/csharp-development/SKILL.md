@@ -22,87 +22,59 @@ Expert .NET C# guidance for .NET 10 and C# 14. Focused on production-tested patt
 
 ## Modern C# Features
 
-### C# 14 Features
-- **`field` keyword** - Access backing field in property accessors for custom logic
-- **Extension members** - Add members to existing types without inheritance
-- **Null-conditional assignment** - `user?.Address ??= new Address()`
+**Use the latest C# language features** unless explicitly prohibited in this skill's documentation. The project's `.editorconfig` file defines language rules and will surface violations in your IDE.
 
-### C# 11-13 Features
-- **Collection expressions** (C# 12) - `[1, 2, 3]` syntax with spread operators `[..first, ..second]`
-- **`required` keyword** (C# 11+) - Enforce property initialization
-- **File-scoped namespaces** - `namespace MyApp;`
-- **Init-only properties** - `init` keyword for immutability
-- **Records** - Immutable data structures for DTOs
-- **Pattern matching** - Replace if-else chains
-- **Nullable reference types** - `?` annotations
+**Key principles:**
+
+- Prefer modern syntax over legacy patterns
+- Follow `.editorconfig` rules for language version and style
+- Check skill documentation for specific feature restrictions (e.g., avoid primary constructors)
+
+**Essential modern features:**
+
+- `required` and `init` keywords for mandatory initialization
+- Records for immutable data and DTOs
+- Pattern matching over if-else chains
 
 [C# Language Reference](https://learn.microsoft.com/en-us/dotnet/csharp/)
 
 ## Code Style Principles
 
 ### Comments: Write WHYs, Not WHATs
+
 - Code should be self-documenting (use descriptive names)
 - Comment business rules, non-obvious decisions, reasoning
 - Avoid redundant comments that just describe what code does
 - XML docs only for public APIs, complex algorithms, or cross-team interfaces
 
 ### Static Private Methods
-Prefer static private methods when no instance state is needed - clearer intent, prevents accidental coupling to instance state.
+
+Prefer static private methods when no instance state is needed/accessed. Improves clarity, performance, and thread-safety.
 
 ### Immutability
+
 Prefer immutable data structures using records and init-only properties.
 
 ### Prefer Microsoft Packages
+
 Choose official Microsoft packages over third-party when available - better long-term support, integration, and performance. Use third-party only when Microsoft doesn't provide equivalent or when industry-standard (e.g., Serilog).
 
-## Code Organization
-
-### Feature Slices Architecture
-**Vertical slices over horizontal layers** - organize by feature, not technical role. Each feature folder contains models, services, data access, and DI registration.
-
-**Accept repetition between slices** - don't extract shared code until patterns stabilize (Rule of Three).
+## Code Organization and Structure
 
 See [PATTERNS.md](PATTERNS.md) for detailed structure and examples.
 
-## Naming Conventions
-- **PascalCase**: Classes, methods, properties, public fields, constants
-- **camelCase**: Local variables, parameters, constructor parameters
-- **\_camelCase**: Private instance fields (use readonly for injected dependencies)
-- **s\_camelCase**: Private static fields
-- **IPascalCase**: Interfaces (prefix `I`)
-- **Async suffix**: All async methods
-- **Feature-based DI extensions**: `AddFeatureNameServices.cs`
-
-## Async/Await
-- Use async/await consistently
-- **NEVER** use `.Result` or `.Wait()` (deadlocks)
-- `ConfigureAwait(false)` in libraries only
-- `ValueTask<T>` for hot paths (frequently synchronous completion)
-- Always `Async` suffix on method names
-- `CancellationToken` for long operations
-
 ## Dependency Injection
+
 **Constructor injection with readonly fields** - inject dependencies via constructor, store in readonly fields for immutability and clarity.
 
-**Lifetimes:**
-- **Singleton**: Stateless services, caches
-- **Scoped**: DbContext, per-request services (HTTP request lifetime)
-- **Transient**: Lightweight, stateless services
-
 ## Error Handling
-- Exceptions for exceptional cases only
-- Result pattern for expected failures (return `Result<T>` or `Option<T>`)
-- Never swallow exceptions - log and re-throw
-- Use `ArgumentException.ThrowIfNullOrEmpty()` and `ArgumentNullException.ThrowIfNull()`
 
-## Null Safety
-- Enable `<Nullable>enable</Nullable>` in csproj
-- Pattern matching: `if (user is not null)`
-- Null-conditional: `user?.Name ?? "Unknown"`
-- Null-coalescing assignment: `_cache ??= new()`
-- Explicit nullability: `User?` vs `User`
+- Exceptions for exceptional cases only - avoid using exceptions for control flow
+- Result pattern for expected failures
+- Never swallow exceptions - log and re-throw
 
 ## LINQ
+
 - Multi-line for readability
 - Understand deferred vs immediate execution
 - **Avoid N+1**: Use `.Include()` in EF Core
@@ -129,33 +101,23 @@ See [PATTERNS.md](PATTERNS.md) for detailed structure and examples.
 ## Common Pitfalls
 
 **DON'T:**
-- Use `.Result` / `.Wait()` (deadlocks)
-- Swallow exceptions
-- Use `async void` (except event handlers)
+
 - Use `DateTime.Now` (use `TimeProvider.GetUtcNow()` or `DateTimeOffset.UtcNow`)
 - Hardcode configs
-- Ignore `CancellationToken`
 - Compare strings without `StringComparison`
-- Mutate collections while iterating
 - Use Repository Pattern with EF Core (see [PATTERNS.md](PATTERNS.md) anti-patterns)
 - Over-comment code (write WHYs, not WHATs)
 - Create instance methods when static would work
 - Create abstractions before they're needed (YAGNI)
 
 **DO:**
-- Async/await consistently
-- Enable nullable reference types
-- Use dependency injection with constructor injection and readonly fields
-- Write tests (see [TESTING.md](TESTING.md))
-- Pattern matching over if-else
+
 - SOLID principles
 - Records for DTOs and immutable data
-- Structured logging
-- Handle disposal (`IDisposable`, `using`)
 - Use feature slices architecture
-- Prefer static private methods for stateless logic
 - Prefer Microsoft packages
 - Write comments that explain WHY, not WHAT
+- Write tests (see [TESTING.md](TESTING.md))
 
 ## References
 
@@ -169,7 +131,7 @@ See [PATTERNS.md](PATTERNS.md) for detailed structure and examples.
 - **[PATTERNS.md](PATTERNS.md)** - Design patterns and anti-patterns
 - **[ASPNET-CORE.md](ASPNET-CORE.md)** - ASP.NET Core patterns
 - **[BLAZOR.md](BLAZOR.md)** - Blazor component patterns
-- **[DATABASE.md](DATABASE.md)** - Feature-based DbContext organization
+- **[DBCONTEXT_FEATURE_SLICES.md](DBCONTEXT_FEATURE_SLICES.md** - Feature-based DbContext organization
 - **[INFRASTRUCTURE.md](INFRASTRUCTURE.md)** - .NET Aspire orchestration
 - **[DEPLOYMENT.md](DEPLOYMENT.md)** - Container publishing and deployment
 - **[TESTING.md](TESTING.md)** - Testing with TUnit and AwesomeAssertions
