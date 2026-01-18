@@ -85,29 +85,17 @@ Use `new AssertionScope()` to report all failures together instead of stopping a
 
 ### WebApplicationFactory
 
-Test ASP.NET Core apps end-to-end. Implement `IAsyncLifetime`, create factory with custom configuration, inject test services. Test through HTTP client for full request/response cycle.
+Test ASP.NET Core apps end-to-end through HTTP client for full request/response cycle.
 
 ### TestContainers
 
-Use real databases in tests with Docker containers. Supports PostgreSQL, MySQL, SQL Server, MongoDB, Redis, etc. Start containers in `InitializeAsync()`, dispose in `DisposeAsync()`.
-
-```csharp
-_container = new PostgreSqlBuilder()
-    .WithImage("postgres:16")
-    .WithDatabase("testdb")
-    .Build();
-await _container.StartAsync();
-```
+Use real databases in tests with Docker containers. Supports PostgreSQL, MySQL, SQL Server, MongoDB, Redis, etc.
 
 [Testcontainers for .NET](https://dotnet.testcontainers.org/)
 
 ### TimeProvider Testing
 
 Use `TimeProvider` injection for testable time-dependent code. Test with `FakeTimeProvider` from `Microsoft.Extensions.Time.Testing`.
-
-```csharp
-var timeProvider = new FakeTimeProvider(fixedDateTime);
-```
 
 ## Best Practices
 

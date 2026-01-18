@@ -124,13 +124,7 @@ dotnet publish -t:PublishContainer -p:ContainerImageTag=v1.2.3
 
 ### Configuration Properties
 
-- **ContainerImageName** - Image name
-- **ContainerImageTag** - Tag (default: latest)
-- **ContainerRegistry** - Registry URL
-- **ContainerBaseImage** - Base image (defaults to Microsoft runtime images)
-- **ContainerPort** - Exposed port
-- **ContainerEnvironmentVariables** - Environment variables
-- **ContainerWorkingDirectory** - Working directory
+Common properties: `ContainerImageName`, `ContainerImageTag`, `ContainerRegistry`, `ContainerBaseImage`, `ContainerPort`
 
 [Container Publishing](https://learn.microsoft.com/en-us/dotnet/core/docker/publish-as-container)
 

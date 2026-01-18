@@ -126,10 +126,10 @@ Use **Options pattern** for type-safe configuration.
 **Background consumers** for async message processing.
 
 - Implement `BackgroundService` for queue consumer
-- Event-driven failure handling (publish failure events)
-- Transactional message processing (consume + business logic in transaction)
-- Dead letter queues for failed messages
-- Idempotency for at-least-once delivery
+- Handle idempotency for at-least-once delivery
+- Use dead letter queues for failed messages
+
+Common technologies: Azure Service Bus, RabbitMQ, AWS SQS, Kafka
 
 ## References
 

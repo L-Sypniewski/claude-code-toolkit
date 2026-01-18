@@ -87,8 +87,7 @@ For shared state across components, create state container service:
 
 ### Form Controls
 
-- `<InputText>`, `<InputNumber>`, `<InputDate>`, `<InputCheckbox>`, `<InputSelect>` for bound inputs
-- All inherit from `InputBase<T>` for consistent validation
+Use built-in input components (`InputText`, `InputNumber`, `InputDate`, `InputCheckbox`, `InputSelect`) for data binding and validation.
 
 [Forms & Validation](https://learn.microsoft.com/en-us/aspnet/core/blazor/forms/)
 
@@ -122,14 +121,7 @@ Apply with `@rendermode InteractiveAuto` on component or page.
 
 ## JavaScript Interop
 
-**IJSRuntime** for calling JavaScript from .NET.
-
-### Patterns
-
-- Inject `IJSRuntime`
-- Call with `await JSRuntime.InvokeAsync<T>("functionName", args)`
-- JavaScript → .NET with `DotNet.invokeMethodAsync()`
-- Use `IJSObjectReference` for module isolation
+Use **IJSRuntime** for calling JavaScript from .NET. Inject and call with `await JSRuntime.InvokeAsync<T>("functionName", args)`.
 
 **Best practices:**
 - Minimize JS interop (use Blazor components when possible)
