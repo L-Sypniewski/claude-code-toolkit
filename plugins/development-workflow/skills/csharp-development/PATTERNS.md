@@ -1,6 +1,6 @@
 # Enterprise Architecture Patterns
 
-Design pattern guidance for .NET 10 C# applications. Emphasizes simplicity, SOLID principles, and avoiding over-engineering.
+Design pattern guidance for C# applications. Emphasizes simplicity, SOLID principles, and avoiding over-engineering.
 
 ## Feature Slices Architecture
 
@@ -10,7 +10,7 @@ Design pattern guidance for .NET 10 C# applications. Emphasizes simplicity, SOLI
 
 1. **Self-contained features** - Each feature folder contains everything: models, handlers, data access, DI registration
 2. **High cohesion** - Related code stays together
-3. **Accept duplication** - Don't extract shared code until patterns stabilize (Rule of Three)
+3. **Accept duplication** - Features should be independent. Only extract cross-cutting concerns to shared code. Keep feature logic within feature boundaries.
 4. **Clear boundaries** - Features evolve independently without rippling changes
 
 ### Structure
@@ -23,9 +23,15 @@ src/Features/{FeatureName}/
 ```
 
 ### When to Extract Shared Code
-- Same logic in 3+ features (Rule of Three)
-- Bug fix requires updating multiple features
-- Abstraction is stable and unlikely to change
+
+Extract only cross-cutting concerns to shared code:
+
+- Authentication and authorization
+- Logging and telemetry
+- Middleware and filters
+- Infrastructure services
+
+Keep feature logic within feature boundaries even if similar across features.
 
 ## Repository Pattern with EF Core
 
@@ -38,6 +44,7 @@ Use DbContext directly in services with constructor injection and readonly field
 ### When Repository Pattern is appropriate
 
 Use Repository Pattern when:
+
 - Abstracting non-EF data sources (Dapper, HTTP APIs, file system, external services)
 - Multiple ORMs in same application (rare)
 - Domain-Driven Design with aggregate roots and complex domain logic
@@ -50,6 +57,76 @@ Use Repository Pattern when:
 **Skip interfaces for single implementations.** Create concrete classes until multiple implementations exist or polymorphism is needed.
 
 For testing, use integration tests with real implementations or TestContainers.
+
+## DbContext Partial Class Pattern
+
+**Feature-based DbContext organization** using partial classes.
+
+### Structure
+
+- Base DbContext in `src/Database/{ProjectName}DbContext.cs`
+- Each feature extends with partial class in `src/Features/{FeatureName}/Database/{ProjectName}DbContext.cs`
+- Each feature defines entity configurations in `src/Features/{FeatureName}/Database/{EntityName}Configuration.cs`
+- Configurations implement `IEntityTypeConfiguration<TEntity>`
+- Register configurations in feature's partial DbContext using `OnModelCreating`
+
+### Example Structure
+
+```
+src/
+├── Database/
+│   └── AppDbContext.cs           // Base partial class
+└── Features/
+    └── Orders/
+        └── Database/
+            ├── AppDbContext.cs   // Partial class for Orders
+            ├── OrderConfiguration.cs
+            └── OrderItemConfiguration.cs
+```
+
+### Base DbContext
+
+```csharp
+public partial class AppDbContext : DbContext
+{
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
+    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        OnModelCreatingPartial(modelBuilder);
+    }
+}
+```
+
+### Feature Partial DbContext
+
+```csharp
+public partial class AppDbContext
+{
+    public DbSet<Order> Orders { get; set; }
+
+    partial void OnModelCreatingPartial(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfiguration(new OrderConfiguration());
+    }
+}
+```
+
+### Entity Configuration
+
+```csharp
+public class OrderConfiguration : IEntityTypeConfiguration<Order>
+{
+    public void Configure(EntityTypeBuilder<Order> builder)
+    {
+        builder.ToTable("Orders");
+        builder.HasKey(o => o.Id);
+        builder.Property(o => o.OrderNumber).IsRequired().HasMaxLength(50);
+    }
+}
+```
 
 ## Specification Pattern
 
@@ -95,18 +172,6 @@ Register all implementations as services, inject `IServiceProvider` into factory
 
 [Dependency Injection](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection)
 
-## Strategy Pattern
-
-**Encapsulate algorithms/behaviors, select at runtime.** Common for payment processing, notification delivery, validation rules, pricing calculations.
-
-### Implementation approaches
-
-1. **Enumeration of implementations** - Inject `IEnumerable<IStrategy>`, select based on criteria
-2. **Factory + Strategy** - Use factory to create appropriate strategy
-3. **Keyed services** (NET 8+) - Use `IServiceProvider.GetKeyedService<T>(key)`
-
-[Strategy Pattern](https://refactoring.guru/design-patterns/strategy)
-
 ## Options Pattern
 
 Use **Options pattern** for type-safe configuration.
@@ -144,11 +209,12 @@ File naming: `AddFeatureNameServices.cs` in feature folder.
 ## Key Takeaways
 
 1. **DbContext is already Repository + Unit of Work** - Don't wrap it unless abstracting non-EF sources
-2. **Feature slices over layers** - Organize by feature, accept duplication until patterns emerge
-3. **YAGNI** - Don't create abstractions until needed (Rule of Three)
-4. **Specification Pattern** - Only for complex, reusable queries
-5. **Factory/Strategy** - Use for runtime polymorphism
-6. **Options Pattern** - Type-safe configuration binding
-7. **Performance** - Use `Span<T>`, `Memory<T>`, `ValueTask<T>` where appropriate
+2. **Feature slices over layers** - Organize by feature, keep features independent
+3. **Extract only cross-cutting concerns** - Auth, logging, middleware go to shared code. Feature logic stays in features.
+4. **YAGNI** - Don't create abstractions until needed
+5. **Specification Pattern** - Only for complex, reusable queries
+6. **Factory/Strategy** - Use for runtime polymorphism
+7. **Options Pattern** - Type-safe configuration binding
+8. **Performance** - Use `Span<T>`, `Memory<T>`, `ValueTask<T>` where appropriate
 
 **Prefer simplicity over clever abstractions. Build what you need now, refactor when patterns emerge.**
